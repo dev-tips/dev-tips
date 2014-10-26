@@ -1,0 +1,3 @@
+[submodule "pronto"]
+	path = pronto
+	url = https://github.com/prontocms/core.git
