@@ -10,6 +10,10 @@ That’s why [we](http://fapprik.com/) started JS-Tricks as an experiment on Tum
 
 ## Getting started
 
+Initially, clone this repository recursively in order to include all required submodules as well.
+
+    git clone --recursive https://github.com/fapprik/js-tricks.com
+
 JS-Tricks.com is built using [PRONTO](http://prontocms.com/). It’s pretty easy to run the site locally.
 
     php -S localhost:8080
