@@ -1,5 +1,7 @@
-var gulp = require('gulp'),
+var fs = require('fs'),
+  gulp = require('gulp'),
   addsrc = require('gulp-add-src'),
+  bower = require('gulp-bower'),
   autoprefixer = require('gulp-autoprefixer'),
   clean = require('gulp-clean'),
   concat = require('gulp-concat'),
@@ -11,8 +13,8 @@ var gulp = require('gulp'),
 // Setup directories to work with
 var dirs = {
   src: {
+    bower: 'bower_components',
     js: 'source/javascripts',
-    rb: 'vendor/rainbow/js',
     sass: 'source/styles'
   },
 
@@ -28,6 +30,12 @@ gulp.task('clean', function () {
     .pipe(clean({
       force: true
     }));
+});
+
+// Get bower stuff
+gulp.task('bower', function () {
+  var cmd = fs.exists(dirs.src.bower) ? 'update' : 'install';
+  return bower({cmd: cmd});
 });
 
 // Build CSS from SASS
@@ -46,26 +54,27 @@ gulp.task('css', function () {
 
 // Build JS
 gulp.task('js', function () {
-  gulp.src([dirs.src.js + '/main.js'])
-    .pipe(addsrc([
-      dirs.src.rb + '/rainbow.js',
-      dirs.src.rb + '/language/generic.js',
-      dirs.src.rb + '/language/javascript.js',
-      dirs.src.rb + '/language/html.js',
-      dirs.src.rb + '/language/css.js',
-      dirs.src.rb + '/language/shell.js'
-    ]))
+  gulp.src([
+    // Manual cherry pick...
+    dirs.src.bower + '/rainbow/js/rainbow.js',
+    dirs.src.bower + '/rainbow/js/language/generic.js',
+    dirs.src.bower + '/rainbow/js/language/javascript.js',
+    dirs.src.bower + '/rainbow/js/language/html.js',
+    dirs.src.bower + '/rainbow/js/language/css.js',
+    dirs.src.bower + '/rainbow/js/language/shell.js'
+  ])
+    .pipe(addsrc([dirs.src.js + '/main.js']))
     .pipe(concat('app.js'))
     .pipe(uglify())
     .pipe(gulp.dest(dirs.dest.js));
-});
+});+
 
 gulp.task('watch', function () {
   gulp.watch(dirs.src.sass + '/**/*.scss', ['css']);
   gulp.watch(dirs.src.js + '/**/*.js', ['js']);
 });
 
-gulp.task('build', ['clean', 'css', 'js']);
+gulp.task('build', ['clean', 'bower', 'css', 'js']);
 
 gulp.task('dev', ['build', 'watch']);
 

@@ -70,3 +70,10 @@ sftp-config.json
 
 node_modules
 npm-error.log
+
+
+#
+# Bower
+#
+
+bower_components
