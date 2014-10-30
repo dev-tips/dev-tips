@@ -10,17 +10,21 @@ That’s why [we](http://fapprik.com/) started JS-Tricks as an experiment on Tum
 
 ## Getting started
 
-Initially, clone this repository recursively in order to include all required submodules as well.
+	git clone --recursive https://github.com/fapprik/js-tricks.com
+	cd js-tricks.com
+	npm install gulp -g  # if not already installed on your system
+	npm install
+	gulp build
 
-    git clone --recursive https://github.com/fapprik/js-tricks.com
+Note that you need to clone the repository recursively in order to include all required submodules as well. Moreover we make use of [Bower](http://bower.io/) and [gulp.js](http://gulpjs.com/) for frontend asset generation, concatenation, uglification, iamge minification etc., so don't forget to run `gulp build` at least once after cloning.
 
-JS-Tricks.com is built using [PRONTO](http://prontocms.com/). It’s pretty easy to run the site locally.
+JS-Tricks.com is built using [PRONTO](http://prontocms.com/). If you want to run the site locally, that's pretty easy:
 
     php -S localhost:8080
 
 If you prefer to use Apache or nginx, check out the [»Getting started« section on the PRONTO website](http://prontocms.com/docs/getting-started).
 
-We’re using [gulp.js](http://gulpjs.com/) for automating tasks like concatenating and uglification scripts or compiling and minification of stylesheets. Install gulp if you haven’t already (`npm install`) and use `gulp build` to generate all the relevant resources required to run the site. The task `guild dev` does exactly the same but additionally starts watching the file system for changes and rebuilds every time a change occurs.
+Besides the `gulp build` task, there is `gulp dev`, which does exactly the same but additionally starts watching the file system for changes and rebuilds every time a change occurs.
 
 ## Contributing
 
