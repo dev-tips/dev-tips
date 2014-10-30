@@ -20,7 +20,7 @@ JS-Tricks.com is built using [PRONTO](http://prontocms.com/). It’s pretty easy
 
 If you prefer to use Apache or nginx, check out the [»Getting started« section on the PRONTO website](http://prontocms.com/docs/getting-started).
 
-We’re using [gulp.js](http://gulpjs.com/) for automating tasks like concatenating and uglification scripts or compiling and minification of stylesheets. Install gulp if you haven’t already and use `gulp build` to generate all the relevant resources required to run the site. The task `guild dev` does exactly the same but additionally starts watching the file system for changes and rebuilds every time a change occurs.
+We’re using [gulp.js](http://gulpjs.com/) for automating tasks like concatenating and uglification scripts or compiling and minification of stylesheets. Install gulp if you haven’t already (`npm install`) and use `gulp build` to generate all the relevant resources required to run the site. The task `guild dev` does exactly the same but additionally starts watching the file system for changes and rebuilds every time a change occurs.
 
 ## Contributing
 
