@@ -1,0 +1,83 @@
+@import "settings";
+
+pre, code {
+  font-family: monospace;
+}
+
+code {
+  padding: 3px 5px;
+  background: $color-lightgrey;
+  color: $color-midgrey-dark;
+  border-radius: 4px;
+}
+
+pre {
+  display: block;
+  padding: 12px 15px;
+  background: $color-darkgrey;
+  color: $color-lightgrey;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+pre code {
+  padding: 0;
+  background: $color-darkgrey;
+  color: $color-lightgrey;
+}
+
+pre .comment {
+  color: $color-rainbow-comment;
+}
+
+pre .constant {
+  color: $color-rainbow-constant;
+}
+
+pre .storage {
+  color: $color-rainbow-storage;
+}
+
+pre .string, pre .comment.docstring {
+  color: $color-rainbow-string;
+}
+
+pre .support.tag {
+  color: $color-rainbow-tag;
+}
+
+pre .keyword {
+  color: $color-rainbow-keyword;
+}
+
+pre .selector {
+  color: $color-rainbow-selector;
+}
+
+pre .inherited-class {
+  font-style: italic;
+}
+
+pre .operator, pre .support.tag-name, pre .entity.tag {
+  color: $color-rainbow-operator;
+}
+
+pre .entity, pre .support.attribute, pre .entity.attribute {
+  color: $color-rainbow-attribute;
+}
+
+pre .support, *[data-language="c"] .function.call {
+  color: $color-rainbow-support;
+}
+
+*[data-language="html"] .support.operator {
+  color: $color-white;
+}
+
+pre .css-property, pre .storage.function {
+  font-style: italic;
+}
+
+pre .variable.global, pre .variable.class, pre .variable.instance {
+  color: $color-rainbow-global;
+}

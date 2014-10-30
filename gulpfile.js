@@ -34,7 +34,7 @@ var dirs = {
 
 // Cleanup target dirs
 gulp.task('clean', function () {
-  gulp.src([
+  return gulp.src([
     dirs.dest.css,
     dirs.dest.js
   ])
@@ -53,8 +53,8 @@ gulp.task('bower', function () {
 // Generate sprites, copy over other images & minify them all
 gulp.task('images', function () {
   var cssVarMapper = function (sprite) {
-    // Get rid of @-sign in SCSS variables
     sprite.name = 'sprite-' + sprite.name.replace(/@/, '-');
+    sprite.image = '/' + dirs.dest.images + '/' + sprite.image;
   };
 
   // @1x
@@ -82,17 +82,17 @@ gulp.task('images', function () {
     }));
 
   // Init merged stream with other images
-  var mergedImageStream = gulp.src(dirs.src.images + '/*.*');
+  var imageStream = gulp.src(dirs.src.images + '/*.*');
+  var scssStream;
 
   [sprite1x, sprite2x, sprite3x].forEach(function (sprite) {
-    mergedImageStream = eventStream.merge(mergedImageStream, sprite.img);
+    imageStream = eventStream.merge(imageStream, sprite.img);
 
-    // Note: This is actually a SCSS file...
-    sprite.css && sprite.css
-      .pipe(gulp.dest(dirs.build + '/sprite-sass'));
+    var spritePipe = sprite.css.pipe(gulp.dest(dirs.build + '/sprite-sass'));
+    scssStream = scssStream ? eventStream.merge(scssStream, spritePipe) : spritePipe;
   });
 
-  mergedImageStream
+  imageStream
     .pipe(imagemin({
       optimizationLevel: 4,
       progressive: true,
@@ -102,23 +102,28 @@ gulp.task('images', function () {
       ]
     }))
     .on('error', notify.onError({
-      message: "Please check for correct file extensions and file corruption. (Error: <%= error.message %>)",
-      title: "Error during image minification"
+      message: 'Please check for correct file extensions and file corruption. (Error: <%= error.message %>)',
+      title: 'Error during image minification'
     }))
     .pipe(gulp.dest(dirs.dest.images));
+
+  return scssStream;
 });
 
 // Build CSS from SASS
 gulp.task('css', function () {
-  gulp.src([dirs.src.sass + '/main.scss'])
+  return gulp.src([dirs.src.sass + '/main.scss'])
     .pipe(sass({
-      loadPath: [
+      includePaths: [
         dirs.src.sass,
         dirs.build + '/sprite-sass'
       ],
-      onError: notify.onError(function (error) {
-        return error.message;
-      })
+      imagePath: dirs.dest.images,
+      outputStyle: 'nested'
+    }))
+    .on('error', notify.onError({
+      message: 'Error: <%= error.message %>',
+      title: 'Error during SASS compilation'
     }))
     .pipe(autoprefixer('last 2 version', 'ie 9'))
     .pipe(concat('app.css'))
@@ -134,7 +139,7 @@ gulp.task('css-min', function () {
 
 // Build JS
 gulp.task('js', function () {
-  gulp.src([
+  return gulp.src([
     // Manual cherry pick...
     dirs.src.bower + '/rainbow/js/rainbow.js',
     dirs.src.bower + '/rainbow/js/language/generic.js',
@@ -158,24 +163,34 @@ gulp.task('js-min', function () {
 gulp.task('watch', function () {
   gulp.watch(dirs.src.sass + '/**/*.scss', ['css']);
   gulp.watch(dirs.src.js + '/**/*.js', ['js']);
-  gulp.watch(dirs.src.images + '/**/*', ['images', 'css'])
+  gulp.watch(dirs.src.images + '/**/*', ['images-css'])
 });
 
-gulp.task('build', [
-  'clean',
-  'images',
-  'bower',
-  'css',
-  'js'
-]);
+gulp.task('build', function () {
+  runSequence(
+    'clean',
+    'bower',
+    'images',
+    'css',
+    'js'
+  );
+});
 
 gulp.task('dev', [
   'build',
   'watch'
 ]);
 
-gulp.task('release', function() {
-  runSequence('build', 'css-min', 'js-min');
+gulp.task('release', function () {
+  runSequence(
+    'clean',
+    'bower',
+    'images',
+    'css',
+    'css-min',
+    'js',
+    'js-min'
+  );
 });
 
 gulp.task('default', ['build']);
