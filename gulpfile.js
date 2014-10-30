@@ -1,14 +1,14 @@
-var fs = require('fs'),
-  gulp = require('gulp'),
-  addsrc = require('gulp-add-src'),
-  bower = require('gulp-bower'),
-  autoprefixer = require('gulp-autoprefixer'),
-  clean = require('gulp-clean'),
-  concat = require('gulp-concat'),
-  cssmin = require('gulp-cssmin'),
-  sass = require('gulp-sass'),
-  uglify = require('gulp-uglify'),
-  watch = require('gulp-watch');
+var fs = require('fs');
+var gulp = require('gulp');
+var addsrc = require('gulp-add-src');
+var bower = require('gulp-bower');
+var autoprefixer = require('gulp-autoprefixer');
+var clean = require('gulp-clean');
+var concat = require('gulp-concat');
+var cssmin = require('gulp-cssmin');
+var sass = require('gulp-sass');
+var uglify = require('gulp-uglify');
+var watch = require('gulp-watch');
 
 // Setup directories to work with
 var dirs = {
