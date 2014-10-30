@@ -331,6 +331,10 @@ a.octocat span {
   font-style: italic;
 }
 
+#ribbon {
+  display: none;
+}
+
 @media screen and (min-width: 320px) {
   .center {
     padding: 20px;
@@ -338,10 +342,6 @@ a.octocat span {
 
   h2, h3 {
     font-size: 20px;
-  }
-
-  #ribbon {
-    display: none;
   }
 }
 
