@@ -17,7 +17,6 @@ var dirs = {
     js: 'source/javascripts',
     sass: 'source/styles'
   },
-
   dest: {
     js: 'js',
     css: 'css'
@@ -26,7 +25,10 @@ var dirs = {
 
 // Cleanup target dirs
 gulp.task('clean', function () {
-  gulp.src([dirs.dest.css, dirs.dest.js])
+  gulp.src([
+    dirs.dest.css,
+    dirs.dest.js
+  ])
     .pipe(clean({
       force: true
     }));
@@ -34,8 +36,9 @@ gulp.task('clean', function () {
 
 // Get bower stuff
 gulp.task('bower', function () {
-  var cmd = fs.exists(dirs.src.bower) ? 'update' : 'install';
-  return bower({cmd: cmd});
+  return bower({
+    cmd: fs.exists(dirs.src.bower) ? 'update' : 'install'
+  });
 });
 
 // Build CSS from SASS
@@ -74,8 +77,16 @@ gulp.task('watch', function () {
   gulp.watch(dirs.src.js + '/**/*.js', ['js']);
 });
 
-gulp.task('build', ['clean', 'bower', 'css', 'js']);
+gulp.task('build', [
+  'clean',
+  'bower',
+  'css',
+  'js'
+]);
 
-gulp.task('dev', ['build', 'watch']);
+gulp.task('dev', [
+  'build',
+  'watch'
+]);
 
 gulp.task('default', ['build']);
