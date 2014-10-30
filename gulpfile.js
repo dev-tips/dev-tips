@@ -67,7 +67,7 @@ gulp.task('js', function () {
     .pipe(concat('app.js'))
     .pipe(uglify())
     .pipe(gulp.dest(dirs.dest.js));
-});+
+});
 
 gulp.task('watch', function () {
   gulp.watch(dirs.src.sass + '/**/*.scss', ['css']);
