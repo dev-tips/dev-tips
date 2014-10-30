@@ -1,29 +1,24 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic|Montserrat:400,700);
-
-* {
-  margin: 0;
-  padding: 0;
-  background: none;
-  border: 0;
-}
+@import 'settings';
+@import 'reset';
+@import 'fonts';
+@import 'sprites';
 
 html {
-  background: #eeeeee;
+  background: $color-lightgrey;
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  color: #000000;
+  color: $color-black;
+  font-family: $font-family-default;
 }
 
 ::selection {
-  background: #e61470;
-  color: #ffffff;
+  background: $color-pink;
+  color: $color-white;
 }
 
 div, p, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -33,22 +28,22 @@ div, p {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: $font-family-head;
   margin: 0 0 0.3em;
   font-weight: bold;
   text-transform: uppercase;
-  color: #e61470;
+  color: $color-pink;
   text-align: left;
 }
 
 h1, h1 a {
   display: block;
-  width: 226px;
-  height: 50px;
+  @include sprite-width($sprite-logo-1x);
+  @include sprite-height($sprite-logo-1x);
 }
 
 h1 a {
-  background: url('/img/logo.png') 0 0 no-repeat transparent;
+  @include sprite($sprite-logo-1x);
   text-indent: -9999px;
 }
 
@@ -65,7 +60,7 @@ p, pre {
 }
 
 a {
-  color: #e61470;
+  color: $color-pink;
   text-decoration: none;
 }
 
@@ -89,12 +84,12 @@ ul, ol, li {
 
 header {
   padding: 20px 0 0;
-  background: #f0db4f;
+  background: $color-yellow;
 }
 
 section, article {
-  background: #ffffff;
-  border-bottom: 1px solid #eeeeee;
+  background: $color-white;
+  border-bottom: 1px solid $color-lightgrey;
 }
 
 article img {
@@ -102,97 +97,15 @@ article img {
   max-width: 100%;
 }
 
-pre, code {
-  font-family: monospace;
-}
-
-code {
-  padding: 3px 5px;
-  background: #eeeeee;
-  color: #555555;
-  border-radius: 4px;
-}
-
-pre {
-  display: block;
-  padding: 12px 15px;
-  background: #272822;
-  color: #f8f8f2;
-  border-radius: 4px;
-  overflow-x: auto;
-}
-
-pre code {
-  padding: 0;
-  background: #272822;
-  color: #f8f8f2;
-}
-
-pre .comment {
-  color: #75715e;
-}
-
-pre .constant {
-  color: #ae81ff;
-}
-
-pre .storage {
-  color: #66d9ef;
-}
-
-pre .string, pre .comment.docstring {
-  color: #e6db74;
-}
-
-pre .support.tag {
-  color: #ffffff;
-}
-
-pre .keyword {
-  color: #f92672; /*color:#66d9ef;*/
-}
-
-pre .selector {
-  color: #f92672;
-}
-
-pre .inherited-class {
-  font-style: italic;
-}
-
-pre .operator, pre .support.tag-name, pre .entity.tag {
-  color: #f92672;
-}
-
-pre .entity, pre .support.attribute, pre .entity.attribute {
-  color: #a6e22e;
-}
-
-pre .support, *[data-language="c"] .function.call {
-  color: #66d9ef;
-}
-
-*[data-language="html"] .support.operator {
-  color: #ffffff;
-}
-
-pre .css-property, pre .storage.function {
-  font-style: italic;
-}
-
-pre .variable.global, pre .variable.class, pre .variable.instance {
-  color: #a6e22e;
-}
-
 .question h2 {
   margin: 0;
   padding: 12px 15px;
-  background: #272822;
-  font-family: 'Open Sans', sans-serif;
+  background: $color-darkgrey;
+  font-family: $font-family-default;
   font-size: 14px;
   text-transform: none;
   font-weight: normal;
-  color: #f8f8f2;
+  color: $color-lightgrey;
   position: relative;
   border-radius: 4px;
 }
@@ -206,11 +119,11 @@ pre .variable.global, pre .variable.class, pre .variable.instance {
   height: 0;
   border-width: 15px 0 0 15px;
   border-style: solid;
-  border-color: #272822 transparent transparent;
+  border-color: $color-darkgrey transparent transparent;
 }
 
 .question h2 a {
-  color: #ffffff;
+  color: $color-white;
 }
 
 .asker {
@@ -225,11 +138,11 @@ pre .variable.global, pre .variable.class, pre .variable.instance {
 .meta {
   display: block;
   margin: 15px 0 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: $font-family-head;
   font-size: 12px;
   line-height: 22px;
   text-transform: uppercase;
-  color: #aaaaaa;
+  color: $color-midgrey-light;
 }
 
 .meta a:hover {
@@ -237,11 +150,11 @@ pre .variable.global, pre .variable.class, pre .variable.instance {
 }
 
 .permalink {
-  color: #aaaaaa;
+  color: $color-midgrey-light;
 }
 
 .permalink:hover {
-  color: #aaaaaa;
+  color: $color-midgrey-light;
 }
 
 .permalink:before {
@@ -249,7 +162,7 @@ pre .variable.global, pre .variable.class, pre .variable.instance {
   margin: 0 6px 0 0;
   line-height: 15px;
   font-size: 20px;
-  color: #e61470;
+  color: $color-pink;
   vertical-align: middle;
 }
 
@@ -281,7 +194,7 @@ pre .variable.global, pre .variable.class, pre .variable.instance {
 }
 
 .contributor a {
-  color: #000000;
+  color: $color-black;
 }
 
 .github-username:before {
@@ -289,11 +202,15 @@ pre .variable.global, pre .variable.class, pre .variable.instance {
 }
 
 nav {
-  background: #ffffff;
+  background: $color-white;
 }
 
 nav .center {
   text-align: center;
+}
+
+.center p:last-child, .center pre:last-child {
+  margin-bottom: 0;
 }
 
 p.github {
@@ -303,12 +220,12 @@ p.github {
 }
 
 a.octocat {
+  @include sprite($sprite-github-1x);
   position: absolute;
   display: block;
   left: 0;
   width: 40px;
   height: 40px;
-  background: url('/img/github.png') 0 0 no-repeat transparent;
 }
 
 a.octocat span {
@@ -317,13 +234,15 @@ a.octocat span {
 
 #fapprik {
   font-weight: bold;
-  color: #5e4587;
+  color: $color-fapprik;
   font-style: italic;
 }
 
 #ribbon {
   display: none;
 }
+
+@import "code";
 
 @media screen and (min-width: 320px) {
 
@@ -369,13 +288,13 @@ a.octocat span {
   }
 
   #ribbon {
+    @include sprite($sprite-ribbon-1x);
     position: fixed;
     display: block;
     top: 0;
     right: 0;
     width: 150px;
     height: 150px;
-    background: url('/img/ribbon.png') 0 0 no-repeat transparent;
     text-indent: -9999px;
   }
 
@@ -384,18 +303,15 @@ a.octocat span {
 @media (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
 
   header #logo {
-    background-image: url('/img/logo@2x.png');
-    background-size: 226px 50px;
+    @include sprite-hdpi($sprite-logo-1x, $sprite-logo-2x);
   }
 
   a.octocat {
-    background-image: url('/img/github@2x.png');
-    background-size: 40px 40px;
+    @include sprite-hdpi($sprite-github-1x, $sprite-github-2x);
   }
 
   #ribbon {
-    background-image: url('/img/ribbon@2x.png');
-    background-size: 150px 150px;
+    @include sprite-hdpi($sprite-ribbon-1x, $sprite-ribbon-2x);
   }
 
 }
@@ -403,22 +319,15 @@ a.octocat span {
 @media (-webkit-min-device-pixel-ratio: 3), only screen and (min-resolution: 3dppx), only screen and (min-resolution: 350dpi) {
 
   header #logo {
-    background-image: url('/img/logo@3x.png');
-    background-size: 226px 50px;
+    @include sprite-hdpi($sprite-logo-1x, $sprite-logo-3x);
   }
 
   a.octocat {
-    background-image: url('/img/github@3x.png');
-    background-size: 40px 40px;
+    @include sprite-hdpi($sprite-github-1x, $sprite-github-3x);
   }
 
   #ribbon {
-    background-image: url('/img/ribbon@3x.png');
-    background-size: 150px 150px;
+    @include sprite-hdpi($sprite-ribbon-1x, $sprite-ribbon-3x);
   }
 
-}
-
-.center p:last-child, .center pre:last-child {
-  margin-bottom: 0;
 }

@@ -1,5 +1,15 @@
 
 #
+# Project specific
+#
+
+build
+css
+images
+js
+
+
+#
 # ** General ***
 #
 
@@ -7,8 +17,6 @@
 *~
 .bkp
 .directory
-css
-js
 
 
 #
@@ -70,3 +78,10 @@ sftp-config.json
 
 node_modules
 npm-error.log
+
+
+#
+# Bower
+#
+
+bower_components

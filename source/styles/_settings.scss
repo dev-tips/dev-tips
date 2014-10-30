@@ -1,0 +1,27 @@
+// Typo
+$font-family-default: 'Open Sans', sans-serif;
+$font-family-head: 'Montserrat', sans-serif;
+
+// Layout colors
+$color-lightgrey: #eee;
+$color-midgrey-light: #aaa;
+$color-midgrey-dark: #555;
+$color-darkgrey: #272822;
+$color-white: #fff;
+$color-black: #000;
+$color-pink: #e61470;
+$color-yellow: #f0db4f;
+$color-fapprik: #5e4587;
+
+// Rainbow colors
+$color-rainbow-comment: #75715e;
+$color-rainbow-constant: #ae81ff;
+$color-rainbow-storage: #66d9ef;
+$color-rainbow-string: #e6db74;
+$color-rainbow-tag: #ffffff;
+$color-rainbow-keyword: #f92672;
+$color-rainbow-selector: $color-rainbow-keyword;
+$color-rainbow-operator: $color-rainbow-keyword;
+$color-rainbow-attribute: #a6e22e;
+$color-rainbow-support: #66d9ef;
+$color-rainbow-global: $color-rainbow-attribute;
