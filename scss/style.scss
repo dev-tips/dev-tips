@@ -1,0 +1,424 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic|Montserrat:400,700);
+
+* {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+html {
+  background: #eeeeee;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: #000000;
+}
+
+::selection {
+  background: #e61470;
+  color: #ffffff;
+}
+
+div, p, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+div, p {
+  text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 0 0.3em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #e61470;
+  text-align: left;
+}
+
+h1, h1 a {
+  display: block;
+  width: 226px;
+  height: 50px;
+}
+
+h1 a {
+  background: url('/img/logo.png') 0 0 no-repeat transparent;
+  text-indent: -9999px;
+}
+
+h2, h3 {
+  font-size: 18px;
+}
+
+h2 a:hover, h3 a:hover {
+  text-decoration: none;
+}
+
+p, pre {
+  margin: 0 0 15px;
+}
+
+a {
+  color: #e61470;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:link, a:hover, a:active, a:visited, a:focus {
+  outline: none;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+.center {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+header {
+  padding: 20px 0 0;
+  background: #f0db4f;
+}
+
+section, article {
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+}
+
+article img {
+  display: block;
+  max-width: 100%;
+}
+
+pre, code {
+  font-family: monospace;
+}
+
+code {
+  padding: 3px 5px;
+  background: #eeeeee;
+  color: #555555;
+  border-radius: 4px;
+}
+
+pre {
+  display: block;
+  padding: 12px 15px;
+  background: #272822;
+  color: #f8f8f2;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+pre code {
+  padding: 0;
+  background: #272822;
+  color: #f8f8f2;
+}
+
+pre .comment {
+  color: #75715e;
+}
+
+pre .constant {
+  color: #ae81ff;
+}
+
+pre .storage {
+  color: #66d9ef;
+}
+
+pre .string, pre .comment.docstring {
+  color: #e6db74;
+}
+
+pre .support.tag {
+  color: #ffffff;
+}
+
+pre .keyword {
+  color: #f92672; /*color:#66d9ef;*/
+}
+
+pre .selector {
+  color: #f92672;
+}
+
+pre .inherited-class {
+  font-style: italic;
+}
+
+pre .operator, pre .support.tag-name, pre .entity.tag {
+  color: #f92672;
+}
+
+pre .entity, pre .support.attribute, pre .entity.attribute {
+  color: #a6e22e;
+}
+
+pre .support, *[data-language="c"] .function.call {
+  color: #66d9ef;
+}
+
+*[data-language="html"] .support.operator {
+  color: #ffffff;
+}
+
+pre .css-property, pre .storage.function {
+  font-style: italic;
+}
+
+pre .variable.global, pre .variable.class, pre .variable.instance {
+  color: #a6e22e;
+}
+
+.question h2 {
+  margin: 0;
+  padding: 12px 15px;
+  background: #272822;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  text-transform: none;
+  font-weight: normal;
+  color: #f8f8f2;
+  position: relative;
+  border-radius: 4px;
+}
+
+.question h2:after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-width: 15px 0 0 15px;
+  border-style: solid;
+  border-color: #272822 transparent transparent;
+}
+
+.question h2 a {
+  color: #ffffff;
+}
+
+.asker {
+  margin: 10px 0 0 50px;
+  font-style: italic;
+}
+
+.answer {
+  margin: 15px 0 0;
+}
+
+.meta {
+  display: block;
+  margin: 15px 0 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #aaaaaa;
+}
+
+.meta a:hover {
+  text-decoration: none;
+}
+
+.permalink {
+  color: #aaaaaa;
+}
+
+.permalink:hover {
+  color: #aaaaaa;
+}
+
+.permalink:before {
+  content: '\221e';
+  margin: 0 6px 0 0;
+  line-height: 15px;
+  font-size: 20px;
+  color: #e61470;
+  vertical-align: middle;
+}
+
+.permalink span {
+  font-size: 8px;
+  line-height: 12px;
+  vertical-align: text-top;
+}
+
+.github-contributor {
+  margin-right: 5px;
+}
+
+.contributor {
+  margin: 0 0 15px;
+  overflow: hidden;
+}
+
+.contributor img {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.contributor h2 {
+  margin: 0;
+  line-height: 1.3;
+}
+
+.contributor a {
+  color: #000000;
+}
+
+.github-username:before {
+  content: '\0040';
+}
+
+nav {
+  background: #ffffff;
+}
+
+nav .center {
+  text-align: center;
+}
+
+p.github {
+  position: relative;
+  padding-left: 50px;
+  min-height: 40px;
+}
+
+a.octocat {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: url('/img/github.png') 0 0 no-repeat transparent;
+}
+
+a.octocat span {
+  display: none;
+}
+
+#fapprik {
+  font-weight: bold;
+  color: #5e4587;
+  font-style: italic;
+}
+
+#ribbon {
+  display: none;
+}
+
+@media screen and (min-width: 320px) {
+
+  .center {
+    padding: 20px;
+  }
+
+  h2, h3 {
+    font-size: 20px;
+  }
+
+}
+
+@media screen and (min-width: 530px) {
+
+  .center {
+    padding: 40px;
+  }
+
+  h1 {
+    margin: 0 auto;
+  }
+
+  h2, h3 {
+    font-size: 22px;
+  }
+
+  header {
+    padding: 0;
+  }
+
+  pre {
+    margin: 0 -15px 15px;
+  }
+
+  #contributors {
+    overflow: hidden;
+  }
+
+  .contributor {
+    float: left;
+    width: 50%;
+  }
+
+  #ribbon {
+    position: fixed;
+    display: block;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: url('/img/ribbon.png') 0 0 no-repeat transparent;
+    text-indent: -9999px;
+  }
+
+}
+
+@media (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
+
+  header #logo {
+    background-image: url('/img/logo@2x.png');
+    background-size: 226px 50px;
+  }
+
+  a.octocat {
+    background-image: url('/img/github@2x.png');
+    background-size: 40px 40px;
+  }
+
+  #ribbon {
+    background-image: url('/img/ribbon@2x.png');
+    background-size: 150px 150px;
+  }
+
+}
+
+@media (-webkit-min-device-pixel-ratio: 3), only screen and (min-resolution: 3dppx), only screen and (min-resolution: 350dpi) {
+
+  header #logo {
+    background-image: url('/img/logo@3x.png');
+    background-size: 226px 50px;
+  }
+
+  a.octocat {
+    background-image: url('/img/github@3x.png');
+    background-size: 40px 40px;
+  }
+
+  #ribbon {
+    background-image: url('/img/ribbon@3x.png');
+    background-size: 150px 150px;
+  }
+
+}
+
+.center p:last-child, .center pre:last-child {
+  margin-bottom: 0;
+}
