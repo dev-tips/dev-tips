@@ -1,3 +1,6 @@
 [submodule "pronto"]
 	path = pronto
 	url = https://github.com/prontocms/core.git
+[submodule "vendor/rainbow"]
+	path = vendor/rainbow
+	url = https://github.com/ccampbell/rainbow.git
