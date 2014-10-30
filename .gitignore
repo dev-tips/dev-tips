@@ -1,12 +1,72 @@
-# OS X
-.DS_Store
-._*
-.Spotlight-V100
-.Trashes
 
-# gulp
-node_modules
-npm-error.log
+#
+# ** General ***
+#
+
+._*
+*~
+.bkp
+.directory
 css
 js
+
+
+#
+# OS X
+#
+
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+
+#
+# Windows
+#
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+
+#
+# Idea IDE Products
+#
+
+.idea/
+
+
+#
+# Sublime Text
+#
+
+*.sublime-project
+*.sublime-workspace
+sftp-config.json
+
+
+#
+# Sass
+#
+
 .sass-cache
+
+
+#
+# Node
+#
+
+node_modules
+npm-error.log
