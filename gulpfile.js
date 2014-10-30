@@ -2,6 +2,7 @@ var fs = require('fs');
 var eventStream = require('event-stream');
 var gulp = require('gulp');
 var newer = require('gulp-newer');
+var runSequence = require('run-sequence');
 var notify = require("gulp-notify");
 var addsrc = require('gulp-add-src');
 var bower = require('gulp-bower');
@@ -52,7 +53,8 @@ gulp.task('bower', function () {
 // Generate sprites, copy over other images & minify them all
 gulp.task('images', function () {
   var cssVarMapper = function (sprite) {
-    sprite.name = 'sprite-' + sprite.name.replace(/@.*$/, '');
+    // Get rid of @-sign in SCSS variables
+    sprite.name = 'sprite-' + sprite.name.replace(/@/, '-');
   };
 
   // @1x
@@ -110,12 +112,22 @@ gulp.task('images', function () {
 gulp.task('css', function () {
   gulp.src([dirs.src.sass + '/main.scss'])
     .pipe(sass({
+      loadPath: [
+        dirs.src.sass,
+        dirs.build + '/sprite-sass'
+      ],
       onError: notify.onError(function (error) {
         return error.message;
       })
     }))
     .pipe(autoprefixer('last 2 version', 'ie 9'))
     .pipe(concat('app.css'))
+    .pipe(gulp.dest(dirs.dest.css));
+});
+
+// Minify js
+gulp.task('css-min', function () {
+  gulp.src(dirs.dest.css + '/app.css')
     .pipe(cssmin())
     .pipe(gulp.dest(dirs.dest.css));
 });
@@ -133,6 +145,12 @@ gulp.task('js', function () {
   ])
     .pipe(addsrc([dirs.src.js + '/main.js']))
     .pipe(concat('app.js'))
+    .pipe(gulp.dest(dirs.dest.js));
+});
+
+// Minify js
+gulp.task('js-min', function () {
+  gulp.src(dirs.dest.js + '/app.js')
     .pipe(uglify())
     .pipe(gulp.dest(dirs.dest.js));
 });
@@ -140,7 +158,7 @@ gulp.task('js', function () {
 gulp.task('watch', function () {
   gulp.watch(dirs.src.sass + '/**/*.scss', ['css']);
   gulp.watch(dirs.src.js + '/**/*.js', ['js']);
-  gulp.watch(dirs.src.images + '/**/*', ['images'])
+  gulp.watch(dirs.src.images + '/**/*', ['images', 'css'])
 });
 
 gulp.task('build', [
@@ -155,5 +173,9 @@ gulp.task('dev', [
   'build',
   'watch'
 ]);
+
+gulp.task('release', function() {
+  runSequence('build', 'css-min', 'js-min');
+});
 
 gulp.task('default', ['build']);

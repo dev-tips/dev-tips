@@ -28,6 +28,7 @@
     "gulp-watch": "^1.1.0",
     "gulp.spritesmith": "^1.4.0",
     "imagemin-advpng": "^3.0.0",
-    "imagemin-pngcrush": "^4.0.0"
+    "imagemin-pngcrush": "^4.0.0",
+    "run-sequence": "^1.0.1"
   }
 }
