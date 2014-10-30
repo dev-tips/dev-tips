@@ -1,47 +1,68 @@
-var gulp = require('gulp');
-var addsrc = require('gulp-add-src');
-var autoprefixer = require('gulp-autoprefixer');
-var clean = require('gulp-clean');
-var concat = require('gulp-concat');
-var cssmin = require('gulp-cssmin');
-var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
-var watch = require('gulp-watch');
+var gulp = require('gulp'),
+  addsrc = require('gulp-add-src'),
+  autoprefixer = require('gulp-autoprefixer'),
+  clean = require('gulp-clean'),
+  concat = require('gulp-concat'),
+  cssmin = require('gulp-cssmin'),
+  sass = require('gulp-sass'),
+  uglify = require('gulp-uglify'),
+  watch = require('gulp-watch');
 
+// Setup directories to work with
+var dirs = {
+  src: {
+    js: 'source/javascripts',
+    rb: 'vendor/rainbow/js',
+    sass: 'source/styles'
+  },
+
+  dest: {
+    js: 'js',
+    css: 'css'
+  }
+};
+
+// Cleanup target dirs
 gulp.task('clean', function () {
-  gulp.src('js')
-    .pipe(addsrc('css'))
+  gulp.src([dirs.dest.css, dirs.dest.js])
     .pipe(clean({
       force: true
     }));
 });
 
-gulp.task('css', function() {
-  gulp.src('scss/style.scss')
+// Build CSS from SASS
+gulp.task('css', function () {
+  gulp.src(dirs.src.sass + '/main.scss')
     .pipe(sass({
-      onError: function(err) {
+      onError: function (err) {
         return notify().write(err);
       }
     }))
     .pipe(autoprefixer('last 2 version', 'ie 9'))
+    .pipe(concat('app.css'))
     .pipe(cssmin())
-    .pipe(gulp.dest('css'));
+    .pipe(gulp.dest(dirs.dest.css));
 });
 
-gulp.task('js', function() {
-  gulp.src('vendor/rainbow/js/rainbow.js')
-    .pipe(addsrc('vendor/rainbow/js/language/generic.js'))
-    .pipe(addsrc('vendor/rainbow/js/language/javascript.js'))
-    .pipe(addsrc('vendor/rainbow/js/language/html.js'))
-    .pipe(addsrc('vendor/rainbow/js/language/css.js'))
-    .pipe(addsrc('vendor/rainbow/js/language/shell.js'))
-    .pipe(concat('scripts.js'))
+// Build JS
+gulp.task('js', function () {
+  gulp.src([dirs.src.js + '/main.js'])
+    .pipe(addsrc([
+      dirs.src.rb + '/rainbow.js',
+      dirs.src.rb + '/language/generic.js',
+      dirs.src.rb + '/language/javascript.js',
+      dirs.src.rb + '/language/html.js',
+      dirs.src.rb + '/language/css.js',
+      dirs.src.rb + '/language/shell.js'
+    ]))
+    .pipe(concat('app.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('js'));
+    .pipe(gulp.dest(dirs.dest.js));
 });
 
-gulp.task('watch', function() {
-  gulp.watch('scss/**/*.scss', ['css']);
+gulp.task('watch', function () {
+  gulp.watch(dirs.src.sass + '/**/*.scss', ['css']);
+  gulp.watch(dirs.src.js + '/**/*.js', ['js']);
 });
 
 gulp.task('build', ['clean', 'css', 'js']);

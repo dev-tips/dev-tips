@@ -8,7 +8,7 @@
             </div>
         </footer>
         <a href="https://github.com/fapprik/js-tricks.com" id="ribbon">Fork me on GitHub</a>
-        <?php js('js/scripts.js') ?>
+        <?php js('js/app.js') ?>
         <script>
             var obfuscated = document.querySelectorAll('.obfuscated');
             for (var i = 0; i < obfuscated.length; i++) {
