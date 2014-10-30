@@ -362,6 +362,7 @@ a.octocat span {
 
   #ribbon {
     position: fixed;
+    display: block;
     top: 0;
     right: 0;
     width: 150px;
