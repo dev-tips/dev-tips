@@ -19,7 +19,7 @@
             <div class="contributor">
                 <img src="https://avatars.githubusercontent.com/<?php echo $contributor ?>" alt="">
                 <h2><?php echo $contributor ?></h2>
-                <a href="https://github.com/<?php echo $contributor ?>" target="_blank"><?php echo $contributor ?> on GitHub</a>
+                <a href="https://github.com/<?php echo $contributor ?>" target="_blank">@<?php echo $contributor ?> on GitHub</a>
             </div>
         <?php endforeach ?>
         </div>
