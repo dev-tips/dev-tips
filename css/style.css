@@ -232,7 +232,7 @@ pre .variable.global, pre .variable.class, pre .variable.instance {
   margin: 15px 0 0;
 }
 
-.permalink {
+.meta {
   display: block;
   margin: 15px 0 0;
   font-family: 'Montserrat', sans-serif;
@@ -242,9 +242,16 @@ pre .variable.global, pre .variable.class, pre .variable.instance {
   color: #aaaaaa;
 }
 
+.meta a:hover {
+  text-decoration: none;
+}
+
+.permalink {
+  color: #aaaaaa;
+}
+
 .permalink:hover {
   color: #aaaaaa;
-  text-decoration: none;
 }
 
 .permalink:before {
@@ -260,6 +267,10 @@ pre .variable.global, pre .variable.class, pre .variable.instance {
   font-size: 8px;
   line-height: 12px;
   vertical-align: text-top;
+}
+
+.github-contributor {
+  margin-right: 5px;
 }
 
 .contributor {
@@ -281,6 +292,10 @@ pre .variable.global, pre .variable.class, pre .variable.instance {
 
 .contributor a {
   color: #000000;
+}
+
+.github-username:before {
+  content: '\0040';
 }
 
 nav {
