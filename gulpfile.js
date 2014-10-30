@@ -8,7 +8,7 @@ var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 
-gulp.task('clean', function () {
+gulp.task('clean', function() {
   gulp.src('js')
     .pipe(addsrc('css'))
     .pipe(clean({
