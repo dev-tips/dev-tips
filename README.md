@@ -16,9 +16,9 @@ That’s why [we](http://fapprik.com/) started JS-Tricks as an experiment on Tum
 	npm install
 	gulp build
 
-Note that you need to clone the repository recursively in order to include all required submodules as well. Moreover we make use of [Bower](http://bower.io/) and [gulp.js](http://gulpjs.com/) for frontend asset generation, concatenation, uglification, iamge minification etc., so don't forget to run `gulp build` at least once after cloning.
+Note that you need to clone the repository recursively in order to include all required submodules as well. Moreover we make use of [Bower](http://bower.io/) and [gulp.js](http://gulpjs.com/) for frontend asset generation, concatenation, uglification, image minification, and so on—so don’t forget to run `gulp build` at least once after cloning.
 
-JS-Tricks.com is built using [PRONTO](http://prontocms.com/). If you want to run the site locally, that's pretty easy:
+JS-Tricks.com is built using [PRONTO](http://prontocms.com/). If you want to run the site locally, that’s pretty easy:
 
     php -S localhost:8080
 
