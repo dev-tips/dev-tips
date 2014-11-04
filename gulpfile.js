@@ -1,4 +1,5 @@
 var fs = require('fs');
+var del = require('del');
 var eventStream = require('event-stream');
 var gulp = require('gulp');
 var newer = require('gulp-newer');
@@ -7,7 +8,6 @@ var notify = require("gulp-notify");
 var addsrc = require('gulp-add-src');
 var bower = require('gulp-bower');
 var autoprefixer = require('gulp-autoprefixer');
-var clean = require('gulp-clean');
 var concat = require('gulp-concat');
 var spritesmith = require('gulp.spritesmith');
 var imagemin = require('gulp-imagemin');
@@ -33,14 +33,8 @@ var dirs = {
 };
 
 // Cleanup target dirs
-gulp.task('clean', function () {
-  return gulp.src([
-    dirs.dest.css,
-    dirs.dest.js
-  ])
-    .pipe(clean({
-      force: true
-    }));
+gulp.task('clean', function(cb) {
+  del([dirs.dest.css, dirs.dest.js], cb);
 });
 
 // Get bower stuff
