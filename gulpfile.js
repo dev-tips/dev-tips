@@ -55,7 +55,7 @@ var imageMinificationDefer = Q.defer();
 // Generate sprites, copy over other images & minify them all
 gulp.task('images', function () {
   // Init stream with non-sprite images for minification
-  var imageStream = gulp.src(dirs.src.images + '/*.(png|jpe?g|gif)')
+  var imageStream = gulp.src(dirs.src.images + '/*.*')
     .pipe(newer(dirs.dest.images));
   var scssStream;
   var scssDefer = Q.defer();
