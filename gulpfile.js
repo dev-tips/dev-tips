@@ -61,7 +61,7 @@ gulp.task('images', function () {
   var scssDefer = Q.defer();
 
   // Generate one sprite per 'sprite*' directory
-  var spriteGenerator = function (spriteName) {
+  var generateSprite = function (spriteName) {
     var sprite;
     var basePath = dirs.src.images + '/' + spriteName;
     var absBasePath = path.resolve(basePath);
@@ -85,7 +85,7 @@ gulp.task('images', function () {
 
   gulp.src(dirs.src.images + '/sprite*')
     .pipe(tap(function (directory) {
-      spriteGenerator(path.basename(directory.path));
+      generateSprite(path.basename(directory.path));
     }))
     .on('end', function () {
       // Minify images
