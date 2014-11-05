@@ -26,6 +26,18 @@ If you prefer to use Apache or nginx, check out the [»Getting started« section
 
 Besides the `gulp build` task, there is `gulp dev`, which does exactly the same but additionally starts watching the file system for changes and rebuilds every time a change occurs.
 
+## Prerequisites:
+
+You may encounter some problems with you dependencies when installing and trying to get the project up and running. As we are in the middle of reviewing the next changeset to our build script, you may expect further enhacement regarding this topic in coming patches. In order to get it up and running for now, there are some prerequisites:
+
+* Install [XQuartz](http://xquartz.macosforge.org/landing/)
+* Install ``pkg-config`` with ``brew install pkg-config``
+* Run ``export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig``, better yet add it somewhere in your ``.bashrc`` or ``.bash_profile``.
+
+And follow [these instructions](https://github.com/Automattic/node-canvas/wiki/Installation---OSX#installing-cairo) to install node-canvas and cairo:
+
+Now if you run  ``npm install`` everything should be fine.
+
 ## Contributing
 
 Well, that’s easy: simply head over to our [GitHub](https://github.com/fapprik/js-tricks.com) repository, fork it, make your contributions, and send a pull request. If you’ve never worked with PRONTO before, check out their [»Managing content« section](http://prontocms.com/docs/managing-content).
