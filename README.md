@@ -28,7 +28,7 @@ Besides the `gulp build` task, there is `gulp dev`, which does exactly the same 
 
 ## Issues with `npm install`
 
-**The warnings are normal!** Because of the way how [spritesmith](https://github.com/Ensighten/spritesmith) (one of our dependencies that conveniently generates sprites) works, you will most certainly encounter some warnings when you run `npm install`. This is due to the fact, that `spritesmith` has several *optional* dependencies itself, which may fail. Nonetheless `npm` will continue to install everything else. This is also explained in spritesmith`s [README](https://github.com/Ensighten/spritesmith/blob/master/README.md), albeit very short.
+**The warnings are normal!** Because of the way how [spritesmith](https://github.com/Ensighten/spritesmith) (one of our dependencies that conveniently generates sprites) works, you will most certainly encounter some warnings when you run `npm install`. This is due to the fact, that `spritesmith` has several *optional* dependencies itself, which may fail. Nonetheless `npm` will continue to install everything else. This is also explained in spritesmith’s [README](https://github.com/Ensighten/spritesmith/blob/master/README.md#installation), albeit very short.
 
 ## Contributing
 
