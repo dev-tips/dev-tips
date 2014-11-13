@@ -1,11 +1,12 @@
 var fs = require('fs');
-var del = require('del');
+var path = require('path');
 var eventStream = require('event-stream');
+var del = require('del');
+var Q = require('q');
 var gulp = require('gulp');
 var newer = require('gulp-newer');
-var runSequence = require('run-sequence');
-var notify = require("gulp-notify");
-var addsrc = require('gulp-add-src');
+var tap = require('gulp-tap');
+var notify = require('gulp-notify');
 var bower = require('gulp-bower');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
@@ -33,79 +34,90 @@ var dirs = {
 };
 
 // Cleanup target dirs
-gulp.task('clean', function(cb) {
-  del([dirs.dest.css, dirs.dest.js], cb);
+gulp.task('clean', function (cb) {
+  del([
+    dirs.dest.css,
+    dirs.dest.js
+  ], cb);
 });
 
 // Get bower stuff
 gulp.task('bower', function () {
   return bower({
-    cmd: fs.exists(dirs.src.bower) ? 'update' : 'install'
+    directory: dirs.src.bower,
+    cmd: fs.existsSync(dirs.src.bower) ? 'update' : 'install'
   });
 });
+
+// Used to inform listeners that the current batch of files has been minified.
+var imageMinificationDefer = Q.defer();
 
 // Generate sprites, copy over other images & minify them all
 gulp.task('images', function () {
-  var cssVarMapper = function (sprite) {
-    sprite.name = 'sprite-' + sprite.name.replace(/@/, '-');
-    sprite.image = '/' + dirs.dest.images + '/' + sprite.image;
+  // Init stream with non-sprite images for minification
+  var imageStream = gulp.src(dirs.src.images + '/*.*')
+    .pipe(newer(dirs.dest.images));
+  var scssStream;
+  var scssDefer = Q.defer();
+
+  // Generate one sprite per 'sprite*' directory
+  var generateSprite = function (spriteName) {
+    var sprite;
+    var basePath = dirs.src.images + '/' + spriteName;
+    var absBasePath = path.resolve(basePath);
+
+    for (var i = 1; i <= 3; i++) {
+      sprite = gulp.src(basePath + '/**/*@' + i + 'x.png')
+        .pipe(spritesmith({
+          imgName: spriteName + '@' + i + 'x.png',
+          cssName: spriteName + '@' + i + 'x.scss',
+          cssVarMap: function (sprite) {
+            sprite.name = (path.join(spriteName, path.relative(absBasePath, path.dirname(sprite.source_image)))).replace('/', '-') + '-' + sprite.name.replace('@', '-');
+            sprite.image = '/' + dirs.dest.images + '/' + sprite.image;
+          }
+        }));
+
+      var spritePipe = sprite.css.pipe(gulp.dest(dirs.build + '/sprite-sass'));
+      scssStream = scssStream ? eventStream.merge(scssStream, spritePipe) : spritePipe;
+      imageStream = eventStream.merge(imageStream, sprite.img);
+    }
   };
 
-  // @1x
-  var sprite1x = gulp.src(dirs.src.images + '/sprite/*@1x.png')
-    .pipe(spritesmith({
-      imgName: 'sprite@1x.png',
-      cssName: 'sprite@1x.scss',
-      cssVarMap: cssVarMapper
-    }));
-
-  // @2x
-  var sprite2x = gulp.src(dirs.src.images + '/sprite/*@2x.png')
-    .pipe(spritesmith({
-      imgName: 'sprite@2x.png',
-      cssName: 'sprite@2x.scss',
-      cssVarMap: cssVarMapper
-    }));
-
-  // @3x
-  var sprite3x = gulp.src(dirs.src.images + '/sprite/*@3x.png')
-    .pipe(spritesmith({
-      imgName: 'sprite@3x.png',
-      cssName: 'sprite@3x.scss',
-      cssVarMap: cssVarMapper
-    }));
-
-  // Init merged stream with other images
-  var imageStream = gulp.src(dirs.src.images + '/*.*');
-  var scssStream;
-
-  [sprite1x, sprite2x, sprite3x].forEach(function (sprite) {
-    imageStream = eventStream.merge(imageStream, sprite.img);
-
-    var spritePipe = sprite.css.pipe(gulp.dest(dirs.build + '/sprite-sass'));
-    scssStream = scssStream ? eventStream.merge(scssStream, spritePipe) : spritePipe;
-  });
-
-  imageStream
-    .pipe(imagemin({
-      optimizationLevel: 4,
-      progressive: true,
-      use: [
-        require('imagemin-advpng')({optimizationLevel: 4}),
-        require('imagemin-pngcrush')({reduce: true})
-      ]
+  gulp.src(dirs.src.images + '/sprite*')
+    .pipe(tap(function (directory) {
+      generateSprite(path.basename(directory.path));
     }))
-    .on('error', notify.onError({
-      message: 'Please check for correct file extensions and file corruption. (Error: <%= error.message %>)',
-      title: 'Error during image minification'
-    }))
-    .pipe(gulp.dest(dirs.dest.images));
+    .on('end', function () {
+      // Minify images
+      imageStream
+        .pipe(imagemin({
+          optimizationLevel: 4,
+          progressive: true
+        }))
+        .on('error', notify.onError({
+          message: 'Please check for correct file extensions and file corruption. (Error: <%= error.message %>)',
+          title: 'Error during image minification'
+        }))
+        .pipe(gulp.dest(dirs.dest.images))
+        .on('end', function () {
+          imageMinificationDefer.resolve();
+        });
 
-  return scssStream;
+      // Touch shadow files
+      scssStream.on('end', function () {
+        scssDefer.resolve();
+      });
+    });
+
+  return scssDefer.promise;
+});
+
+gulp.task('images-minify-resolver', function () {
+  return imageMinificationDefer.promise;
 });
 
 // Build CSS from SASS
-gulp.task('css', function () {
+gulp.task('css', ['clean', 'images'], function () {
   return gulp.src([dirs.src.sass + '/main.scss'])
     .pipe(sass({
       includePaths: [
@@ -124,15 +136,15 @@ gulp.task('css', function () {
     .pipe(gulp.dest(dirs.dest.css));
 });
 
-// Minify js
-gulp.task('css-min', function () {
+// Minify CSS
+gulp.task('css-release', ['css'], function () {
   gulp.src(dirs.dest.css + '/app.css')
     .pipe(cssmin())
     .pipe(gulp.dest(dirs.dest.css));
 });
 
 // Build JS
-gulp.task('js', function () {
+gulp.task('js', ['clean', 'bower'], function () {
   return gulp.src([
     // Manual cherry pick...
     dirs.src.bower + '/rainbow/js/rainbow.js',
@@ -140,51 +152,52 @@ gulp.task('js', function () {
     dirs.src.bower + '/rainbow/js/language/javascript.js',
     dirs.src.bower + '/rainbow/js/language/html.js',
     dirs.src.bower + '/rainbow/js/language/css.js',
-    dirs.src.bower + '/rainbow/js/language/shell.js'
+    dirs.src.bower + '/rainbow/js/language/shell.js',
+    dirs.src.js + '/main.js'
   ])
-    .pipe(addsrc([dirs.src.js + '/main.js']))
     .pipe(concat('app.js'))
     .pipe(gulp.dest(dirs.dest.js));
 });
 
-// Minify js
-gulp.task('js-min', function () {
+// Minify JS
+gulp.task('js-release', ['js'], function () {
   gulp.src(dirs.dest.js + '/app.js')
     .pipe(uglify())
     .pipe(gulp.dest(dirs.dest.js));
 });
 
-gulp.task('watch', function () {
-  gulp.watch(dirs.src.sass + '/**/*.scss', ['css']);
-  gulp.watch(dirs.src.js + '/**/*.js', ['js']);
-  gulp.watch(dirs.src.images + '/**/*', ['images-css'])
+gulp.task('watch', ['build'], function () {
+  watch(dirs.src.js + '/**/*.js', function (files, cb) {
+    gulp.start('js', cb);
+  });
+  watch([
+    dirs.src.sass + '/**/*.scss',
+    dirs.src.images + '/**/*'
+  ], function (files, cb) {
+    var cssCompleteDefer = Q.defer();
+    imageMinificationDefer = Q.defer();
+    gulp.start('css', function () {
+      cssCompleteDefer.resolve();
+    });
+
+    Q(imageMinificationDefer.promise, cssCompleteDefer.promise).then(cb);
+  });
 });
 
-gulp.task('build', function () {
-  runSequence(
-    'clean',
-    'bower',
-    'images',
-    'css',
-    'js'
-  );
-});
+// Just an alias for watch. Keeping this separate in case we
+// need it some time.
+gulp.task('dev', ['watch']);
 
-gulp.task('dev', [
-  'build',
-  'watch'
+gulp.task('build', [
+  'css',
+  'js',
+  'images-minify-resolver'
 ]);
 
-gulp.task('release', function () {
-  runSequence(
-    'clean',
-    'bower',
-    'images',
-    'css',
-    'css-min',
-    'js',
-    'js-min'
-  );
-});
+gulp.task('release', [
+  'css-release',
+  'js-release',
+  'images-minify-resolver'
+]);
 
 gulp.task('default', ['build']);
