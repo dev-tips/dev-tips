@@ -13,7 +13,7 @@ That’s why [we](http://fapprik.com/) started JS-Tricks as an experiment on Tum
 	git clone --recursive https://github.com/fapprik/js-tricks.com
 	cd js-tricks.com
 	npm install gulp -g  # if not already installed on your system
-	npm install
+	npm install  # will probably show some warnings, see below
 	gulp build
 
 Note that you need to clone the repository recursively in order to include all required submodules as well. Moreover we make use of [Bower](http://bower.io/) and [gulp.js](http://gulpjs.com/) for frontend asset generation, concatenation, uglification, image minification, and so on—so don’t forget to run `gulp build` at least once after cloning.
@@ -25,6 +25,10 @@ JS-Tricks.com is built using [PRONTO](http://prontocms.com/). If you want to run
 If you prefer to use Apache or nginx, check out the [»Getting started« section on the PRONTO website](http://prontocms.com/docs/getting-started).
 
 Besides the `gulp build` task, there is `gulp dev`, which does exactly the same but additionally starts watching the file system for changes and rebuilds every time a change occurs.
+
+## Issues with `npm install`
+
+**The warnings are normal!** Because of the way how [spritesmith](https://github.com/Ensighten/spritesmith) (one of our dependencies that conveniently generates sprites) works, you will most certainly encounter some warnings when you run `npm install`. This is due to the fact, that `spritesmith` has several *optional* dependencies itself, which may fail. Nonetheless `npm` will continue to install everything else. This is also explained in spritesmith`s [README](https://github.com/Ensighten/spritesmith/blob/master/README.md), albeit very short.
 
 ## Contributing
 
