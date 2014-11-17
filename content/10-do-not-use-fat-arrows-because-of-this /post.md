@@ -80,6 +80,8 @@ class A
 a = new A
 ```
 
+What CoffeeScript does with fat arrows is: it uses the apply function to bind the context to the class instance to the function. That the function has always the same context, no matter where it gets called.
+
 ## Compiled JavaScript
 
 ```js
@@ -114,7 +116,9 @@ The difference may be tiny, but very important. Now, we bind the context of the 
 So, as I can see, the important questions that we have to ask before using a single vs. a fat arrow function are…
 
 1. Do we using `this` (`@`) in the function?
-2. More importantly: do we want to execute the function in a different scope?
+2. More importantly: do we want to execute the function later possibly in a different scope?
+
+If both Questions answered with yes, then a => functions could be the right choice.
 
 Let’s play around with a typical example where we call a function in a different scope.
 
