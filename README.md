@@ -26,15 +26,39 @@ If you prefer to use Apache or nginx, check out the [»Getting started« section
 
 Besides the `gulp build` task, there is `gulp dev`, which does exactly the same but additionally starts watching the file system for changes and rebuilds every time a change occurs.
 
-## Issues with `npm install`
+### Issues with `npm install`
 
 **The warnings are normal!** Because of the way how [spritesmith](https://github.com/Ensighten/spritesmith) (one of our dependencies that conveniently generates sprites) works, you will most certainly encounter some warnings when you run `npm install`. This is due to the fact, that `spritesmith` has several *optional* dependencies itself, which may fail. Nonetheless `npm` will continue to install everything else. This is also explained in spritesmith’s [README](https://github.com/Ensighten/spritesmith/blob/master/README.md#installation), albeit very short.
 
 ## Contributing
 
-Well, that’s easy: simply head over to our [GitHub](https://github.com/fapprik/js-tricks.com) repository, fork it, make your contributions, and send a pull request. If you’ve never worked with PRONTO before, check out their [»Managing content« section](http://prontocms.com/docs/managing-content).
+Well, that’s easy! First, head over to our [GitHub](https://github.com/fapprik/js-tricks.com) repository and fork it. Then make your contributions, and send a pull request. Please note that writing articles and hacking on the JS-Tricks.com source are two different things. Therefore, please send separate pull requests according to what you’ve done. It will be helpful to use distinct branches in your fork to accomplish that.
 
-Feel free to add your GitHub username to the `Contributors` field (comma-separated list) to be listed on the site’s [contributors list](http://js-tricks.com/contributors).
+## Writing articles
+
+If you find out that there’s no article on a specific topic you are currently into, but there should be one, go ahead and write about it! Here are some guidelines for you to keep in mind. Note that we use these guidelines to review your article and will give you hints in the PR chat on what's missing.
+
+While JS-Tricks.com itself is released under the MIT license, all articles are published under [CC-BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/).
+
+### Primer
+
+* **The PRONTO style.** If you’ve never worked with PRONTO before, check out their [»Managing content« section](http://prontocms.com/docs/managing-content) in order to get started.
+
+* **Markdown format.** If that's new for you, PRONTO provides a [short introduction](http://prontocms.com/docs/formatting-text) on that. There's also a short [writing](https://help.github.com/articles/markdown-basics/) by the GitHub staff. For correct syntax highlighting, please use the [GitHub style](https://help.github.com/articles/github-flavored-markdown/#syntax-highlighting). On JS-Tricks.com you may use `javascript`, `css` and `html`.
+
+### Guidelines
+
+* **Choose a short, but descriptive headline.**
+
+* **Be distinct and precise.** Your article should be readable within two to three minutes and should only contain what’s needed to concisely describe your chosen topic, no more, no less. The reader should be able to get the idea, but not always want’s to know the whole story.
+
+* **Refer to other resources when needed.** Going into detail is honourable. But before writing too much, it’s almost always better to refer to external resources that one may consume later.
+
+* **Show some respect.** If you did not invent a certain programming feature you are writing about, but you know that someone else deserves credit, do not hesitate to include the inventor’s name (even if it’s just a nickname!) and link to his/her blog or GitHub profile.
+
+* **If you want, you may add your name to the contributors list.** Feel free to add your GitHub username to the `Contributors` field (comma-separated list) in your `post.md` to be listed on the site’s [contributors list](http://js-tricks.com/contributors).
+
+* **When it's online: spread the word!**
 
 ## License
 
