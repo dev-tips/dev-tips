@@ -115,7 +115,7 @@ The difference may be tiny, but very important. Now, we bind the context of the 
 
 So, as I can see, the important questions that we have to ask before using a single vs. a fat arrow function are…
 
-**Do we using `this` (`@`) in the function?**  
+**Shall we use `this` (`@`) in the function?**  
 
 **More importantly: do we want to execute the function later possibly in a different scope?**
 
