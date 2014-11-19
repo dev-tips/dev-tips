@@ -16,7 +16,7 @@ For quite some time, I didn’t understand how `=>` or `->` functions in CoffeeS
 
 So first let’s have a look how a simple class with a `->` and a `=>` function in CoffeeScript is compiled to JavaScript.
 
-## CoffeeScript
+**CoffeeScript**
 
 ```js
 class A
@@ -34,7 +34,7 @@ class A
 a = new A
 ```
 
-## Compiled JavaScript
+**Compiled JavaScript**
 
 ```js
 var A, a;
@@ -62,7 +62,7 @@ a = new A;
 
 Both functions are attached to the prototype of `A`. So let’s have a look what is happening when we replace the `->` arrow with the `=>` arrow.
 
-## CoffeeScript
+**CoffeeScript**
 
 ```js
 class A
@@ -82,7 +82,7 @@ a = new A
 
 What CoffeeScript does with fat arrows is: it uses the apply function to bind the context to the class instance to the function. That the function has always the same context, no matter where it gets called.
 
-## Compiled JavaScript
+**Compiled JavaScript**
 
 ```js
 var A, a,
@@ -115,14 +115,15 @@ The difference may be tiny, but very important. Now, we bind the context of the 
 
 So, as I can see, the important questions that we have to ask before using a single vs. a fat arrow function are…
 
-1. Do we using `this` (`@`) in the function?
-2. More importantly: do we want to execute the function later possibly in a different scope?
+**Do we using `this` (`@`) in the function?**  
+
+**More importantly: do we want to execute the function later possibly in a different scope?**
 
 If both Questions answered with yes, then a => functions could be the right choice.
 
 Let’s play around with a typical example where we call a function in a different scope.
 
-## CoffeeScript
+**CoffeeScript**
 
 ```js
 class A
@@ -141,7 +142,7 @@ a = new A
 
 This will break because `funcA` is a `->` function and we call the function in the context of the `map` function where `@name` won’t be defined.
 
-## Compiled JavaScript
+**Compiled JavaScript**
 
 ```js
 class A
@@ -162,12 +163,12 @@ As we bind the context of the class to the function using `=>`, it doesn’t mat
 
 Mentioned in a very good article called »[Understanding Fat Arrows (=>) in CoffeeScript](http://webapplog.com/understanding-fat-arrows-in-CoffeeScript/)«, a good rule of thumb might be:
 
-- Use `=>` when we need @ to be the object in which method is written
-- Use `->` when we need `this` (`@`)  to be the object in which method is executed.
+**Use `=>` when we need @ to be the object in which method is written**
+**Use `->` when we need `this` (`@`)  to be the object in which method is executed.**
 
 Here is another very good example about context and scope in CoffeeScript. Let’s have a look what `this` is.
 
-## CoffeeScript
+**CoffeeScript**
 
 ```js
 class A
@@ -180,7 +181,7 @@ a = new A()
 
 The output will be the window as we opened a new scope by declaring a `->` function in the constructor of class `A`.
 
-## CoffeeScript
+**CoffeeScript**
 
 ```js
 class A
