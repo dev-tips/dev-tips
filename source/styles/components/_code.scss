@@ -1,5 +1,6 @@
 @import '../settings';
 @import '../mixins/fontsize';
+@import '../mixins/mq';
 
 pre, code {
   font-family: $font-family-code;
@@ -14,58 +15,74 @@ code {
 
 pre {
   display: block;
-  padding: 12px 15px;
+  position: relative;
   background: $color-darkgrey;
   color: $color-lightgrey;
   border-radius: 4px;
-  overflow-x: auto;
 
   code {
     display: block;
     position: relative;
-    padding: 0;
+    padding: 12px 15px;
+    overflow-x: auto;
     background: $color-darkgrey;
     color: $color-lightgrey;
+  }
+
+  &:after {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: $font-family-default;
+    font-weight: normal;
+    @include font-size(9px);
+    background-color: lighten($color-darkgrey, 20%);
+    padding: 3px 5px;
+    border-radius: 4px;
+    opacity: 0.95;
+    transition: opacity 150ms ease;
+  }
+
+  html.touch & {
+    margin-top: 32px;
+    border-radius: 4px 0 4px 4px;
 
     &:after {
-      display: block;
-      position: absolute;
-      top: -2px;
-      right: -6px;
-      font-family: $font-family-default;
-      font-weight: normal;
-      @include font-size(9px);
-      background-color: lighten($color-darkgrey, 20%);
-      padding: 3px 5px;
-      border-radius: 3px;
-      opacity: 0.45;
-      transition: opacity 150ms ease;
+      top: -24px;
+      right: 0;
+      border-radius: 4px 4px 0 0;
+      background-color: $color-darkgrey;
+      opacity: 1;
+      padding: 6px 8px 4px;
+      transition: none;
+      border-bottom: 1px solid darken($color-pink, 25%);
     }
+  }
 
-    &:hover {
-      &:after {
-        opacity: 0;
-      }
+  &:hover {
+    &:after {
+      opacity: 0;
     }
+  }
 
-    &.language-javascript, &.language-js {
-      &:after {
-        content: "JavaScript";
-      }
+  &.language-javascript, &.language-js {
+    &:after {
+      content: "JavaScript";
     }
+  }
 
-    &.language-css:after {
-        content: "CSS";
-    }
+  &.language-css:after {
+    content: "CSS";
+  }
 
-    &.language-html:after {
-        content: "HTML";
-    }
+  &.language-html:after {
+    content: "HTML";
+  }
 
-    &.language-coffeescript, &.language-cs {
-      &:after {
-        content: "CoffeeScript";
-      }
+  &.language-coffeescript, &.language-cs {
+    &:after {
+      content: "CoffeeScript";
     }
   }
 

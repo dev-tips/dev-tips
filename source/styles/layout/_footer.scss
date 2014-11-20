@@ -3,12 +3,14 @@
 
 footer {
   p {
-    &:not(.copy) a:first-child {
-      position: absolute;
-      display: block;
-      top: 0;
-      left: 0;
-      text-indent: -9999px;
+    &.github, &.cc-by-sa {
+      a:first-child {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        text-indent: -9999px;
+      }
     }
 
     &.github {
