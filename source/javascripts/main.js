@@ -5,7 +5,7 @@
 (function (w, d) {
   // Touch detection ( ͡ᵔ ͜ʖ ͡ᵔ)
   // @see http://js-tricks.com/detect-touch-devices-using-javascript
-  if('ontouchstart' in window) {
+  if ('ontouchstart' in window) {
     var htmlEl = d.getElementsByTagName('html')[0];
     var htmlElClasses = htmlEl.className;
     htmlEl.className += (htmlElClasses.length ? ' ' : '') + 'touch';

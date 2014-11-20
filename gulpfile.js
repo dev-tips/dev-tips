@@ -206,7 +206,7 @@ gulp.task('release', [
 });
 
 // Main task: clean-release
-gulp.task('clean-release', ['clean'], function() {
+gulp.task('clean-release', ['clean'], function () {
   gulp.start('release');
 });
 

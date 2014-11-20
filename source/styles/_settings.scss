@@ -38,8 +38,8 @@ $color-rainbow-global: $color-rainbow-attribute;
 
 // Named media queries
 $media-queries: (
-  'min': 'screen and (min-width: 320px)',
-  'mid': 'screen and (min-width: 530px)',
-  '@2x': '(min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)',
-  '@3x': '(-webkit-min-device-pixel-ratio: 3), only screen and (min-resolution: 3dppx), only screen and (min-resolution: 350dpi)'
+    'min': 'screen and (min-width: 320px)',
+    'mid': 'screen and (min-width: 530px)',
+    '@2x': '(min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)',
+    '@3x': '(-webkit-min-device-pixel-ratio: 3), only screen and (min-resolution: 3dppx), only screen and (min-resolution: 350dpi)'
 );
