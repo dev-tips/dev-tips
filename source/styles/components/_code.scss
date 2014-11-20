@@ -1,7 +1,8 @@
 @import '../settings';
+@import '../mixins/fontsize';
 
 pre, code {
-  font-family: monospace;
+  font-family: $font-family-code;
 }
 
 code {
@@ -20,9 +21,52 @@ pre {
   overflow-x: auto;
 
   code {
+    display: block;
+    position: relative;
     padding: 0;
     background: $color-darkgrey;
     color: $color-lightgrey;
+
+    &:after {
+      display: block;
+      position: absolute;
+      top: -2px;
+      right: -6px;
+      font-family: $font-family-default;
+      font-weight: normal;
+      @include font-size(9px);
+      background-color: lighten($color-darkgrey, 20%);
+      padding: 3px 5px;
+      border-radius: 3px;
+      opacity: 0.45;
+      transition: opacity 150ms ease;
+    }
+
+    &:hover {
+      &:after {
+        opacity: 0;
+      }
+    }
+
+    &.language-javascript, &.language-js {
+      &:after {
+        content: "JavaScript";
+      }
+    }
+
+    &.language-css:after {
+        content: "CSS";
+    }
+
+    &.language-html:after {
+        content: "HTML";
+    }
+
+    &.language-coffeescript, &.language-cs {
+      &:after {
+        content: "CoffeeScript";
+      }
+    }
   }
 
   .comment {
