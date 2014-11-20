@@ -137,7 +137,9 @@ gulp.task('js', ['bower'], function () {
 // Release: minify JS
 gulp.task('js-release', ['js'], function () {
   gulp.src(dirs.dest.js + '/app.js')
-    .pipe(uglify())
+    .pipe(uglify({
+      preserveComments: 'some'
+    }))
     .pipe(gulp.dest(dirs.dest.js));
 });
 
@@ -200,10 +202,12 @@ gulp.task('release', [
       message: 'Please check all images for correct file extensions and file corruption. (Error: <%= error.message %>)',
       title: 'Error during image minification'
     }))
-    .pipe(gulp.dest(dirs.dest.images))
-    .on('end', function () {
-      gulp.start('clean');
-    })
+    .pipe(gulp.dest(dirs.dest.images));
+});
+
+// Main task: clean-release
+gulp.task('clean-release', ['clean'], function() {
+  gulp.start('release');
 });
 
 // Default task
