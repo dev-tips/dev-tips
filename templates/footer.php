@@ -8,7 +8,7 @@
                 <p class="copy">© 2014 JS-Tricks.com · <a href="/contributors">Contributors</a> · <span class="obfuscated" data-content="Ask us your JavaScript questions!">ask AT js-tricks DOT com</span>
             </div>
         </footer>
-        <a href="https://github.com/fapprik/js-tricks.com" id="ribbon">Fork me on GitHub</a>
+        <div id="ribbon"><a href="https://github.com/fapprik/js-tricks.com">Fork me on GitHub</a></div>
         <?php js('js/app.js') ?>
         <script>
             var obfuscated = document.querySelectorAll('.obfuscated');

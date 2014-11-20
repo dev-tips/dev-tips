@@ -5,13 +5,26 @@
   display: none;
 
   @include mq('mid') {
-    display: block;
     position: fixed;
-    width: 150px;
-    height: 150px;
-    top: 0;
-    right: 0;
-    background: url(../images/ribbon.svg) 0 0/150px 150px no-repeat;
-    text-indent: -9999px;
+    display: block;
+    right: -50px;
+    top: 45px;
+    transform: rotate(45deg);
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: $color-pink;
+
+    a {
+      display: block;
+      color: white;
+      font-family: $font-family-head;
+      font-weight: 700;
+      font-size: 0.8em;
+      margin: 1px 0;
+      padding: 10px 50px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
   }
 }
