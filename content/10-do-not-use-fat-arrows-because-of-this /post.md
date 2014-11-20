@@ -115,11 +115,10 @@ The difference may be tiny, but very important. Now, we bind the context of the 
 
 So, as I can see, the important questions that we have to ask before using a single vs. a fat arrow function are…
 
-**Shall we use `this` (`@`) in the function?**  
+**1. Shall we use `this` (`@`) in the function?**  
+**2. More importantly: do we want to execute the function later possibly in a different scope?**
 
-**More importantly: do we want to execute the function later possibly in a different scope?**
-
-If both Questions answered with yes, then a => functions could be the right choice.
+If both questions answered with yes, then a `=>` functions could be the right choice.
 
 Let’s play around with a typical example where we call a function in a different scope.
 
@@ -163,8 +162,8 @@ As we bind the context of the class to the function using `=>`, it doesn’t mat
 
 Mentioned in a very good article called »[Understanding Fat Arrows (=>) in CoffeeScript](http://webapplog.com/understanding-fat-arrows-in-CoffeeScript/)«, a good rule of thumb might be:
 
-**Use `=>` when we need @ to be the object in which method is written**
-**Use `->` when we need `this` (`@`)  to be the object in which method is executed.**
+**- Use `=>` when we need @ to be the object in which method is written**  
+**- Use `->` when we need `this` (`@`)  to be the object in which method is executed.**
 
 Here is another very good example about context and scope in CoffeeScript. Let’s have a look what `this` is.
 
@@ -194,4 +193,4 @@ a = new A()
 
 The output will be the object `A`. That’s because we bound the context of the class `A` instance to the anonymous function using the fat arrow.
 
-So, my conclusion is: before just using single or fat arrows, you have to ask yourself the two important questions mentioned above. If you can answer these two questions, you know already your way to go.
+So, my conclusion is: before just using single or fat arrows, you have to ask yourself the two important questions mentioned above. If you can answer these two questions, you already know your way to go.
