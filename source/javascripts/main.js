@@ -4,7 +4,7 @@
 
 (function (w, d) {
   // Touch detection ( ͡ᵔ ͜ʖ ͡ᵔ)
-  // @see http://localhost:8080/detect-touch-devices-using-javascript
+  // @see http://js-tricks.com/detect-touch-devices-using-javascript
   if('ontouchstart' in window) {
     var htmlEl = d.getElementsByTagName('html')[0];
     var htmlElClasses = htmlEl.className;
