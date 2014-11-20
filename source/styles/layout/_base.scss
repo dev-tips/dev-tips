@@ -1,12 +1,10 @@
 @import '../settings';
 @import '../mixins/mq';
+@import '../mixins/fontsize';
 
 html {
   background: $color-lightgrey;
-}
-
-body {
-  font-size: 14px;
+  font-size: $base-font-size;
   color: $color-black;
   font-family: $font-family-default;
 }
@@ -17,7 +15,7 @@ body {
 }
 
 div, p, h1, h2, h3, h4, h5, h6 {
-  font-size: 14px;
+  @include font-size(14px);
   line-height: 1.5;
 }
 

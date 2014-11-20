@@ -1,14 +1,16 @@
 @import '../settings';
 @import '../mixins/mq';
+@import '../mixins/fontsize';
 
 #ribbon {
   display: none;
 
   @include mq('mid') {
+    @include font-size(12px);
     position: fixed;
     display: block;
-    right: -50px;
-    top: 45px;
+    right: -4em;
+    top: 3.75em;
     transform: rotate(45deg);
     overflow: hidden;
     white-space: nowrap;
@@ -18,10 +20,9 @@
       display: block;
       color: white;
       font-family: $font-family-head;
-      font-weight: 700;
-      font-size: 0.8em;
+      font-weight: bold;
       margin: 1px 0;
-      padding: 10px 50px;
+      padding: 0.8em 4em;
       text-align: center;
       text-decoration: none;
       text-transform: uppercase;

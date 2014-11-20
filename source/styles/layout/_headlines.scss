@@ -1,5 +1,6 @@
 @import '../settings';
 @import '../mixins/mq';
+@import '../mixins/fontsize';
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-family-head;
@@ -11,17 +12,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2, h3 {
-  font-size: 18px;
+  @include font-size(18px);
 
   a:hover {
     text-decoration: none;
   }
 
   @include mq('min') {
-    font-size: 20px;
+    @include font-size(20px);
   }
 
   @include mq('mid') {
-    font-size: 22px;
+    @include font-size(22px);
   }
 }

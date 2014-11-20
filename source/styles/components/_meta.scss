@@ -1,10 +1,11 @@
 @import '../settings';
+@import '../mixins/fontsize';
 
 .meta {
+  @include font-size(12px);
   display: block;
   margin: 15px 0 0;
   font-family: $font-family-head;
-  font-size: 12px;
   line-height: 22px;
   text-transform: uppercase;
   color: $color-midgrey-light;

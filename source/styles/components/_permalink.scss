@@ -1,4 +1,5 @@
 @import '../settings';
+@import '../mixins/fontsize';
 
 .permalink {
   color: $color-midgrey-light;
@@ -8,16 +9,16 @@
   }
 
   &:before {
+    @include font-size(20px);
     content: '\221e';
     margin: 0 6px 0 0;
     line-height: 15px;
-    font-size: 20px;
     color: $color-pink;
     vertical-align: middle;
   }
 
   span {
-    font-size: 8px;
+    @include font-size(8px);
     line-height: 12px;
     vertical-align: text-top;
   }

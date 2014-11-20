@@ -1,12 +1,13 @@
 @import '../settings';
+@import '../mixins/fontsize';
 
 .question {
   h2 {
+    @include font-size(14px);
     margin: 0;
     padding: 12px 15px;
     background: $color-darkgrey;
     font-family: $font-family-default;
-    font-size: 14px;
     text-transform: none;
     font-weight: normal;
     color: $color-lightgrey;
