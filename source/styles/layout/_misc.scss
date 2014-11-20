@@ -1,0 +1,19 @@
+@import '../mixins/mq';
+
+.center {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 15px;
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+
+  @include mq('min') {
+    padding: 20px;
+  }
+
+  @include mq('mid') {
+    padding: 40px;
+  }
+}

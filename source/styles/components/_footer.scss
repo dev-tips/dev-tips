@@ -1,0 +1,44 @@
+@import '../settings';
+
+footer {
+  p {
+    &:not(.copy) a:first-child {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      text-indent: -9999px;
+    }
+
+    &.github {
+      position: relative;
+      padding-left: 50px;
+      min-height: 40px;
+
+      a:first-child {
+        width: 40px;
+        height: 40px;
+        background: url(../images/octocat.svg) 0 0/40px 40px no-repeat;
+      }
+    }
+
+    &.cc-by-sa {
+      position: relative;
+      padding: 5px 0 0 98px;
+      min-height: 31px;
+      margin-bottom: 10px;
+
+      a:first-child {
+        width: 88px;
+        height: 31px;
+        background: url(../images/cc-by-sa.svg) 0 0/88px 31px no-repeat;
+      }
+    }
+  }
+}
+
+#fapprik {
+  font-weight: bold;
+  color: $color-fapprik;
+  font-style: italic;
+}

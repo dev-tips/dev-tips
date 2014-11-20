@@ -1,0 +1,24 @@
+@import '../settings';
+
+.permalink {
+  color: $color-midgrey-light;
+
+  &:hover {
+    color: $color-midgrey-light;
+  }
+
+  &:before {
+    content: '\221e';
+    margin: 0 6px 0 0;
+    line-height: 15px;
+    font-size: 20px;
+    color: $color-pink;
+    vertical-align: middle;
+  }
+
+  span {
+    font-size: 8px;
+    line-height: 12px;
+    vertical-align: text-top;
+  }
+}

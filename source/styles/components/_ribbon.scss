@@ -1,0 +1,17 @@
+@import '../settings';
+@import '../mixins/mq';
+
+#ribbon {
+  display: none;
+
+  @include mq('mid') {
+    display: block;
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    top: 0;
+    right: 0;
+    background: url(../images/ribbon.svg) 0 0/150px 150px no-repeat;
+    text-indent: -9999px;
+  }
+}

@@ -1,0 +1,14 @@
+@import '../settings';
+
+a {
+  color: $color-pink;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:link, &:hover, &:active, &:visited, &:focus {
+    outline: none;
+  }
+}

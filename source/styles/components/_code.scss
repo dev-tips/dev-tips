@@ -1,0 +1,85 @@
+@import '../settings';
+
+pre, code {
+  font-family: monospace;
+}
+
+code {
+  padding: 3px 5px;
+  background: $color-lightgrey;
+  color: $color-midgrey-dark;
+  border-radius: 4px;
+}
+
+pre {
+  display: block;
+  padding: 12px 15px;
+  background: $color-darkgrey;
+  color: $color-lightgrey;
+  border-radius: 4px;
+  overflow-x: auto;
+
+  code {
+    padding: 0;
+    background: $color-darkgrey;
+    color: $color-lightgrey;
+  }
+
+  .comment {
+    color: $color-rainbow-comment;
+  }
+
+  .constant {
+    color: $color-rainbow-constant;
+  }
+
+  .storage {
+    color: $color-rainbow-storage;
+  }
+
+  .string, .comment.docstring {
+    color: $color-rainbow-string;
+  }
+
+  .support.tag {
+    color: $color-rainbow-tag;
+  }
+
+  .keyword {
+    color: $color-rainbow-keyword;
+  }
+
+  .selector {
+    color: $color-rainbow-selector;
+  }
+
+  .inherited-class {
+    font-style: italic;
+  }
+
+  .operator, .support.tag-name, .entity.tag {
+    color: $color-rainbow-operator;
+  }
+
+  .entity, .support.attribute, .entity.attribute {
+    color: $color-rainbow-attribute;
+  }
+
+  .css-property, .storage.function {
+    font-style: italic;
+  }
+
+  .variable {
+    &.global, &.class, &.instance {
+      color: $color-rainbow-global;
+    }
+  }
+
+  .support, code[data-language="c"] .function.call {
+    color: $color-rainbow-support;
+  }
+
+  code[data-language="html"] .support.operator {
+    color: $color-white;
+  }
+}

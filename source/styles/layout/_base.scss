@@ -1,0 +1,65 @@
+@import '../settings';
+@import '../mixins/mq';
+
+html {
+  background: $color-lightgrey;
+}
+
+body {
+  font-size: 14px;
+  color: $color-black;
+  font-family: $font-family-default;
+}
+
+::selection {
+  background: $color-pink;
+  color: $color-white;
+}
+
+div, p, h1, h2, h3, h4, h5, h6 {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+div, p {
+  text-align: left;
+}
+
+ul {
+  list-style: square inside;
+}
+
+ol {
+  list-style: decimal inside;
+}
+
+blockquote p {
+  padding: 0 15px;
+  border-left: 3px solid #ccc;
+  font-style: italic;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  border: 0;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+p, pre, ul, ol, hr {
+  margin: 0 0 15px;
+}
+
+pre {
+  @include mq('mid') {
+    margin: 0 -15px 15px;
+  }
+}

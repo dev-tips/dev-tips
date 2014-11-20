@@ -1,0 +1,21 @@
+@import '../settings';
+@import '../mixins/mq';
+
+header {
+  padding: 20px 0 0;
+  background: $color-yellow;
+
+  @include mq('mid') {
+    padding: 0;
+  }
+}
+
+section, article {
+  background: $color-white;
+  border-bottom: 1px solid $color-lightgrey;
+}
+
+article img {
+  display: block;
+  max-width: 100%;
+}
