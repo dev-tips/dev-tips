@@ -3,38 +3,20 @@
 
 footer {
   p {
-    &.github, &.cc-by-sa {
-      a:first-child {
-        position: absolute;
-        display: block;
-        top: 0;
-        left: 0;
-        text-indent: -9999px;
-      }
-    }
-
     &.github {
       position: relative;
       padding-left: 50px;
       min-height: 39px;
 
       a:first-child {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        text-indent: -9999px;
         width: 40px;
         height: 39px;
         background: url(../images/octocat.svg) 0 0/40px 39px no-repeat;
-      }
-    }
-
-    &.cc-by-sa {
-      position: relative;
-      padding-left: 98px;
-      min-height: 31px;
-//      margin-bottom: 10px;
-
-      a:first-child {
-        width: 88px;
-        height: 31px;
-        background: url(../images/cc-by-sa.svg) 0 0/88px 31px no-repeat;
       }
     }
   }
@@ -44,4 +26,8 @@ footer {
   font-weight: bold;
   color: $color-fapprik;
   font-style: italic;
+}
+
+#fapprik-copyright {
+  color: $color-black;
 }

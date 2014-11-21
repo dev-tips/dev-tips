@@ -18,7 +18,14 @@ pre {
   position: relative;
   background: $color-darkgrey;
   color: $color-lightgrey;
-  border-radius: 4px;
+  border-radius: 0 4px 4px;
+  margin-top: 35px;
+
+  @include mq('mid') {
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 15px;
+  }
 
   code {
     display: block;
@@ -30,40 +37,19 @@ pre {
   }
 
   &:after {
-    display: block;
+    display: inline-block;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: -22px;
+    left: 0;
     font-family: $font-family-default;
     font-weight: normal;
-    @include font-size(9px);
-    background-color: lighten($color-darkgrey, 20%);
-    padding: 3px 5px;
-    border-radius: 4px;
-    opacity: 0.95;
-    transition: opacity 150ms ease;
-  }
-
-  html.touch & {
-    margin-top: 32px;
-    border-radius: 4px 0 4px 4px;
-
-    &:after {
-      top: -24px;
-      right: 0;
-      border-radius: 4px 4px 0 0;
-      background-color: $color-darkgrey;
-      opacity: 1;
-      padding: 6px 8px 4px;
-      transition: none;
-      border-bottom: 1px solid darken($color-pink, 25%);
-    }
-  }
-
-  &:hover {
-    &:after {
-      opacity: 0;
-    }
+    @include font-size(10px);
+    line-height: 1.2;
+    background-color: lighten($color-darkgrey, 8%);
+    padding: 6px 8px 4px;
+    border-radius: 4px 4px 0 0;
+    opacity: 1;
+    text-transform: uppercase;
   }
 
   &.language-javascript, &.language-js {

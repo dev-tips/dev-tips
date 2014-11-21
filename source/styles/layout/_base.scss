@@ -55,9 +55,3 @@ em {
 p, pre, ul, ol, hr {
   margin: 0 0 15px;
 }
-
-pre {
-  @include mq('mid') {
-    margin: 0 -15px 15px;
-  }
-}
