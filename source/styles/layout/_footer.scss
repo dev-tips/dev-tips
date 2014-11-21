@@ -29,16 +29,12 @@ footer {
       position: relative;
       padding-left: 98px;
       min-height: 31px;
-      margin-bottom: 10px;
+//      margin-bottom: 10px;
 
       a:first-child {
         width: 88px;
         height: 31px;
         background: url(../images/cc-by-sa.svg) 0 0/88px 31px no-repeat;
-      }
-
-      @include mq('mid') {
-        padding-top: 5px;
       }
     }
   }

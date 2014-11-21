@@ -2,18 +2,18 @@
  * JS-Tricks main script
  */
 
-(function (w, d) {
+(function (win, doc) {
   // Touch detection ( ͡ᵔ ͜ʖ ͡ᵔ)
   // @see http://js-tricks.com/detect-touch-devices-using-javascript
-  if ('ontouchstart' in window) {
-    var htmlEl = d.getElementsByTagName('html')[0];
+  if ('ontouchstart' in win) {
+    var htmlEl = doc.querySelector('html');
     var htmlElClasses = htmlEl.className;
     htmlEl.className += (htmlElClasses.length ? ' ' : '') + 'touch';
   }
 
   // Add "language-*" classes to <pre> elements
-  d.addEventListener('DOMContentLoaded', function () {
-    Array.prototype.forEach.call(d.querySelectorAll('pre > code'), function (node) {
+  doc.addEventListener('DOMContentLoaded', function () {
+    Array.prototype.forEach.call(doc.querySelectorAll('pre > code'), function (node) {
       var parentNode = node.parentNode;
       var nodeClasses = node.className.split(' ');
       for (var i = 0; i < nodeClasses.length; i++) {
