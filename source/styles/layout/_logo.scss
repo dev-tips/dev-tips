@@ -1,13 +1,11 @@
-h1 {
-  a {
-    display: block;
-    width: 226px;
-    height: 50px;
-    background: url(../images/logo.svg) 0 0/226px 50px no-repeat;
-    text-indent: -9999px;
+h1 a {
+  display: block;
+  width: 226px;
+  height: 50px;
+  background: url(../images/logo.svg) 0 0/226px 50px no-repeat;
+  text-indent: -9999px;
 
-    @include mq('mid') {
-      margin: 0 auto;
-    }
+  @include mq('mid') {
+    margin: 0 auto;
   }
 }

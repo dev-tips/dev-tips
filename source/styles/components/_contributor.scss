@@ -1,10 +1,6 @@
 @import '../settings';
 @import '../mixins/mq';
 
-.github-contributor {
-  margin-right: 5px;
-}
-
 .contributor {
   margin: 0 0 15px;
   overflow: hidden;
@@ -14,7 +10,7 @@
     width: 50px;
     height: 50px;
     margin-right: 10px;
-    border-radius: 3px;
+    border-radius: $border-radius;
   }
 
   h2 {
@@ -23,13 +19,17 @@
   }
 
   a {
-    color: $color-black;
+    color: $color-darkgrey;
   }
 
   @include mq('mid') {
     float: left;
     width: 50%;
   }
+}
+
+.github-contributor {
+  margin-right: 5px;
 }
 
 .github-username:before {

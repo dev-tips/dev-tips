@@ -5,7 +5,7 @@
 html {
   background: $color-lightgrey;
   font-size: $base-font-size;
-  color: $color-black;
+  color: $color-darkgrey;
   font-family: $font-family-default;
 }
 
@@ -23,6 +23,10 @@ div, p {
   text-align: left;
 }
 
+p, pre, ul, ol, hr {
+  margin: 0 0 15px;
+}
+
 ul {
   list-style: square inside;
 }
@@ -33,14 +37,14 @@ ol {
 
 blockquote p {
   padding: 0 15px;
-  border-left: 3px solid #ccc;
+  border-left: 3px solid $color-midgrey-light;
   font-style: italic;
 }
 
 hr {
   width: 100%;
   height: 1px;
-  background: #ccc;
+  background: $color-midgrey-light;
   border: 0;
 }
 
@@ -50,8 +54,4 @@ strong {
 
 em {
   font-style: italic;
-}
-
-p, pre, ul, ol, hr {
-  margin: 0 0 15px;
 }

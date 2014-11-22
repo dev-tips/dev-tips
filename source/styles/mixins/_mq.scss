@@ -2,7 +2,7 @@ $media-queries: false !default;
 
 @mixin mq($name) {
   @if ($media-queries == false or map-has-key($media-queries, $name) == false) {
-    @error "There is no named media query \"#{$name}\".";
+    @error 'There is no named media query "#{$name}".';
   }
 
   $query: map-get($media-queries, $name);

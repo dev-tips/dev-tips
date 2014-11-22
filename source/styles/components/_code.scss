@@ -10,7 +10,7 @@ code {
   padding: 3px 5px;
   background: $color-lightgrey;
   color: $color-midgrey-dark;
-  border-radius: 4px;
+  border-radius: $border-radius;
 }
 
 pre {
@@ -18,7 +18,7 @@ pre {
   position: relative;
   background: $color-darkgrey;
   color: $color-lightgrey;
-  border-radius: 0 4px 4px;
+  border-radius: 0 $border-radius $border-radius;
   margin-top: 35px;
 
   @include mq('mid') {
@@ -47,57 +47,67 @@ pre {
     line-height: 1.2;
     background-color: lighten($color-darkgrey, 8%);
     padding: 6px 8px 4px;
-    border-radius: 4px 4px 0 0;
+    border-radius: $border-radius $border-radius 0 0;
     opacity: 1;
     text-transform: uppercase;
   }
 
   &.language-javascript, &.language-js {
     &:after {
-      content: "JavaScript";
+      content: 'JavaScript';
     }
   }
 
   &.language-css:after {
-    content: "CSS";
+    content: 'CSS';
   }
 
   &.language-html:after {
-    content: "HTML";
+    content: 'HTML';
   }
 
   &.language-coffeescript, &.language-cs {
     &:after {
-      content: "CoffeeScript";
+      content: 'CoffeeScript';
+    }
+  }
+
+  &.language-php:after {
+    content: 'PHP';
+  }
+
+  &.language-ruby, &.language-rb {
+    &:after {
+      content: 'Ruby';
     }
   }
 
   .comment {
-    color: $color-rainbow-comment;
+    color: $color-code-comment;
   }
 
   .constant {
-    color: $color-rainbow-constant;
+    color: $color-code-constant;
   }
 
   .storage {
-    color: $color-rainbow-storage;
+    color: $color-code-storage;
   }
 
   .string, .comment.docstring {
-    color: $color-rainbow-string;
+    color: $color-code-string;
   }
 
   .support.tag {
-    color: $color-rainbow-tag;
+    color: $color-code-tag;
   }
 
   .keyword {
-    color: $color-rainbow-keyword;
+    color: $color-code-keyword;
   }
 
   .selector {
-    color: $color-rainbow-selector;
+    color: $color-code-selector;
   }
 
   .inherited-class {
@@ -105,11 +115,11 @@ pre {
   }
 
   .operator, .support.tag-name, .entity.tag {
-    color: $color-rainbow-operator;
+    color: $color-code-operator;
   }
 
   .entity, .support.attribute, .entity.attribute {
-    color: $color-rainbow-attribute;
+    color: $color-code-attribute;
   }
 
   .css-property, .storage.function {
@@ -118,15 +128,15 @@ pre {
 
   .variable {
     &.global, &.class, &.instance {
-      color: $color-rainbow-global;
+      color: $color-code-global;
     }
   }
 
-  .support, code[data-language="c"] .function.call {
-    color: $color-rainbow-support;
+  .support, code[data-language='c'] .function.call {
+    color: $color-code-support;
   }
 
-  code[data-language="html"] .support.operator {
+  code[data-language='html'] .support.operator {
     color: $color-white;
   }
 }

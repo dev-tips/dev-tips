@@ -1,6 +1,29 @@
 @import '../settings';
 @import '../mixins/fontsize';
 
+.permalink {
+  color: $color-midgrey;
+
+  &:hover {
+    color: $color-midgrey;
+  }
+
+  &:before {
+    @include font-size(20px);
+    content: '\221e';
+    margin: 0 6px 0 0;
+    line-height: 15px;
+    color: $color-pink;
+    vertical-align: middle;
+  }
+
+  span {
+    @include font-size(8px);
+    line-height: 12px;
+    vertical-align: text-top;
+  }
+}
+
 .meta {
   @include font-size(12px);
   display: block;
@@ -8,7 +31,7 @@
   font-family: $font-family-head;
   line-height: 22px;
   text-transform: uppercase;
-  color: $color-midgrey-light;
+  color: $color-midgrey;
 
   a:hover {
     text-decoration: none;
