@@ -54,6 +54,8 @@ While JS-Tricks.com itself is released under the MIT license, all articles are p
 
 * **Refer to other resources when needed.** Going into detail is honourable. But before writing too much, it’s almost always better to refer to external resources that one may consume later.
 
+* **Use a neutral style of writing.** JS-Tricks is a community project. That means anyone can provide content by writing new articles as well as improve existing ones. We kindly ask you to write in a neutral style to maintain a common style of writing across the site. 
+
 * **Show some respect.** If you did not invent a certain programming feature you are writing about, but you know that someone else deserves credit, do not hesitate to include the inventor’s name (even if it’s just a nickname!) and link to his/her blog or GitHub profile.
 
 * **If you want, you may add your name to the contributors list.** Feel free to add your GitHub username to the `Contributors` field (comma-separated list) in your `post.md` to be listed on the site’s [contributors list](http://js-tricks.com/contributors).
