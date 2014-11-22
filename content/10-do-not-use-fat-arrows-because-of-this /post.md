@@ -2,7 +2,7 @@ Title: Don’t use fat arrows in CoffeeScript just because of »this«
 
 -----
 
-Date: 1416244305
+Date: 1416665724
 
 -----
 
@@ -12,13 +12,11 @@ Contributors: meandmax
 
 Text:
 
-For quite some time, I didn’t understand how `=>` or `->` functions in CoffeeScript really work and simply used `=>` just because I used `this` (`@`) in a class function. So I decided to digg a little deeper and really looked into some things.
+Lots of people don’t really get how `=>` or `->` functions in CoffeeScript work and simply use `=>` just because of the use of `this` (`@`) in a class function. In order to clarify the difference, one needs to dig a little deeper and look into some things.
 
 So first let’s have a look how a simple class with a `->` and a `=>` function in CoffeeScript is compiled to JavaScript.
 
-**CoffeeScript**
-
-```js
+```coffeescript
 class A
 
     constructor: () ->
@@ -34,9 +32,9 @@ class A
 a = new A
 ```
 
-**Compiled JavaScript**
+A simple class in CoffeeScript with two functions called by the constructor when the class is instantiated.
 
-```js
+```javascript
 var A, a;
 
 A = (function() {
@@ -62,9 +60,7 @@ a = new A;
 
 Both functions are attached to the prototype of `A`. So let’s have a look what is happening when we replace the `->` arrow with the `=>` arrow.
 
-**CoffeeScript**
-
-```js
+```coffeescript
 class A
 
     constructor: () ->
@@ -80,9 +76,7 @@ class A
 a = new A
 ```
 
-What CoffeeScript does with fat arrows is: it uses the apply function to bind the context to the class instance to the function. That the function has always the same context, no matter where it gets called.
-
-**Compiled JavaScript**
+What CoffeeScript does with fat arrows is: it uses the apply function to create a new function where the context of the class instance is bound to the function. Therefore the function has always the same context, no matter where it gets called.
 
 ```js
 var A, a,
@@ -113,7 +107,7 @@ a = new A;
 
 The difference may be tiny, but very important. Now, we bind the context of the class to the function and therefore if we use `this` (`@`) in the function, the function always gets executed in the context of the class instance.
 
-So, as I can see, the important questions that we have to ask before using a single vs. a fat arrow function are…
+The important questions that we have to ask before using a single vs. a fat arrow function are:
 
 **1. Shall we use `this` (`@`) in the function?**  
 **2. More importantly: do we want to execute the function later possibly in a different scope?**
@@ -122,9 +116,7 @@ If both questions answered with yes, then a `=>` functions could be the right ch
 
 Let’s play around with a typical example where we call a function in a different scope.
 
-**CoffeeScript**
-
-```js
+```coffeescript
 class A
 
     constructor: () ->
@@ -140,8 +132,6 @@ a = new A
 ```
 
 This will break because `funcA` is a `->` function and we call the function in the context of the `map` function where `@name` won’t be defined.
-
-**Compiled JavaScript**
 
 ```js
 class A
@@ -167,9 +157,7 @@ Mentioned in a very good article called »[Understanding Fat Arrows (=>) in Coff
 
 Here is another very good example about context and scope in CoffeeScript. Let’s have a look what `this` is.
 
-**CoffeeScript**
-
-```js
+```coffeescript
 class A
     constructor: () ->
         a = () -> console.log(@)
@@ -180,9 +168,7 @@ a = new A()
 
 The output will be the window as we opened a new scope by declaring a `->` function in the constructor of class `A`.
 
-**CoffeeScript**
-
-```js
+```coffeescript
 class A
     constructor: () ->
         a = () => console.log(@)
@@ -193,4 +179,4 @@ a = new A()
 
 The output will be the object `A`. That’s because we bound the context of the class `A` instance to the anonymous function using the fat arrow.
 
-So, my conclusion is: before just using single or fat arrows, you have to ask yourself the two important questions mentioned above. If you can answer these two questions, you already know your way to go.
+So, the conclusion is: before just using single or fat arrows, you have to ask yourself the two important questions mentioned above. If you can answer these two questions, you already know your way to go.
