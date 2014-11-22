@@ -1,6 +1,10 @@
 // Typo
 $font-family-default: 'Open Sans', sans-serif;
 $font-family-head: 'Montserrat', sans-serif;
+$font-family-code: monospace;
+
+// Font sizing
+$base-font-size: 14px;
 
 // Layout colors
 $color-lightgrey: #eee;
@@ -18,10 +22,24 @@ $color-rainbow-comment: #75715e;
 $color-rainbow-constant: #ae81ff;
 $color-rainbow-storage: #66d9ef;
 $color-rainbow-string: #e6db74;
-$color-rainbow-tag: #ffffff;
-$color-rainbow-keyword: #f92672;
+$color-rainbow-tag: #fff;
+$color-rainbow-keyword: $color-pink;
 $color-rainbow-selector: $color-rainbow-keyword;
 $color-rainbow-operator: $color-rainbow-keyword;
 $color-rainbow-attribute: #a6e22e;
 $color-rainbow-support: #66d9ef;
 $color-rainbow-global: $color-rainbow-attribute;
+
+// Sprites SCSS
+// These are auto-generated files by spritesmith and include various variables per sprite.
+//@import 'sprite@1x';
+//@import 'sprite@2x';
+//@import 'sprite@3x';
+
+// Named media queries
+$media-queries: (
+    'min': 'screen and (min-width: 320px)',
+    'mid': 'screen and (min-width: 530px)',
+    '@2x': '(min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)',
+    '@3x': '(-webkit-min-device-pixel-ratio: 3), only screen and (min-resolution: 3dppx), only screen and (min-resolution: 350dpi)'
+);

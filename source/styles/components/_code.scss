@@ -1,0 +1,132 @@
+@import '../settings';
+@import '../mixins/fontsize';
+@import '../mixins/mq';
+
+pre, code {
+  font-family: $font-family-code;
+}
+
+code {
+  padding: 3px 5px;
+  background: $color-lightgrey;
+  color: $color-midgrey-dark;
+  border-radius: 4px;
+}
+
+pre {
+  display: block;
+  position: relative;
+  background: $color-darkgrey;
+  color: $color-lightgrey;
+  border-radius: 0 4px 4px;
+  margin-top: 35px;
+
+  @include mq('mid') {
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 15px;
+  }
+
+  code {
+    display: block;
+    position: relative;
+    padding: 12px 15px;
+    overflow-x: auto;
+    background: $color-darkgrey;
+    color: $color-lightgrey;
+  }
+
+  &:after {
+    display: inline-block;
+    position: absolute;
+    top: -22px;
+    left: 0;
+    font-family: $font-family-default;
+    font-weight: normal;
+    @include font-size(10px);
+    line-height: 1.2;
+    background-color: lighten($color-darkgrey, 8%);
+    padding: 6px 8px 4px;
+    border-radius: 4px 4px 0 0;
+    opacity: 1;
+    text-transform: uppercase;
+  }
+
+  &.language-javascript, &.language-js {
+    &:after {
+      content: "JavaScript";
+    }
+  }
+
+  &.language-css:after {
+    content: "CSS";
+  }
+
+  &.language-html:after {
+    content: "HTML";
+  }
+
+  &.language-coffeescript, &.language-cs {
+    &:after {
+      content: "CoffeeScript";
+    }
+  }
+
+  .comment {
+    color: $color-rainbow-comment;
+  }
+
+  .constant {
+    color: $color-rainbow-constant;
+  }
+
+  .storage {
+    color: $color-rainbow-storage;
+  }
+
+  .string, .comment.docstring {
+    color: $color-rainbow-string;
+  }
+
+  .support.tag {
+    color: $color-rainbow-tag;
+  }
+
+  .keyword {
+    color: $color-rainbow-keyword;
+  }
+
+  .selector {
+    color: $color-rainbow-selector;
+  }
+
+  .inherited-class {
+    font-style: italic;
+  }
+
+  .operator, .support.tag-name, .entity.tag {
+    color: $color-rainbow-operator;
+  }
+
+  .entity, .support.attribute, .entity.attribute {
+    color: $color-rainbow-attribute;
+  }
+
+  .css-property, .storage.function {
+    font-style: italic;
+  }
+
+  .variable {
+    &.global, &.class, &.instance {
+      color: $color-rainbow-global;
+    }
+  }
+
+  .support, code[data-language="c"] .function.call {
+    color: $color-rainbow-support;
+  }
+
+  code[data-language="html"] .support.operator {
+    color: $color-white;
+  }
+}

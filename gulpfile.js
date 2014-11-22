@@ -1,19 +1,20 @@
-var fs = require('fs');
-var path = require('path');
-var eventStream = require('event-stream');
-var del = require('del');
-var Q = require('q');
-var gulp = require('gulp');
-var newer = require('gulp-newer');
-var tap = require('gulp-tap');
-var notify = require('gulp-notify');
-var bower = require('gulp-bower');
 var autoprefixer = require('gulp-autoprefixer');
+var bower = require('gulp-bower');
+var changed = require('gulp-changed');
+var combineMq = require('gulp-combine-mq');
 var concat = require('gulp-concat');
-var spritesmith = require('gulp.spritesmith');
-var imagemin = require('gulp-imagemin');
 var cssmin = require('gulp-cssmin');
+var del = require('del');
+var eventStream = require('event-stream');
+var fs = require('fs');
+var gulp = require('gulp');
+var imagemin = require('gulp-imagemin');
+var notify = require('gulp-notify');
+var path = require('path');
+var Q = require('q');
 var sass = require('gulp-sass');
+var spritesmith = require('gulp.spritesmith');
+var tap = require('gulp-tap');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 
@@ -33,14 +34,6 @@ var dirs = {
   }
 };
 
-// Cleanup target dirs
-gulp.task('clean', function (cb) {
-  del([
-    dirs.dest.css,
-    dirs.dest.js
-  ], cb);
-});
-
 // Get bower stuff
 gulp.task('bower', function () {
   return bower({
@@ -49,75 +42,56 @@ gulp.task('bower', function () {
   });
 });
 
-// Used to inform listeners that the current batch of files has been minified.
-var imageMinificationDefer = Q.defer();
-
-// Generate sprites, copy over other images & minify them all
-gulp.task('images', function () {
-  // Init stream with non-sprite images for minification
-  var imageStream = gulp.src(dirs.src.images + '/*.*')
-    .pipe(newer(dirs.dest.images));
+// Generate sprites, one per 'sprite*' directory
+var deferredSpriteImagesGeneration = Q.defer();
+gulp.task('sprites', function () {
+  var imageStream;
   var scssStream;
-  var scssDefer = Q.defer();
-
-  // Generate one sprite per 'sprite*' directory
-  var generateSprite = function (spriteName) {
-    var sprite;
-    var basePath = dirs.src.images + '/' + spriteName;
-    var absBasePath = path.resolve(basePath);
-
-    for (var i = 1; i <= 3; i++) {
-      sprite = gulp.src(basePath + '/**/*@' + i + 'x.png')
-        .pipe(spritesmith({
-          imgName: spriteName + '@' + i + 'x.png',
-          cssName: spriteName + '@' + i + 'x.scss',
-          cssVarMap: function (sprite) {
-            sprite.name = (path.join(spriteName, path.relative(absBasePath, path.dirname(sprite.source_image)))).replace('/', '-') + '-' + sprite.name.replace('@', '-');
-            sprite.image = '/' + dirs.dest.images + '/' + sprite.image;
-          }
-        }));
-
-      var spritePipe = sprite.css.pipe(gulp.dest(dirs.build + '/sprite-sass'));
-      scssStream = scssStream ? eventStream.merge(scssStream, spritePipe) : spritePipe;
-      imageStream = eventStream.merge(imageStream, sprite.img);
-    }
-  };
+  var deferredSpriteScssGeneration = Q.defer();
 
   gulp.src(dirs.src.images + '/sprite*')
     .pipe(tap(function (directory) {
-      generateSprite(path.basename(directory.path));
-    }))
-    .on('end', function () {
-      // Minify images
-      imageStream
-        .pipe(imagemin({
-          optimizationLevel: 4,
-          progressive: true
-        }))
-        .on('error', notify.onError({
-          message: 'Please check for correct file extensions and file corruption. (Error: <%= error.message %>)',
-          title: 'Error during image minification'
-        }))
-        .pipe(gulp.dest(dirs.dest.images))
-        .on('end', function () {
-          imageMinificationDefer.resolve();
-        });
+      var sprite;
+      var spriteName = path.basename(directory.path);
+      var basePath = dirs.src.images + '/' + spriteName;
+      var absBasePath = path.resolve(basePath);
 
-      // Touch shadow files
-      scssStream.on('end', function () {
-        scssDefer.resolve();
-      });
-    });
+      for (var i = 1; i <= 3; i++) {
+        sprite = gulp.src(basePath + '/**/*@' + i + 'x.png')
+          .pipe(spritesmith({
+            imgName: spriteName + '@' + i + 'x.png',
+            cssName: spriteName + '@' + i + 'x.scss',
+            cssVarMap: function (sprite) {
+              sprite.name = (path.join(spriteName, path.relative(absBasePath, path.dirname(sprite.source_image)))).replace('/', '-') + '-' + sprite.name.replace('@', '-');
+              sprite.image = '/' + dirs.dest.images + '/' + sprite.image;
+            }
+          }));
 
-  return scssDefer.promise;
+        var curScssStream = sprite.css.pipe(gulp.dest(dirs.build + '/sprite-sass'));
+        var curImageStream = sprite.img.pipe(gulp.dest(dirs.dest.images));
+        scssStream = scssStream ? eventStream.merge(scssStream, curScssStream) : curScssStream;
+        imageStream = imageStream ? eventStream.merge(imageStream, curImageStream) : curImageStream;
+      }
+    }));
+
+  scssStream && scssStream.on('end', deferredSpriteScssGeneration.resolve) || deferredSpriteScssGeneration.resolve();
+  imageStream && imageStream.on('end', deferredSpriteImagesGeneration.resolve) || deferredSpriteImagesGeneration.resolve();
+
+  return deferredSpriteScssGeneration.promise;
+});
+gulp.task('sprite-images', ['sprites'], function () {
+  return deferredSpriteImagesGeneration.promise;
 });
 
-gulp.task('images-minify-resolver', function () {
-  return imageMinificationDefer.promise;
+// Copy source images to destination, leaving out sprites
+gulp.task('copy-source-images', function () {
+  return gulp.src([dirs.src.images + '/**/*.?(png|gif|jpg|webp|svg)', '!' + dirs.src.images + '/sprite*/**/*'])
+    .pipe(changed(dirs.dest.images))
+    .pipe(gulp.dest(dirs.dest.images));
 });
 
-// Build CSS from SASS
-gulp.task('css', ['clean', 'images'], function () {
+// Build CSS
+gulp.task('css', ['sprites'], function () {
   return gulp.src([dirs.src.sass + '/main.scss'])
     .pipe(sass({
       includePaths: [
@@ -132,11 +106,12 @@ gulp.task('css', ['clean', 'images'], function () {
       title: 'Error during SASS compilation'
     }))
     .pipe(autoprefixer('last 2 version', 'ie 9'))
+    .pipe(combineMq())
     .pipe(concat('app.css'))
     .pipe(gulp.dest(dirs.dest.css));
 });
 
-// Minify CSS
+// Release: minify CSS
 gulp.task('css-release', ['css'], function () {
   gulp.src(dirs.dest.css + '/app.css')
     .pipe(cssmin())
@@ -144,7 +119,7 @@ gulp.task('css-release', ['css'], function () {
 });
 
 // Build JS
-gulp.task('js', ['clean', 'bower'], function () {
+gulp.task('js', ['bower'], function () {
   return gulp.src([
     // Manual cherry pick...
     dirs.src.bower + '/rainbow/js/rainbow.js',
@@ -159,45 +134,81 @@ gulp.task('js', ['clean', 'bower'], function () {
     .pipe(gulp.dest(dirs.dest.js));
 });
 
-// Minify JS
+// Release: minify JS
 gulp.task('js-release', ['js'], function () {
   gulp.src(dirs.dest.js + '/app.js')
-    .pipe(uglify())
+    .pipe(uglify({
+      preserveComments: 'some'
+    }))
     .pipe(gulp.dest(dirs.dest.js));
 });
 
+// Main task: watch
 gulp.task('watch', ['build'], function () {
+  // Watch images
+  watch(dirs.src.images + '/**/*.?(png|gif|jpg|webp|svg)', function (files, cb) {
+    gulp.start('copy-source-images', cb);
+  });
+
+  // Watch CSS
+  watch([
+    dirs.src.sass + '/**/*.scss',
+    dirs.src.images + '/sprite*'
+  ], function (files, cb) {
+    deferredSpriteImagesGeneration = Q.defer();
+    Q(deferredSpriteImagesGeneration.promise, gulp.start('css')).then(cb);
+  });
+
+  // Watch JS
   watch(dirs.src.js + '/**/*.js', function (files, cb) {
     gulp.start('js', cb);
   });
-  watch([
-    dirs.src.sass + '/**/*.scss',
-    dirs.src.images + '/**/*'
-  ], function (files, cb) {
-    var cssCompleteDefer = Q.defer();
-    imageMinificationDefer = Q.defer();
-    gulp.start('css', function () {
-      cssCompleteDefer.resolve();
-    });
-
-    Q(imageMinificationDefer.promise, cssCompleteDefer.promise).then(cb);
-  });
 });
 
-// Just an alias for watch. Keeping this separate in case we
-// need it some time.
+// Alias task: dev
 gulp.task('dev', ['watch']);
 
+// Main task: cleanup target dirs
+gulp.task('clean', function (cb) {
+  del([
+    dirs.dest.images,
+    dirs.dest.css,
+    dirs.dest.js
+  ], cb);
+});
+
+// Main task: build
 gulp.task('build', [
+  'copy-source-images',
+  'sprite-images',
   'css',
-  'js',
-  'images-minify-resolver'
+  'js'
 ]);
 
+// Main task: release
 gulp.task('release', [
+  'copy-source-images',
+  'sprite-images',
   'css-release',
-  'js-release',
-  'images-minify-resolver'
-]);
+  'js-release'
+], function () {
+  // Minify images
+  gulp.src(dirs.dest.images + '/*.?(png|gif|jpg)')
+    .pipe(imagemin({
+      optimizationLevel: 4,
+      progressive: true
+    }))
+    .on('error', notify.onError({
+      message: 'Please check all images for correct file extensions and file corruption. (Error: <%= error.message %>)',
+      title: 'Error during image minification'
+    }))
+    .pipe(gulp.dest(dirs.dest.images));
+});
 
+// Main task: clean-release
+gulp.task('clean-release', ['clean'], function () {
+  gulp.start('release');
+});
+
+// Default task
 gulp.task('default', ['build']);

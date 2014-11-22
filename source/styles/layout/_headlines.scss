@@ -1,0 +1,28 @@
+@import '../settings';
+@import '../mixins/mq';
+@import '../mixins/fontsize';
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-head;
+  margin: 0 0 0.3em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $color-pink;
+  text-align: left;
+}
+
+h2, h3 {
+  @include font-size(18px);
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  @include mq('min') {
+    @include font-size(20px);
+  }
+
+  @include mq('mid') {
+    @include font-size(22px);
+  }
+}

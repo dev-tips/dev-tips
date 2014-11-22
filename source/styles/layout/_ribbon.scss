@@ -1,0 +1,31 @@
+@import '../settings';
+@import '../mixins/mq';
+@import '../mixins/fontsize';
+
+#ribbon {
+  display: none;
+
+  @include mq('mid') {
+    @include font-size(12px);
+    position: fixed;
+    display: block;
+    right: -4em;
+    top: 3.75em;
+    transform: rotate(45deg);
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: $color-pink;
+
+    a {
+      display: block;
+      color: white;
+      font-family: $font-family-head;
+      font-weight: bold;
+      margin: 1px 0;
+      padding: 0.8em 4em;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+}
