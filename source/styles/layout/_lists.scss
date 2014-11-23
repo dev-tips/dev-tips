@@ -1,0 +1,34 @@
+ul, ol {
+  list-style-position: inside;
+
+  & > li {
+    display: table-row;
+
+    &:before {
+      display: table-cell;
+      padding-right: 0.5em;
+    }
+  }
+}
+
+ul {
+  list-style-type: square;
+
+  & > li:before {
+    content: "\25aa";
+  }
+}
+
+ol {
+  list-style-type: decimal;
+  counter-reset: dflt;
+
+  & > li {
+    counter-increment: dflt;
+
+    &:before {
+      content: counter(dflt) ".";
+      text-align: right;
+    }
+  }
+}
