@@ -38,18 +38,19 @@ A = (function() {
   function A() {
     this.funcB = __bind(this.funcB, this);
     this.funcA();
-    return this.funcB();
+    this.funcB();
   }
 
   A.prototype.funcA = function() {
     return 'funcA';
   };
-  
+
   A.prototype.funcB = function() {
     return 'funcB';
   };
 
   return A;
+
 })();
 
 a = new A;
@@ -80,7 +81,7 @@ a = new A
 
 This will break because `funcA` is implemented with `->` and the function is called in the context of `map`, where `@name` won’t be defined. By using `=>`, it doesn’t matter where and how to call the method as its context is permanently bound to the object:
 
-```js
+```coffeescript
 class A
 
     constructor: () ->
