@@ -27,7 +27,7 @@
         <?php endif ?>
         <link rel="shortcut icon" href="<?php url('favicon.ico') ?>">
         <?php css('css/app.css') ?>
-        <link rel="image_src" href="<?php url('img/share.png') ?>">
+        <link rel="image_src" href="<?php url('images/share.png') ?>">
     </head>
     <body>
         <header>
