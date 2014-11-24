@@ -1,4 +1,5 @@
 # JS-Tricks.com
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/fapprik/js-tricks.com?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > JS-Tricks.com provides tips, tricks, and techniques on JavaScript running on node.js and in the browser in the form of snippets and tutorials.
 
