@@ -192,6 +192,9 @@ gulp.task('release', [
   'css-release',
   'js-release'
 ], function () {
+  // Wipe out build dir
+  del([dirs.build]);
+
   // Minify images
   gulp.src(dirs.dest.images + '/*.?(png|gif|jpg)')
     .pipe(imagemin({
