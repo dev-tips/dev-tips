@@ -1,0 +1,13 @@
+// @see http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+
+$base-font-size: 12px !default;
+
+@function calculateRem($size) {
+  $remSize: $size / $base-font-size;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}

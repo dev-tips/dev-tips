@@ -3,10 +3,10 @@
 # Project specific
 #
 
-build
-css
-images
-js
+/build
+/css
+/images
+/js
 
 
 #

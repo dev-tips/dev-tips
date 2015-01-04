@@ -1,0 +1,42 @@
+@import '../settings';
+@import '../mixins/fontsize';
+
+.question {
+  h2 {
+    @include font-size(14px);
+    margin: 0;
+    padding: 12px 15px;
+    background: $color-darkgrey;
+    font-family: $font-family-default;
+    text-transform: none;
+    font-weight: normal;
+    color: $color-lightgrey;
+    position: relative;
+    border-radius: $border-radius;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 20px;
+      width: 0;
+      height: 0;
+      border-width: 15px 0 0 15px;
+      border-style: solid;
+      border-color: $color-darkgrey transparent transparent;
+    }
+
+    a {
+      color: $color-white;
+    }
+  }
+
+  .asker {
+    margin: 10px 0 0 50px;
+    font-style: italic;
+  }
+
+  .answer {
+    margin: 15px 0 0;
+  }
+}

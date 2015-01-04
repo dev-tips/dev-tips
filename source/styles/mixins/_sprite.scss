@@ -1,0 +1,8 @@
+@mixin sprite-hdpi($sprite-normal, $sprite-hdpi, $bg-color: transparent) {
+  $sprite-image: nth($sprite-hdpi, 9);
+  background: url(#{$sprite-image}) nth($sprite-normal, 3) nth($sprite-normal, 4)/nth($sprite-normal, 7) nth($sprite-normal, 8) no-repeat $bg-color;
+}
+
+@mixin sprite($sprite, $bg-color: transparent) {
+  @include sprite-hdpi($sprite, $sprite, $bg-color);
+}
