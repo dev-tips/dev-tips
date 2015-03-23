@@ -3,7 +3,7 @@ var bower = require('gulp-bower');
 var changed = require('gulp-changed');
 var combineMq = require('gulp-combine-mq');
 var concat = require('gulp-concat');
-var cssmin = require('gulp-cssmin');
+var csso = require('gulp-csso');
 var del = require('del');
 var fs = require('fs');
 var gulp = require('gulp');
@@ -65,7 +65,7 @@ gulp.task('css', function () {
 // Release: minify CSS
 gulp.task('css-release', ['css'], function () {
   gulp.src(dirs.dest.css + '/app.css')
-    .pipe(cssmin())
+    .pipe(csso())
     .pipe(gulp.dest(dirs.dest.css));
 });
 
