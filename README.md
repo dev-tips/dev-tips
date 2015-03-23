@@ -26,10 +26,6 @@ If you prefer to use Apache or nginx, check out the [»Getting started« section
 
 Besides the `gulp build` task, there is `gulp dev`, which does exactly the same but additionally starts watching the file system for changes and rebuilds every time a change occurs.
 
-### Issues with `npm install`
-
-**The warnings are normal!** Because of the way how [spritesmith](https://github.com/Ensighten/spritesmith) (one of our dependencies that conveniently generates sprites) works, you will most certainly encounter some warnings when you run `npm install`. This is due to the fact, that `spritesmith` has several *optional* dependencies itself, which may fail. Nonetheless `npm` will continue to install everything else. This is also explained in spritesmith’s [README](https://github.com/Ensighten/spritesmith/blob/master/README.md#installation), albeit very short.
-
 ## Contributing
 
 Well, that’s easy! First, head over to our [GitHub](https://github.com/fapprik/js-tricks.com) repository and fork it. Then make your contributions, and send a pull request. Please note that writing articles and hacking on the JS-Tricks.com source are two different things. Therefore, please send separate pull requests according to what you’ve done. It will be helpful to use distinct branches in your fork to accomplish that.
@@ -64,7 +60,7 @@ While JS-Tricks.com itself is released under the MIT license, all articles are p
 
 ## License
 
-Copyright (c) 2014 [fapprik](http://fapprik.com/)  
+Copyright (c) 2015 [fapprik](http://fapprik.com/)  
 Licensed under the MIT license.
 
 See LICENSE for more info.

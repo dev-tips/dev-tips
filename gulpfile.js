@@ -5,16 +5,12 @@ var combineMq = require('gulp-combine-mq');
 var concat = require('gulp-concat');
 var cssmin = require('gulp-cssmin');
 var del = require('del');
-var eventStream = require('event-stream');
 var fs = require('fs');
 var gulp = require('gulp');
 var imagemin = require('gulp-imagemin');
 var notify = require('gulp-notify');
 var path = require('path');
-var Q = require('q');
 var sass = require('gulp-sass');
-var spritesmith = require('gulp.spritesmith');
-var tap = require('gulp-tap');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 
@@ -42,62 +38,17 @@ gulp.task('bower', function () {
   });
 });
 
-// Generate sprites, one per 'sprite*' directory
-var deferredSpriteImagesGeneration = Q.defer();
-gulp.task('sprites', function () {
-  var imageStream;
-  var scssStream;
-  var deferredSpriteScssGeneration = Q.defer();
-
-  gulp.src(dirs.src.images + '/sprite*')
-    .pipe(tap(function (directory) {
-      var sprite;
-      var spriteName = path.basename(directory.path);
-      var basePath = dirs.src.images + '/' + spriteName;
-      var absBasePath = path.resolve(basePath);
-
-      for (var i = 1; i <= 3; i++) {
-        sprite = gulp.src(basePath + '/**/*@' + i + 'x.png')
-          .pipe(spritesmith({
-            imgName: spriteName + '@' + i + 'x.png',
-            cssName: spriteName + '@' + i + 'x.scss',
-            cssVarMap: function (sprite) {
-              sprite.name = (path.join(spriteName, path.relative(absBasePath, path.dirname(sprite.source_image)))).replace('/', '-') + '-' + sprite.name.replace('@', '-');
-              sprite.image = '/' + dirs.dest.images + '/' + sprite.image;
-            }
-          }));
-
-        var curScssStream = sprite.css.pipe(gulp.dest(dirs.build + '/sprite-sass'));
-        var curImageStream = sprite.img.pipe(gulp.dest(dirs.dest.images));
-        scssStream = scssStream ? eventStream.merge(scssStream, curScssStream) : curScssStream;
-        imageStream = imageStream ? eventStream.merge(imageStream, curImageStream) : curImageStream;
-      }
-    }));
-
-  scssStream && scssStream.on('end', deferredSpriteScssGeneration.resolve) || deferredSpriteScssGeneration.resolve();
-  imageStream && imageStream.on('end', deferredSpriteImagesGeneration.resolve) || deferredSpriteImagesGeneration.resolve();
-
-  return deferredSpriteScssGeneration.promise;
-});
-gulp.task('sprite-images', ['sprites'], function () {
-  return deferredSpriteImagesGeneration.promise;
-});
-
 // Copy source images to destination, leaving out sprites
-gulp.task('copy-source-images', function () {
+gulp.task('copy-images', function () {
   return gulp.src([dirs.src.images + '/**/*.?(png|gif|jpg|webp|svg)', '!' + dirs.src.images + '/sprite*/**/*'])
     .pipe(changed(dirs.dest.images))
     .pipe(gulp.dest(dirs.dest.images));
 });
 
 // Build CSS
-gulp.task('css', ['sprites'], function () {
+gulp.task('css', function () {
   return gulp.src([dirs.src.sass + '/main.scss'])
     .pipe(sass({
-      includePaths: [
-        dirs.src.sass,
-        dirs.build + '/sprite-sass'
-      ],
       imagePath: dirs.dest.images,
       outputStyle: 'nested'
     }))
@@ -147,16 +98,12 @@ gulp.task('js-release', ['js'], function () {
 gulp.task('watch', ['build'], function () {
   // Watch images
   watch(dirs.src.images + '/**/*.?(png|gif|jpg|webp|svg)', function (files, cb) {
-    gulp.start('copy-source-images', cb);
+    gulp.start('copy-images', cb);
   });
 
   // Watch CSS
-  watch([
-    dirs.src.sass + '/**/*.scss',
-    dirs.src.images + '/sprite*'
-  ], function (files, cb) {
-    deferredSpriteImagesGeneration = Q.defer();
-    Q(deferredSpriteImagesGeneration.promise, gulp.start('css')).then(cb);
+  watch(dirs.src.sass + '/**/*.scss', function (files, cb) {
+    gulp.start('css', cb);
   });
 
   // Watch JS
@@ -179,16 +126,14 @@ gulp.task('clean', function (cb) {
 
 // Main task: build
 gulp.task('build', [
-  'copy-source-images',
-  'sprite-images',
+  'copy-images',
   'css',
   'js'
 ]);
 
 // Main task: release
 gulp.task('release', [
-  'copy-source-images',
-  'sprite-images',
+  'copy-images',
   'css-release',
   'js-release'
 ], function () {
