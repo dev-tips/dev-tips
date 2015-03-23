@@ -82,6 +82,10 @@ pre {
     }
   }
 
+  &.language-shell:after {
+    content: 'Shell';
+  }
+
   .comment {
     color: $color-code-comment;
   }
