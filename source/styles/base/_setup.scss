@@ -60,6 +60,12 @@ em {
   font-style: italic;
 }
 
+sup {
+  vertical-align: super;
+  top: -0.5em;
+  font-size: 0.8em;
+}
+
 ::selection {
   background: $color-pink;
   color: $color-white;
