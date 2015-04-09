@@ -58,6 +58,12 @@ pre {
     }
   }
 
+  &.language-json {
+    &:after {
+      content: 'JSON';
+    }
+  }
+
   &.language-css:after {
     content: 'CSS';
   }
