@@ -1,3 +1,4 @@
+@import '../mixins/fontsize';
 @import '../mixins/mq';
 
 .center {
@@ -15,5 +16,11 @@
 
   @include mq('mid') {
     padding: 40px;
+  }
+}
+
+.footnotes {
+  &, & * {
+    @include font-size(12px);
   }
 }
