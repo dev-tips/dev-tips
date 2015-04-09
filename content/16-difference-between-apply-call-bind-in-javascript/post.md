@@ -56,7 +56,7 @@ var sum = function(a, b) {
     return a + b;
 };
 
-var addTo = sum.bind(null, 123);
+var addTo = sum.bind(this, 123);
 
 console.log(addTo(456)); // = 579
 ```
