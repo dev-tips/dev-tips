@@ -12,7 +12,7 @@ Contributors: rasshofer
 
 Text:
 
-While it’s pretty easy to use regular keys within objects in JavaScript, you may need to use complex keys (e.g. variable keys) from time to time. Using square bracket notation, that just as easy as regular keys.
+While it’s pretty easy to use regular keys within objects in JavaScript, you may need to use complex keys (e.g. variable keys) from time to time. Using square bracket notation, that’s just as easy as regular keys.
 
 ```js
 var demo = {};
