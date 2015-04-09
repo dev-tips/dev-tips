@@ -1,4 +1,4 @@
-Title: Consynchronous Assurency – How to achieve concurrency with Array.prototype.forEach
+Title: Consynchronous Assurency: How to achieve quasi-concurrency with Array.prototype.forEach
 
 -----
 
@@ -59,6 +59,6 @@ That code will always output »foo« first, thus the interpreter directly contin
 
 There was once the idea of [`setImmediate()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/setImmediate), which does exactly the same as `setTimeout(func, 0)`—but the equality of both approaches is the reason why it’s unlikely we may ever see it in the wild.[^setImmediate]
 
-[^Threads in JavaScript]: Well, it is not absolutely true. With the [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) you can sort of mimic thread-like behavior in the browser. In Node.js there is the [Cluster](https://nodejs.org/api/cluster.html) core module. But all those are just extensions that are far from standardization, nonetheless incredibly useful.
+[^Threads in JavaScript]: Well, it is not absolutely true. With the [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) you can sort of mimic thread-like behavior in the browser, but it’s often an overkill approach. In Node.js there is the [Cluster](https://nodejs.org/api/cluster.html) core module.
 
 [^setImmediate]: `setImmediate()` is currently available in IE10 and Node.js. The latter also knows the `process.nextTick()` method, which again is used to decouple parts of code and is said to be more efficient.
