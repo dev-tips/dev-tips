@@ -55,7 +55,7 @@ arr.forEach(function(val, idx) {
 console.log('bar');
 ```
 
-That code will always output »foo« first, thus the interpreter directly continues with the main code path and calls your lambdas later. Notice that it is perfectly legal to have a timeout value of zero milliseconds, meaning that the function is called as soon as possible. While there is no guarantee that all array items are processed in order (most times they are), at least your code becomes responsive again.
+That code will always output »bar« first, thus the interpreter directly continues with the main code path and calls your lambdas later. Notice that it is perfectly legal to have a timeout value of zero milliseconds, meaning that the function is called as soon as possible. While there is no guarantee that all array items are processed in order (most times they are), at least your code becomes responsive again.
 
 There was once the idea of [`setImmediate()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/setImmediate), which does exactly the same as `setTimeout(func, 0)`—but the equality of both approaches is the reason why it’s unlikely we may ever see it in the wild.[^setImmediate]
 
