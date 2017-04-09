@@ -24,7 +24,7 @@ Basically, when you call `doSomething()`, there is no actual return value. Inste
 
 Side note: At least in Node.js, all callbacks are assumed to have a signature where the `error` argument comes first. And really, your code should comply with that unwritten law.
 
-However, there is a common »problem«: Asynchronous code does not imply concurrency, where a multitude of »code frames« (i.e. threads) is executed in quasi-parallel. JavaScript doesn’t know threads. What it can do, is letting you create different code frames, which are executed independently, i.e. with said `setTimeout()`, which you can use to decouple a block of code from your current execution frame. But at any time only one of these frames is active.[^Threads in JavaScript]
+However, there is a common »problem«: Asynchronous code does not imply concurrency, where a multitude of »code frames« (i.e. threads) is executed in quasi-parallel. JavaScript doesn’t know threads. What it can do, is letting you create different code frames, which are executed independently, i.e. with said `setTimeout()`, which you can use to decouple a block of code from your current execution frame. But at any time only one of these frames is active.[^Threads]
 
 A typical example where concurrency might be useful is [`array.forEach()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach). Suppose you want to do quite complex, time consuming computations by iterating over each item in an array. First attempt:
 
@@ -59,6 +59,6 @@ That code will always output »bar« first, thus the interpreter directly contin
 
 There was once the idea of [`setImmediate()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/setImmediate), which does exactly the same as `setTimeout(func, 0)`—but the equality of both approaches is the reason why it’s unlikely we may ever see it in the wild.[^setImmediate]
 
-[^Threads in JavaScript]: Well, it is not absolutely true. With the [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) you can sort of mimic thread-like behavior in the browser, but it’s often an overkill approach. In Node.js there is the [Cluster](https://nodejs.org/api/cluster.html) core module.
+[^Threads]: Well, it is not absolutely true. With the [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) you can sort of mimic thread-like behavior in the browser, but it’s often an overkill approach. In Node.js there is the [Cluster](https://nodejs.org/api/cluster.html) core module.
 
 [^setImmediate]: `setImmediate()` is currently available in IE10 and Node.js. The latter also knows the `process.nextTick()` method, which again is used to decouple parts of code and is said to be more efficient.
