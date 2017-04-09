@@ -1,0 +1,55 @@
+.footer {
+
+  padding: $spacing-small;
+  border-top: 1px solid $color-lines;
+  text-align: center;
+  color: $color-unremarkable;
+
+  @include respond-medium {
+    padding: $spacing-medium;
+  }
+
+  @include respond-large {
+    padding: $spacing-large;
+  }
+
+  a {
+    color: $color-content;
+  }
+
+  &__wrapper {
+
+    max-width: $max-wrapper-width;
+    margin: 0 auto;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+
+  }
+
+  &__copyright {
+    font-family: $font-family-headlines, sans-serif;
+    font-weight: $font-weight-headlines;
+    text-transform: uppercase;
+    color: $color-content;
+  }
+
+  &__links {
+
+    font-size: 0;
+    list-style: none;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      margin: 0 $spacing-small;
+      font-family: $font-family-headlines, sans-serif;
+      font-weight: $font-weight-headlines;
+      font-size: $font-size;
+      text-transform: uppercase;
+    }
+
+  }
+
+}

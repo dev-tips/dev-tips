@@ -1,0 +1,11 @@
+@mixin respond-medium {
+  @media screen and (min-width: $breakpoint-medium) {
+    @content;
+  }
+}
+
+@mixin respond-large {
+  @media screen and (min-width: $breakpoint-large) {
+    @content;
+  }
+}

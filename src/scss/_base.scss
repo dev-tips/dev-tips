@@ -1,0 +1,204 @@
+@import url('http://fonts.googleapis.com/css?family=#{str-replace($font-family-copy, ' ', '+')}:#{$font-weight-copy},#{$font-weight-copy-bold}|#{str-replace($font-family-headlines, ' ', '+')}:#{$font-weight-headlines}');
+
+* {
+
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  -webkit-text-size-adjust: 100%;
+
+  &,
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+
+}
+
+body {
+
+  background: $color-background;
+  color: $color-text;
+  font-family: $font-family-copy, sans-serif;
+  font-size: $font-size;
+  font-weight: $font-weight-copy;
+  line-height: $line-height;
+  overflow-x: hidden;
+
+  @include respond-medium {
+    font-size: $font-size-medium;
+  }
+
+  @include respond-large {
+    font-size: $font-size-large;
+  }
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+  margin-bottom: ($spacing-small / 2);
+  font-family: $font-family-headlines, sans-serif;
+  font-weight: $font-weight-headlines;
+  color: $color-primary;
+
+  @include respond-medium {
+    margin-bottom: ($spacing-medium / 2);
+  }
+
+  @include respond-large {
+    margin-bottom: ($spacing-large / 2);
+  }
+
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+code {
+  display: inline-block;
+  margin: 0 0.1em;
+  padding: 0 0.3em;
+  background: $color-code;
+  color: $color-code-text;
+  border-radius: 0.2em;
+  line-height: 1.5;
+}
+
+p,
+pre {
+
+  margin-bottom: ($spacing-small / 2);
+
+  @include respond-medium {
+    margin-bottom: ($spacing-medium / 2);
+  }
+
+  @include respond-large {
+    margin-bottom: ($spacing-large / 2);
+  }
+
+}
+
+pre {
+
+  padding: $spacing-small;
+  background: $color-code;
+  font-size: $font-size;
+
+  @include respond-medium {
+    padding: $spacing-medium;
+  }
+
+  @include respond-large {
+    position: relative;
+    width: 123vw;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: $spacing-large 0 (-1 * $spacing-large) 0;
+    padding: $spacing-large;
+  }
+
+  code {
+    margin: 0;
+    padding: 0;
+  }
+
+  + *{
+
+    @include respond-large {
+      margin-top: ($spacing-large * 2);
+    }
+
+  }
+
+  + pre {
+
+    @include respond-large {
+      margin-top: $spacing-large;
+      border-top: 1px solid darken($color-code, 5%);
+    }
+
+  }
+
+  .hljs {
+
+    padding: 0;
+
+    @include respond-large {
+      max-width: $max-wrapper-width;
+      margin: 0 auto;
+    }
+
+  }
+
+}
+
+ul,
+ol {
+
+  margin-bottom: ($spacing-small / 2);
+
+  @include respond-medium {
+    margin-bottom: ($spacing-medium / 2);
+  }
+
+  @include respond-large {
+    margin-bottom: ($spacing-large / 2);
+  }
+
+}
+
+ul {
+  list-style: square;
+  margin-left: 1.3em;
+}
+
+ol {
+  list-style: decimal;
+  margin-left: 1.1em;
+}
+
+blockquote {
+
+  border-left: 2px solid $color-unremarkable;
+  padding-left: ($spacing-small / 2);
+
+  @include respond-medium {
+    padding-left: ($spacing-medium / 2);
+  }
+
+  @include respond-large {
+    margin-left: ($spacing-large / -2);
+    padding-left: ($spacing-large / 2);
+  }
+
+}
+
+a {
+
+  text-decoration: none;
+  color: $color-primary;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

@@ -1,0 +1,25 @@
+mixin article(variant)
+  article.article(class=(variant ? 'article--' + variant : ''), itemscope, itemtype='http://schema.org/BlogPosting')
+    .article__wrapper
+      block
+
+mixin articleHeadline(title)
+  h1.article__headline(itemprop='name') !{title}
+
+mixin articleMeta()
+  .article__meta
+    block
+
+mixin articleDate(timestamp)
+  .article__date(datetime=formatDate(timestamp), itemprop='datePublished') !{formatDate(timestamp, 'MMMM Do YYYY')}
+
+mixin articleContributors(contributors)
+  - const list = contributors.split(',').map((contributor) => contributor.trim())
+  ul.article__contributors
+    each contributor in list
+      li.article__contributor
+        +contributor(contributor)
+
+mixin articleContent()
+  .article__content(itemprop='articleBody')
+    block

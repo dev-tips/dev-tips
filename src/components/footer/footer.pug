@@ -1,0 +1,22 @@
+mixin footer()
+  footer.footer
+    .footer__wrapper
+      block
+
+mixin footerCopyright()
+  p.footer__copyright © !{(new Date().getFullYear())} !{site}
+
+mixin footerMasthead()
+  .footer__masthead
+    p.footer__license
+      | All articles are licensed under #[a(href='https://creativecommons.org/licenses/by-sa/3.0/') CC-BY-SA 3.0].
+    p.footer__github
+      | If you’d like to contribute to this site, simply head over to its #[a(href='https://github.com/rasshofer/frontend-development') GitHub repository], fork it, make your contributions, and send a pull request.
+
+mixin footerLinks()
+  ul.footer__links
+    block
+
+mixin footerLink(url, title)
+  li.footer__link
+    a(href=url) !{title}

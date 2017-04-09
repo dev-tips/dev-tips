@@ -1,0 +1,14 @@
+extends layout.pug
+
+block content
+  +section()
+    h1 !{title}
+    | !{markdown(preamble)}
+    - let contributors = []
+    each page in genesis.children.filter((page) => page.visible).reverse()
+      - contributors = contributors.concat(page.contributors.split(',').map((contributor) => contributor.trim()))
+    +list()
+      each contributor in contributors.filter((value, index, self) => self.indexOf(value) === index).sort()
+        +listItem()
+          +contributor(contributor)
+    | !{markdown(epilogue)}

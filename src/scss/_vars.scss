@@ -1,0 +1,29 @@
+$breakpoint-medium: 500px;
+$breakpoint-large: 1000px;
+
+$spacing-small: 20px;
+$spacing-medium: 40px;
+$spacing-large: 80px;
+
+$color-background: #282c34;
+$color-content: #fff;
+$color-text: #666;
+$color-primary: #000;
+$color-unremarkable: #aaa;
+$color-code: #282c34;
+$color-code-text: #abb2bf;
+$color-lines: mix($color-unremarkable, $color-background, 25%);
+
+$font-size: 16px;
+$font-size-medium: 18px;
+$font-size-large: 20px;
+$line-height: 1.75;
+
+$font-family-copy: 'Open Sans';
+$font-family-headlines: 'Montserrat';
+
+$font-weight-copy: 400;
+$font-weight-copy-bold: 700;
+$font-weight-headlines: 700;
+
+$max-wrapper-width: 700px;

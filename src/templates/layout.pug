@@ -1,0 +1,30 @@
+include components.pug
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
+    if (description)
+      meta(name='description', content=description)
+    block meta
+    if (title)
+      title !{title} – !{site}
+    else
+      title !{site}
+    link(rel='shortcut icon', href=basepath('/favicon.ico'))
+    link(href=basepath('/css/style.css'), rel='stylesheet')
+    link(rel='image_src', href=basepath('/img/share.jpg'))
+    block head
+  body
+    +header()
+      +logo(genesis.url, title)
+    block content
+    +footer()
+      +footerCopyright()
+      +footerMasthead()
+      - const contributorsPage = findPageByUrl('/contributors')
+      if (contributorsPage)
+        +footerLinks()
+          +footerLink(contributorsPage.url, contributorsPage.title)
+    script(src=basepath('/js/scripts.js'))

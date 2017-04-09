@@ -1,0 +1,25 @@
+.section {
+
+  padding: $spacing-small;
+  background: $color-content;
+
+  @include respond-medium {
+    padding: $spacing-medium;
+  }
+
+  @include respond-large {
+    padding: $spacing-large;
+  }
+
+  &__wrapper {
+
+    max-width: $max-wrapper-width;
+    margin: 0 auto;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+
+  }
+
+}

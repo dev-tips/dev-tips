@@ -1,0 +1,46 @@
+.header {
+
+  padding: $spacing-small;
+  background: url('../img/header-small.jpg') 50% 50% no-repeat;
+  background-size: cover;
+
+  @include respond-medium {
+    padding: $spacing-medium;
+  }
+
+  @include respond-large {
+    padding: $spacing-large;
+    background-image: url('../img/header.jpg');
+  }
+
+  &__wrapper {
+
+    max-width: $max-wrapper-width;
+    margin: 0 auto;
+
+    @include respond-medium {
+      text-align: center;
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+
+  }
+
+  &__logo {
+
+    display: block;
+    margin-bottom: $spacing-small;
+    text-align: center;
+    font-size: 20px;
+
+    &,
+    &:hover {
+      text-decoration: none;
+      color: $color-text;
+    }
+
+  }
+
+}

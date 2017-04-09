@@ -1,0 +1,28 @@
+.contributor {
+
+  $avatar-size: (1em * $line-height);
+
+  display: inline-block;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &__avatar {
+    display: inline-block;
+    width: $avatar-size;
+    height: $avatar-size;
+    margin-right: ($spacing-small / 2);
+    vertical-align: top;
+  }
+
+  &__username {
+
+    &:before {
+      content: '@';
+      opacity: 0.5;
+    }
+
+  }
+
+}

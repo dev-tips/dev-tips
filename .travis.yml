@@ -1,0 +1,11 @@
+sudo: false
+language: node_js
+node_js:
+  - "7"
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
+  local_dir: build

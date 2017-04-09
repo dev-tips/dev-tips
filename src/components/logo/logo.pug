@@ -1,0 +1,10 @@
+mixin logo(url, title)
+  a.logo(href=url)
+    svg.logo__image(viewbox='0 0 50 50')
+      path(fill='currentColor', fill-rule='evenodd', d='M.008 0c16.666.005 33.326.005 49.986 0 .005 16.668.01 33.332 0 50-16.66-.005-33.32-.01-49.98 0-.027-12.065-.006-24.13-.01-36.196H25.13v7.03c-6.03.005-12.06 0-18.09 0-.006 2.302-.006 4.603 0 6.9 2.993 0 5.983-.005 8.977.005v7.024c-2.994.005-5.994-.01-8.988.01.01 2.73.004 5.457.004 8.19h35.934V7.035H.003c0-2.342-.005-4.69.005-7.034z')
+    .logo__title
+      - const partials = site.split(' ')
+      each partial, index in partials
+        if (index > 0)
+          =' '
+        span.logo__partial !{partial}

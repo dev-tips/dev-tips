@@ -1,0 +1,7 @@
+extends layout.pug
+
+block content
+  +section()
+    +list()
+      each page in genesis.children.filter((page) => page.visible).reverse()
+        +listItem(page.url, page.title, formatDate(page.date, 'MMMM Do YYYY'))

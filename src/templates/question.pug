@@ -1,0 +1,10 @@
+extends layout.pug
+
+block content
+  +article('question')
+    +articleHeadline(title)
+    +articleMeta(formatDate(date))
+      +articleDate(date)
+      +articleContributors(contributors)
+    +articleContent()
+      | !{markdown(answer)}
