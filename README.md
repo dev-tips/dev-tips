@@ -2,7 +2,7 @@
 
 > Tips, Tricks, and Techniques on Frontend Development
 
-[Frontend-Development.com](https://frontend-development.com/) aims to become a collection of tiny code snippets and tutorials that not only show what HTML, CSS, and JS can do, but also describe best practices and principles every good developer should know and understand. It’s about teaching the audience using small and compressed pieces of information (i.e. code snippets) on very specific tasks. Feel free to contribute!
+[Frontend-Development.com](http://frontend-development.com/) aims to become a collection of tiny code snippets and tutorials that not only show what HTML, CSS, and JS can do, but also describe best practices and principles every good developer should know and understand. It’s about teaching the audience using small and compressed pieces of information (i.e. code snippets) on very specific tasks. Feel free to contribute!
 
 ## Getting started
 
@@ -21,7 +21,7 @@ You’ll be able to access your local instance via [http://localhost:1337/](http
 
 Besides the `npm run build` task, there is `npm run dev` as well, which does exactly the same but additionally starts watching the file system for changes and rebuilds every time a change occurs.
 
-The `master` branch gets deployed to GitHub Pages automatically via Travis CI. You can find the deployed version of this site at https://frontend-development.com/.
+The `master` branch gets deployed to GitHub Pages automatically via Travis CI. You can find the deployed version of this site at http://frontend-development.com/.
 
 ## Contributing
 
