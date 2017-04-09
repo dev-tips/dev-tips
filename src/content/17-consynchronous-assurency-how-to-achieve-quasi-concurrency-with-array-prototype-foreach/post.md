@@ -15,7 +15,7 @@ Text:
 One of the most important concepts in JavaScript is asynchronous programming. The standard model for this technique looks like this:
 
 ```javascript
-doSomething(some, args, function(error, result) {
+doSomething(some, args, function (error, result) {
   /* callback */
 });
 ```
@@ -29,7 +29,7 @@ However, there is a common »problem«: Asynchronous code does not imply concurr
 A typical example where concurrency might be useful is [`array.forEach()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach). Suppose you want to do quite complex, time consuming computations by iterating over each item in an array. First attempt:
 
 ```javascript
-arr.forEach(function(val, idx) {
+arr.forEach(function (val, idx) {
   /* super complex code goes here */
 });
 ```
@@ -37,7 +37,7 @@ arr.forEach(function(val, idx) {
 What happens is that each item in the array is processed in order, but not concurrent. At all times, there is only one instance of the lambda function running, each handling one item after another. The real problem comes from the fact that `forEach()` blocks, just like the following piece of code, which is old as hell:
 
 ```javascript
-for(var i = 0; i < arr.length; i++) {
+for (var i = 0; i < arr.length; i++) {
   /* ... */
 }
 ```
@@ -45,8 +45,8 @@ for(var i = 0; i < arr.length; i++) {
 Now, how can we combine the two concepts, concurrency and asynchronicity, so that code like this doesn’t block? Well, just wrap your lambda in another lambda, that calls `setTimeout()`:
 
 ```javascript
-arr.forEach(function(val, idx) {
-  setTimeout(function() {
+arr.forEach(function (val, idx) {
+  setTimeout(function () {
     /* actual code goes here */
     console.log('foo ' + idx);
   }, 0);

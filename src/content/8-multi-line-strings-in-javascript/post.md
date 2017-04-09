@@ -63,7 +63,7 @@ var example = 'Lorem ipsum dolor sit amet\n\
 An initially confusing but working "trick" to solve this problem is wrapping the text within a block comment within an anonymous function.
 
 ```javascript
-var example = (function() {/*
+var example = (function () {/*
 Lorem ipsum dolor sit amet
 consetetur sadipscing elitr
 sed diam nonumy eirmod tempor invidunt

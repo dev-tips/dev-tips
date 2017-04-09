@@ -17,7 +17,7 @@ iPhones, iPads, and iPods offer the opportunity to integrate Web apps (including
 ```javascript
 var a = document.querySelectorAll('a[href]');
 for (var i = 0; i < a.length; i++) {
-    a[i].onclick = function() {
+    a[i].onclick = function () {
         window.location = this.getAttribute('href');
         return false;
     }
@@ -27,7 +27,7 @@ for (var i = 0; i < a.length; i++) {
 If you’re using jQuery in your Web app, you can use the following, much-shorter version of the snippet.
 
 ```javascript
-$(document).on('click', 'a[href]', function(event) {
+$(document).on('click', 'a[href]', function (event) {
     event.preventDefault();
     window.location = $(this).attr('href');
 });

@@ -17,7 +17,7 @@ As your scripts may be used together with some other scripts you can’t influen
 Let’s assume the following function is stored within `vendor.js`…
 
 ```js
-var someVendorFunction = function() {
+var someVendorFunction = function () {
     console.log(arguments);
 }
 ```
@@ -25,7 +25,7 @@ var someVendorFunction = function() {
 …and your own scripts (wrapped in a immediate function) are stored within `app.js`…
 
 ```js
-(function(window, undefined) {
+(function (window, undefined) {
     window.app = {};
 })(window);
 ```
@@ -37,7 +37,7 @@ As the variable declaration within `vendor.js` is missing a semicolon at its end
 As you’re not able to control scripts that get concatenated together with your scripts, the best way to prevent such errors is to prefix your immediate functions with a semicolon.
 
 ```js
-;(function(window, undefined) {
+;(function (window, undefined) {
     window.app = {};
 })(window);
 ```

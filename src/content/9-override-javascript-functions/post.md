@@ -15,13 +15,13 @@ Text:
 It‘s very easy to override functions in JavaScript. You simply assign another function to the function name.
 
 ```javascript
-var myFunction = function() {
+var myFunction = function () {
     // do something...
 };
 ```
 
 ```javascript
-myFunction = function() {
+myFunction = function () {
     // do something different...
 };
 ```
@@ -29,9 +29,9 @@ myFunction = function() {
 But it’s also possible to extend the existing function in order to execute something before or after the existing function.
 
 ```javascript
-myFunction = (function() {
+myFunction = (function () {
     var oldMyFunction = myFunction;
-    return function() {
+    return function () {
         // do something before...
         oldMyFunction.apply(this, arguments);
         // ...and after

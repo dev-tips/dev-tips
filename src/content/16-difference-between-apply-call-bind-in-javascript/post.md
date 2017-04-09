@@ -40,11 +40,11 @@ All three function calls above do exactly the same.  Both `.apply()` and `.call(
 Whereas `.bind()` is used when you want a function to later be called with a certain context—which is useful in events. While `.apply()` and `.call()` call the function immediately, `.bind()` creates and returns a new function that—when executed later—will have the correct context (= bound to a different `this`) set for calling the original function. This way you can maintain context in asynchronous callbacks and events.
 
 ```js
-var pollute = function() {
+var pollute = function () {
     this.innerHTML = 'Demo';
 };
 
-document.getElementById('demo').addEventListener('click', function() {
+document.getElementById('demo').addEventListener('click', function () {
   window.setTimeout(pollute.bind(this), 1000);
 });
 ```
@@ -52,7 +52,7 @@ document.getElementById('demo').addEventListener('click', function() {
 You can also append extra parameters after the first parameter and `.bind()` will pass those values into the original function before passing in the extra parameters you pass to the bound function.
 
 ```js
-var sum = function(a, b) {
+var sum = function (a, b) {
     return a + b;
 };
 
