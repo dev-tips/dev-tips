@@ -71,7 +71,11 @@ gulp.task('cms', () => cms({
       if (image) {
         const width = attrs.width || image.width;
         const height = attrs.height || image.height;
-        return `<img data-original="${image.url}" alt="${attrs.title || image.title || image.alt || ''}"${width ? ` width="${width || ''}"` : ''}${height ? ` height="${height || ''}"` : ''}${attrs.title ? ` title="${attrs.title || ''}"` : ''}>`;
+        return `
+          <span class="image">
+            <img data-original="${image.url}" alt="${attrs.title || image.title || image.alt || ''}"${width ? ` width="${width || ''}"` : ''}${height ? ` height="${height || ''}"` : ''}${attrs.title ? ` title="${attrs.title || ''}"` : ''}>
+          </span>
+        `;
       } else {
         throw new Error(`Missing image: ${attrs.image}`);
       }
