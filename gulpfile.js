@@ -4,6 +4,7 @@ const consolidate = require('consolidate');
 const markdown = require('markdown-it')().use(require('markdown-it-footnote')).use(require('markdown-it-highlightjs'));
 const gulp = require('gulp');
 const babel = require('gulp-babel');
+const concat = require('gulp-concat');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
@@ -13,6 +14,7 @@ const runSequence = require('run-sequence');
 const importOnce = require('node-sass-import-once');
 const moment = require('moment');
 
+const vendor = path.resolve(__dirname, 'node_modules');
 const src = path.resolve(__dirname, 'src');
 const content = path.resolve(src, 'content');
 const templates = path.resolve(src, 'templates');
@@ -37,7 +39,10 @@ gulp.task('css', () => {
 });
 
 gulp.task('js', () => {
-  gulp.src(path.resolve(src, 'js', 'scripts.js')).pipe(babel()).pipe(uglify()).pipe(gulp.dest(path.resolve(output, 'js')));
+  gulp.src([
+    path.resolve(vendor, 'vanilla-lazyload', 'dist', 'lazyload.js'),
+    path.resolve(src, 'js', 'scripts.js')
+  ]).pipe(concat('scripts.js')).pipe(babel()).pipe(uglify()).pipe(gulp.dest(path.resolve(output, 'js')));
 });
 
 gulp.task('cms', () => cms({
@@ -59,6 +64,18 @@ gulp.task('cms', () => cms({
   },
   globals: {
     site: 'Frontend Development'
+  },
+  shortcodes: {
+    image: (attrs, page) => {
+      const image = page.images.find((item) => item.url.endsWith(`/${attrs.image}`));
+      if (image) {
+        const width = attrs.width || image.width;
+        const height = attrs.height || image.height;
+        return `<img data-original="${image.url}" alt="${attrs.title || image.title || image.alt || ''}"${width ? ` width="${width || ''}"` : ''}${height ? ` height="${height || ''}"` : ''}${attrs.title ? ` title="${attrs.title || ''}"` : ''}>`;
+      } else {
+        throw new Error(`Missing image: ${attrs.image}`);
+      }
+    }
   }
 }));
 
