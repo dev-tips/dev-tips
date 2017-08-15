@@ -22,10 +22,6 @@
       max-width: $max-wrapper-width-oversized;
     }
 
-    > *:last-child {
-      margin-bottom: 0;
-    }
-
   }
 
   &__meta {
@@ -112,6 +108,10 @@
     @include respond-large {
       flex: 1;
       max-width: $max-wrapper-width;
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
     }
 
   }
