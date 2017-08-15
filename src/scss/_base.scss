@@ -86,13 +86,12 @@ code {
   line-height: 1.5;
 }
 
-p,
-pre {
+p {
 
-  margin-bottom: ($spacing-small / 2);
+  margin-bottom: $spacing-small;
 
   @include respond-medium {
-    margin-bottom: ($spacing-medium / 2);
+    margin-bottom: $spacing-medium;
   }
 
   @include respond-large {
@@ -103,52 +102,56 @@ pre {
 
 pre {
 
-  padding: $spacing-small;
+  position: relative;
   background: $color-code;
-  font-size: $font-size;
+  overflow: hidden;
+  margin: 0 (-1 * $spacing-small) $spacing-small (-1 * $spacing-small);
 
   @include respond-medium {
-    padding: $spacing-medium;
+    margin: 0 (-1 * $spacing-medium) $spacing-medium (-1 * $spacing-medium);
   }
 
   @include respond-large {
-    position: relative;
-    width: 123vw;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: $spacing-large 0 (-1 * $spacing-large) 0;
-    padding: $spacing-large;
+    margin: 0 (-1 * ($spacing-large / 2)) ($spacing-large / 2) (-1 * ($spacing-large / 2));
   }
 
   code {
+
     margin: 0;
-    padding: 0;
-  }
 
-  + * {
+    &,
+    &.hljs {
 
-    @include respond-large {
-      margin-top: ($spacing-large * 2);
+      padding: $spacing-small;
+
+      @include respond-medium {
+        padding: $spacing-medium;
+      }
+
+      @include respond-large {
+        padding: ($spacing-large / 2);
+      }
+
     }
 
-  }
+    &:before {
 
-  + pre {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 100%;
+      box-shadow: 0 0 ($spacing-small / 2) ($spacing-small / 2) $color-code;
 
-    @include respond-large {
-      margin-top: $spacing-large;
-      border-top: 1px solid darken($color-code, 5%);
-    }
+      @include respond-medium {
+        box-shadow: 0 0 ($spacing-medium / 2) ($spacing-medium / 2) $color-code;
+      }
 
-  }
+      @include respond-large {
+        box-shadow: 0 0 ($spacing-large / 2) ($spacing-large / 2) $color-code;
+      }
 
-  .hljs {
-
-    padding: 0;
-
-    @include respond-large {
-      max-width: $max-wrapper-width;
-      margin: 0 auto;
     }
 
   }
