@@ -7,6 +7,7 @@ const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
+const groupMediaQueries = require('gulp-group-css-media-queries');
 const uglify = require('gulp-uglify');
 const cleanCss = require('gulp-clean-css');
 const minifyHtml = require('gulp-htmlmin');
@@ -35,7 +36,7 @@ gulp.task('css', () => {
     browsers: [
       'last 2 versions'
     ]
-  })).pipe(cleanCss()).pipe(gulp.dest(path.resolve(output, 'css')));
+  })).pipe(groupMediaQueries()).pipe(cleanCss()).pipe(gulp.dest(path.resolve(output, 'css')));
 });
 
 gulp.task('js', () => {
