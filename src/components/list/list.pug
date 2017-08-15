@@ -5,7 +5,7 @@ mixin list()
 mixin listItem(url, title, meta)
   li.list__item
     if (url && title)
-      a.list__title(href=url) !{title}
+      a.list__title(href=url) #{title}
     if (meta)
-      p.list__meta !{meta}
+      p.list__meta #{meta}
     block

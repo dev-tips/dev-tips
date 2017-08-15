@@ -4,14 +4,14 @@ doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
     if (description)
       meta(name='description', content=description)
     block meta
     if (title)
-      title !{title} – !{site}
+      title #{title} – #{site}
     else
-      title !{site}
+      title #{site}
     link(rel='shortcut icon', href=basepath('/favicon.ico'))
     link(href=basepath('/css/style.css'), rel='stylesheet')
     link(rel='image_src', href=basepath('/img/share.jpg'))
@@ -27,4 +27,4 @@ html(lang='en')
       if (contributorsPage)
         +footerLinks()
           +footerLink(contributorsPage.url, contributorsPage.title)
-    script(src=basepath('/js/scripts.js'))
+    script(src=basepath('/js/scripts.js'), async)

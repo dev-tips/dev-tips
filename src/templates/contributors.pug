@@ -2,7 +2,7 @@ extends layout.pug
 
 block content
   +section()
-    h1 !{title}
+    h1 #{title}
     | !{shortcodes(markdown(preamble))}
     - let contributors = []
     each page in genesis.children.filter((page) => page.visible).reverse()

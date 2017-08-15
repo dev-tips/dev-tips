@@ -4,14 +4,14 @@ mixin article(variant)
       block
 
 mixin articleHeadline(title)
-  h1.article__headline(itemprop='name') !{title}
+  h1.article__headline(itemprop='name') #{title}
 
 mixin articleMeta()
   .article__meta
     block
 
 mixin articleDate(timestamp)
-  .article__date(datetime=formatDate(timestamp), itemprop='datePublished') !{formatDate(timestamp, 'MMMM Do YYYY')}
+  .article__date(datetime=formatDate(timestamp), itemprop='datePublished') #{formatDate(timestamp, 'MMMM Do YYYY')}
 
 mixin articleContributors(contributors)
   - const list = contributors.split(',').map((contributor) => contributor.trim())

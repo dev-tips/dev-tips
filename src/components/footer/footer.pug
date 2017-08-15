@@ -4,7 +4,7 @@ mixin footer()
       block
 
 mixin footerCopyright()
-  p.footer__copyright © !{(new Date().getFullYear())} !{site}
+  p.footer__copyright © #{(new Date().getFullYear())} #{site}
 
 mixin footerMasthead()
   .footer__masthead
@@ -19,4 +19,4 @@ mixin footerLinks()
 
 mixin footerLink(url, title)
   li.footer__link
-    a(href=url) !{title}
+    a(href=url) #{title}
