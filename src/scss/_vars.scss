@@ -17,14 +17,21 @@ $color-lines: mix($color-unremarkable, $color-background, 25%);
 $font-size: 16px;
 $font-size-medium: 18px;
 $font-size-large: 20px;
-$line-height: 1.75;
+$font-size-quotes: 1.5em;
 
-$font-family-copy: 'Open Sans';
+$line-height: 1.75;
+$line-height-quotes: 1.25;
+
+$font-family-copy: 'Roboto';
+$font-family-quotes: 'Vollkorn';
 $font-family-headlines: 'Montserrat';
 
 $font-weight-copy: 400;
 $font-weight-copy-bold: 700;
+$font-weight-quotes: 400;
 $font-weight-headlines: 700;
+
+$font-style-quotes: italic;
 
 $max-wrapper-width: 700px;
 $max-wrapper-width-oversized: 900px;

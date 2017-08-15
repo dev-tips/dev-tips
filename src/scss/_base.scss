@@ -1,4 +1,4 @@
-@import url('http://fonts.googleapis.com/css?family=#{str-replace($font-family-copy, ' ', '+')}:#{$font-weight-copy},#{$font-weight-copy-bold}|#{str-replace($font-family-headlines, ' ', '+')}:#{$font-weight-headlines}');
+@import url('http://fonts.googleapis.com/css?family=#{str-replace($font-family-copy, ' ', '+')}:#{$font-weight-copy},#{$font-weight-copy-bold}|#{str-replace($font-family-quotes, ' ', '+')}:#{$font-weight-quotes}#{$font-style-quotes}|#{str-replace($font-family-headlines, ' ', '+')}:#{$font-weight-headlines}');
 
 * {
 
@@ -178,16 +178,28 @@ ol {
 
 blockquote {
 
-  border-left: 2px solid $color-unremarkable;
-  padding-left: ($spacing-small / 2);
+  $quotation-mark-size: 1em;
+
+  padding-left: calc(#{$quotation-mark-size} + #{($spacing-small / 2)});
+  background: url('../img/quote.svg') 0 (((1em * $line-height-quotes) - 1em) / 2) no-repeat;
+  background-size: $quotation-mark-size auto;
+  font-family: $font-family-quotes, serif;
+  font-weight: $font-weight-quotes;
+  font-style: $font-style-quotes;
+  font-size: $font-size-quotes;
+  line-height: $line-height-quotes;
+  color: $color-unremarkable;
 
   @include respond-medium {
-    padding-left: ($spacing-medium / 2);
+    padding-left: calc(#{$quotation-mark-size} + #{($spacing-medium / 2)});
   }
 
   @include respond-large {
-    margin-left: ($spacing-large / -2);
-    padding-left: ($spacing-large / 2);
+    padding-left: calc(#{$quotation-mark-size} + #{($spacing-large / 3)});
+  }
+
+  a {
+    color: $color-unremarkable;
   }
 
 }
