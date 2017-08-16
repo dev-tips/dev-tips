@@ -33,10 +33,10 @@
     }
 
     @include respond-large {
-      flex: 1;
+      flex: 1 1 auto;
       display: flex;
       flex-direction: column;
-      max-width: ($max-wrapper-width-oversized - $max-wrapper-width);
+      width: ($max-wrapper-width-oversized - $max-wrapper-width);
       margin-bottom: ($spacing-large / 2);
     }
 
@@ -97,7 +97,7 @@
     }
 
     @include respond-large {
-      width: 100%;
+      flex: 1 0 100%;
       font-size: 40px;
     }
 
@@ -106,8 +106,8 @@
   &__content {
 
     @include respond-large {
-      flex: 1;
-      max-width: $max-wrapper-width;
+      flex: 1 1 auto;
+      width: $max-wrapper-width;
     }
 
     > *:last-child {
