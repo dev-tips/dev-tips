@@ -23,39 +23,35 @@ You may have heard this assumption—or you even made it yourself? However, espe
 When a JavaScript runtime error (including syntax errors and exceptions thrown within handlers) occurs, an `error` event is fired at `window` and `window.onerror()` is invoked. Thus it makes sense to implement a custom `window.onerror` callback that captures, processes, and stores those errors. As there may be an other `window.onerror` callback defined already, it’s recommended to override/extend the callback function instead of replacing it in order to execute the error reporting before the existing function.
 
 ```js
-(() => {
+// Store the original error handler callback function
+const originalErrorHandler = window.onerror;
 
-  // Store the original error handler callback function
-  const originalErrorHandler = window.onerror;
+// Do something with the error object
+const reportError = (body) => {
+  // Do something
+};
 
-  // Do something with the error object
-  const reportError = (body) => {
-    // Do something
-  };
+// Override the global error handler
+window.onerror = (errorMessage, url, lineNumber, columnNumber, errorObject) => {
 
-  // Override the global error handler
-  window.onerror = (errorMessage, url, lineNumber, columnNumber, errorObject) => {
+  // Report the error
+  reportError({
+    type: 'Error',
+    message: errorMessage,
+    url: url,
+    line: lineNumber,
+    column: columnNumber,
+    error: errorObject
+  });
 
-    // Report the error
-    reportError({
-      type: 'Error',
-      message: errorMessage,
-      url: url,
-      line: lineNumber,
-      column: columnNumber,
-      error: errorObject
-    });
+  // Run the original error handler callback (in case it is a proper function)
+  if (typeof originalErrorHandler === 'function') {
+    return originalErrorHandler(errorMessage, url, lineNumber, columnNumber, errorObject);
+  }
 
-    // Run the original error handler callback (in case it is a proper function)
-    if (typeof originalErrorHandler === 'function') {
-      return originalErrorHandler(errorMessage, url, lineNumber, columnNumber, errorObject);
-    }
+  return false;
 
-    return false;
-
-  };
-
-})();
+};
 ```
 
 It’s worth mentioning that while `window.onerror` has been available in browsers for quite some time, almost every browser implements `window.onerror` differently regarding the amout of arguments that are sent to to the listener function as well as the structure of those arguments.
