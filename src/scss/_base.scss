@@ -231,18 +231,3 @@ img {
   max-width: 100%;
   height: auto;
 }
-
-.image {
-
-  display: block;
-  margin: 0 (-1 * $spacing-small) $spacing-small (-1 * $spacing-small);
-
-  @include respond-medium {
-    margin: 0 (-1 * $spacing-medium) $spacing-medium (-1 * $spacing-medium);
-  }
-
-  @include respond-large {
-    margin: 0 (-1 * ($spacing-large / 2)) ($spacing-large / 2) (-1 * ($spacing-large / 2));
-  }
-
-}
