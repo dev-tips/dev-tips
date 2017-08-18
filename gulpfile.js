@@ -80,7 +80,8 @@ gulp.task('cms', () => cms({
       } else {
         throw new Error(`Missing image: ${attrs.image}`);
       }
-    }
+    },
+    math: (attrs) => `<span class="math">${attrs.math}</span>`,
   }
 }));
 
