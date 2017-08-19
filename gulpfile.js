@@ -85,7 +85,7 @@ gulp.task('cms', () => cms({
         throw new Error(`Missing image: ${attrs.image}`);
       }
     },
-    math: (attrs) => `<span class="math">${attrs.math}</span>`,
+    math: (attrs) => `<span class="math">${attrs.math.replace(/\|LEFT_PARENTHESIS\|/g, '(').replace(/\|RIGHT_PARENTHESIS\|/g, ')')}</span>`,
   }
 }));
 
