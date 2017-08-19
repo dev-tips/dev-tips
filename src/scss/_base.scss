@@ -77,13 +77,15 @@ h3 {
 }
 
 code {
-  display: inline-block;
-  margin: 0 0.1em;
-  padding: 0 0.3em;
+  display: inline;
+  margin: 0 0.3em;
+  padding: 0.15em;
   background: $color-code;
+  box-shadow: 0.15em 0 0 $color-code, -0.15em 0 0 $color-code;
   color: $color-code-text;
   border-radius: 0.2em;
   line-height: 1.5;
+  box-decoration-break: clone;
 }
 
 p {
@@ -118,6 +120,8 @@ pre {
   code {
 
     margin: 0;
+    box-shadow: none;
+    box-decoration-break: initial;
 
     &,
     &.hljs {
