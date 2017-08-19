@@ -3740,6 +3740,10 @@ strip-json-comments@~1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-1.0.4.tgz#1e15fbcac97d3ee99bf2d73b4c656b082bbafb91"
 
+striptags@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/striptags/-/striptags-3.0.1.tgz#48f0d6932549c47bb3582920c87527cf49a160c1"
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"

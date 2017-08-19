@@ -14,6 +14,7 @@ const minifyHtml = require('gulp-htmlmin');
 const runSequence = require('run-sequence');
 const importOnce = require('node-sass-import-once');
 const moment = require('moment');
+const striptags = require('striptags');
 
 const vendor = path.resolve(__dirname, 'node_modules');
 const src = path.resolve(__dirname, 'src');
@@ -61,7 +62,8 @@ gulp.task('cms', () => cms({
   },
   addons: {
     markdown: (input) => markdown.render(input),
-    formatDate: (timestamp, pattern) => moment(timestamp, 'X').format(pattern)
+    formatDate: (timestamp, pattern) => moment(timestamp, 'X').format(pattern),
+    stripTags: (input) => striptags(input)
   },
   globals: {
     site: 'Frontend Development'
