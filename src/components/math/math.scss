@@ -1,11 +1,13 @@
 .math {
-  display: inline-block;
-  margin: 0 .1em;
-  padding: 0 .3em;
-  background: #eee;
+  display: inline;
+  margin: 0 0.3em;
+  padding: 0.15em;
+  background: $color-math;
+  box-shadow: 0.15em 0 0 $color-math, -0.15em 0 0 $color-math;
+  border-radius: 0.2em;
   font-family: $font-family-quotes, serif;
   font-weight: $font-weight-quotes;
   font-style: $font-style-quotes;
-  border-radius: .2em;
   line-height: 1.5;
+  box-decoration-break: clone;
 }
