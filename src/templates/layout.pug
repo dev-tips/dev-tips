@@ -5,8 +5,8 @@ html(lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
-    if (description)
-      meta(name='description', content=description)
+    - const metaDescription = (description || text || '')
+    meta(name='description', content=(metaDescription.length > 160 ? `${metaDescription.substr(0, 160).trim()}…` : metaDescription))
     block meta
     if (title)
       title #{title} – #{site}
