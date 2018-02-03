@@ -359,7 +359,7 @@ Now the other Halstead measures/features are derived from these numbers with the
 
 ## CSSplexity & HalCSStead
 
-In order to simplify all these calculations, I developed two tools called [CSSplexity](https://www.npmjs.com/package/cssplexity) and [HalCSStead](https://www.npmjs.com/package/halcsstead). [CSSplexity CLI](https://www.npmjs.com/package/cssplexity-cli) allows you to get started immediately. [CSSplexity Visualization](https://www.npmjs.com/package/cssplexity-visualization) allows you to create control flow diagrams of CSS selectors as used within this post.
+In order to simplify all these calculations, I developed two tools called [CSSplexity](https://www.npmjs.com/package/cssplexity) and [HalCSStead](https://www.npmjs.com/package/halcsstead). [CSSplexity CLI](https://www.npmjs.com/package/cssplexity-cli) allows you to get started immediately. [CSSplexity Visualization](https://github.com/rasshofer/cssplexity-visualization) allows you to create control flow diagrams of CSS selectors as used within this post.
 
 (image: cssplexity.png)
 
