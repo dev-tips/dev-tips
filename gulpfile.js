@@ -44,7 +44,7 @@ gulp.task('js', () => {
   gulp.src([
     path.resolve(vendor, 'vanilla-lazyload', 'dist', 'lazyload.js'),
     path.resolve(src, 'js', 'scripts.js')
-  ]).pipe(concat('scripts.js')).pipe(babel()).pipe(uglify()).pipe(gulp.dest(path.resolve(output, 'js')));
+  ]).pipe(babel()).pipe(uglify()).pipe(concat('scripts.js')).pipe(gulp.dest(path.resolve(output, 'js')));
 });
 
 gulp.task('cms', () => cms({
@@ -80,7 +80,7 @@ gulp.task('cms', () => cms({
         }
         return `
           <span class="image${modifiers.length ? ` ${modifiers.map((modifier) => `image--${modifier}`).join(' ')}`: ''}">
-            <img data-original="${image.url}" alt="${attrs.title || image.title || image.alt || ''}"${width ? ` width="${width || ''}"` : ''}${height ? ` height="${height || ''}"` : ''}${attrs.title ? ` title="${attrs.title || ''}"` : ''}>
+            <img data-src="${image.url}" alt="${attrs.title || image.title || image.alt || ''}"${width ? ` width="${width || ''}"` : ''}${height ? ` height="${height || ''}"` : ''}${attrs.title ? ` title="${attrs.title || ''}"` : ''}>
           </span>
         `;
       } else {
@@ -89,7 +89,7 @@ gulp.task('cms', () => cms({
     },
     math: (attrs) => `<span class="math">${attrs.math.replace(/\|LEFT_PARENTHESIS\|/g, '(').replace(/\|RIGHT_PARENTHESIS\|/g, ')')}</span>`,
   }
-}));
+}).render());
 
 gulp.task('content', (done) => {
   runSequence('cms', 'html', done);

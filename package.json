@@ -9,34 +9,33 @@
     "test": "npm run build"
   },
   "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-preset-env": "^1.6.0",
-    "cms": "^1.5.0",
-    "consolidate": "^0.14.5",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "cms": "^1.6.0",
+    "consolidate": "^0.15.0",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-babel": "^7.0.0",
-    "gulp-clean-css": "^3.7.0",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean-css": "^3.9.2",
     "gulp-concat": "^2.6.1",
-    "gulp-group-css-media-queries": "^1.2.0",
-    "gulp-htmlmin": "^3.0.0",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-htmlmin": "^4.0.0",
     "gulp-minify-html": "^1.0.6",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "highlight.js": "^9.12.0",
-    "markdown-it": "^8.3.2",
+    "markdown-it": "^8.4.1",
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-highlightjs": "^3.0.0",
     "markdown-it-sub": "^1.0.0",
-    "moment": "^2.18.1",
-    "node-sass": "^4.5.3",
+    "moment": "^2.21.0",
+    "node-sass": "^4.7.2",
     "node-sass-import-once": "^1.2.0",
-    "pug": "^2.0.0-rc.3",
-    "run-sequence": "^2.1.0",
-    "sass-lint": "^1.10.2",
-    "striptags": "^3.0.1"
+    "pug": "^2.0.0-rc.4",
+    "run-sequence": "^2.2.1",
+    "striptags": "^3.1.1"
   },
   "dependencies": {
-    "vanilla-lazyload": "^8.0.3"
+    "vanilla-lazyload": "^10.4.2"
   }
 }
