@@ -1,4 +1,4 @@
-@import url('http://fonts.googleapis.com/css?family=#{str-replace($font-family-copy, ' ', '+')}:#{$font-weight-copy},#{$font-weight-copy-bold}|#{str-replace($font-family-quotes, ' ', '+')}:#{$font-weight-quotes}#{$font-style-quotes}|#{str-replace($font-family-headlines, ' ', '+')}:#{$font-weight-headlines}');
+@import url('https://fonts.googleapis.com/css?family=#{str-replace($font-family-copy, ' ', '+')}:#{$font-weight-copy},#{$font-weight-copy-bold}|#{str-replace($font-family-quotes, ' ', '+')}:#{$font-weight-quotes}#{$font-style-quotes}|#{str-replace($font-family-headlines, ' ', '+')}:#{$font-weight-headlines}');
 
 * {
 

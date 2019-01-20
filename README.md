@@ -2,7 +2,7 @@
 
 > Tips, Tricks, and Techniques on Frontend Development
 
-[Frontend-Development.com](http://frontend-development.com/) aims to become a collection of tiny code snippets and tutorials that not only show what HTML, CSS, and JS can do, but also describe best practices and principles every good developer should know and understand. It’s about teaching the audience using small and compressed pieces of information (i.e. code snippets) on very specific tasks. Feel free to contribute!
+[Frontend-Development.com](https://frontend-development.com/) aims to become a collection of tiny code snippets and tutorials that not only show what HTML, CSS, and JS can do, but also describe best practices and principles every good developer should know and understand. It’s about teaching the audience using small and compressed pieces of information (i.e. code snippets) on very specific tasks. Feel free to contribute!
 
 ## Getting started
 
@@ -21,7 +21,7 @@ You’ll be able to access your local instance via [http://localhost:1337/](http
 
 Besides the `npm run build` task, there is `npm run dev` as well, which does exactly the same but additionally starts watching the file system for changes and rebuilds every time a change occurs.
 
-The `master` branch gets deployed to GitHub Pages automatically via Travis CI. You can find the deployed version of this site at http://frontend-development.com/.
+The `master` branch gets deployed to GitHub Pages automatically via Travis CI. You can find the deployed version of this site at https://frontend-development.com/.
 
 ## Contributing
 
@@ -51,13 +51,13 @@ While Frontend-Development.com itself is released under the MIT license, all art
 
 - **Show some respect.** If you did not invent a certain programming feature you are writing about, but you know that someone else deserves credit, do not hesitate to include the inventor’s name (even if it’s just a nickname/username!) and link to her/his blog and/or GitHub profile.
 
-- **If you want, you may add your name to the contributors list.** Feel free to add your GitHub username to the `Contributors` field (= comma-separated list) in your `post.md` to be listed on the site’s [contributors list](http://frontend-development.com/contributors/).
+- **If you want, you may add your name to the contributors list.** Feel free to add your GitHub username to the `Contributors` field (= comma-separated list) in your `post.md` to be listed on the site’s [contributors list](https://frontend-development.com/contributors/).
 
 - **When it’s online: spread the word!**
 
 ## License
 
-Copyright (c) 2017 [Thomas Rasshofer](http://thomasrasshofer.com/)  
+Copyright (c) 2019 [Thomas Rasshofer](https://thomasrasshofer.com/)  
 Licensed under the MIT license.
 
 See LICENSE for more info.
