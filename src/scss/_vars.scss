@@ -21,8 +21,9 @@ $font-size-medium: 18px;
 $font-size-large: 20px;
 $font-size-quotes: 1.5em;
 
-$line-height: 1.75;
+$line-height: 1.5;
 $line-height-quotes: 1.25;
+$line-height-titles: 1.25;
 
 $font-family-copy: 'Roboto';
 $font-family-quotes: 'Old Standard TT';
@@ -31,9 +32,8 @@ $font-family-headlines: 'Montserrat';
 $font-weight-copy: 400;
 $font-weight-copy-bold: 700;
 $font-weight-quotes: 400;
-$font-weight-headlines: 700;
+$font-weight-headlines: 800;
 
 $font-style-quotes: italic;
 
-$max-wrapper-width: 700px;
-$max-wrapper-width-oversized: 1000px;
+$max-wrapper-width: 900px;

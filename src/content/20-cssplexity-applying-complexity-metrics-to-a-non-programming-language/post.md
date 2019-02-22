@@ -10,6 +10,10 @@ Contributors: rasshofer
 
 -----
 
+Highlight: true
+
+-----
+
 Text:
 
 »Specificity« is one of the most important (and unsettling?) concepts to understand when writing CSS. It’s a weight applied to a given CSS declaration by which browsers decide which property values are the most relevant to an element and, therefore, will be used. While there are already lots of articles and tools regarding specificity and how to beat it, I always wondered about the emerging »complexity«, the resulting decrease in CSS rendering performance, and the impact on the code quality in general.

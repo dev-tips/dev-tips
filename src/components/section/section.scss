@@ -1,5 +1,7 @@
 .section {
 
+  $component: &;
+
   padding: $spacing-small;
   background: $color-content;
 
@@ -8,10 +10,12 @@
   }
 
   @include respond-large {
+    max-width: ($max-wrapper-width + (2 * $spacing-large));
+    margin: (-2 * $spacing-large) auto 0;
     padding: $spacing-large;
   }
 
-  &__wrapper {
+  #{$component}__wrapper {
 
     max-width: $max-wrapper-width;
     margin: 0 auto;

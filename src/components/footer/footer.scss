@@ -1,7 +1,8 @@
 .footer {
 
+  $component: &;
+
   padding: $spacing-small;
-  border-top: 1px solid $color-lines;
   text-align: center;
   color: $color-unremarkable;
 
@@ -17,7 +18,7 @@
     color: $color-content;
   }
 
-  &__wrapper {
+  #{$component}__wrapper {
 
     max-width: $max-wrapper-width;
     margin: 0 auto;
@@ -28,14 +29,14 @@
 
   }
 
-  &__copyright {
+  #{$component}__copyright {
     font-family: $font-family-headlines, sans-serif;
     font-weight: $font-weight-headlines;
     text-transform: uppercase;
     color: $color-content;
   }
 
-  &__links {
+  #{$component}__links {
 
     font-size: 0;
     list-style: none;

@@ -1,5 +1,9 @@
 .article {
 
+  $component: &;
+
+  $article-sidebar-width: 250px;
+
   padding: $spacing-small;
   background: $color-content;
 
@@ -8,10 +12,12 @@
   }
 
   @include respond-large {
+    max-width: ($max-wrapper-width + (2 * $spacing-large));
+    margin: (-2 * $spacing-large) auto 0;
     padding: $spacing-large;
   }
 
-  &__wrapper {
+  #{$component}__wrapper {
 
     max-width: $max-wrapper-width;
     margin: 0 auto;
@@ -19,12 +25,11 @@
     @include respond-large {
       display: flex;
       flex-wrap: wrap;
-      max-width: $max-wrapper-width-oversized;
     }
 
   }
 
-  &__meta {
+  #{$component}__meta {
 
     margin-bottom: ($spacing-small / 2);
 
@@ -36,13 +41,13 @@
       flex: 1 1 auto;
       display: flex;
       flex-direction: column;
-      width: ($max-wrapper-width-oversized - $max-wrapper-width);
+      width: $article-sidebar-width;
       margin-bottom: ($spacing-large / 2);
     }
 
   }
 
-  &__date {
+  #{$component}__date {
 
     @include respond-medium {
       display: inline-block;
@@ -55,7 +60,7 @@
 
   }
 
-  &__contributors {
+  #{$component}__contributors {
 
     list-style: none;
     margin: ($spacing-small / 2) 0 0 0;
@@ -73,7 +78,7 @@
 
   }
 
-  &__contributor {
+  #{$component}__contributor {
 
     display: inline-block;
     margin-right: ($spacing-small / 2);
@@ -88,7 +93,7 @@
 
   }
 
-  &__headline {
+  #{$component}__headline {
 
     font-size: 20px;
 
@@ -103,11 +108,11 @@
 
   }
 
-  &__content {
+  #{$component}__content {
 
     @include respond-large {
       flex: 1 1 auto;
-      width: $max-wrapper-width;
+      width: calc(100% - #{$article-sidebar-width});
     }
 
     > *:last-child {

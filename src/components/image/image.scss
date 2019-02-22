@@ -1,5 +1,7 @@
 .image {
 
+  $component: &;
+
   display: block;
   margin: 0 (-1 * $spacing-small) $spacing-small (-1 * $spacing-small);
 
@@ -11,7 +13,7 @@
     margin: 0 (-1 * ($spacing-large / 2)) ($spacing-large / 2) (-1 * ($spacing-large / 2));
   }
 
-  &--bordered {
+  #{$component}--bordered {
 
     @include respond-large {
       border: 1px solid $color-unremarkable;

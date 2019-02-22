@@ -1,5 +1,7 @@
 .contributor {
 
+  $component: &;
+
   $avatar-size: (1em * $line-height);
 
   display: inline-block;
@@ -8,7 +10,7 @@
     text-decoration: none;
   }
 
-  &__avatar {
+  #{$component}__avatar {
     display: inline-block;
     width: $avatar-size;
     height: $avatar-size;
@@ -16,7 +18,7 @@
     vertical-align: top;
   }
 
-  &__username {
+  #{$component}__username {
 
     &:before {
       content: '@';

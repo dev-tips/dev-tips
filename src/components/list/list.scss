@@ -2,42 +2,47 @@
 
   $component: &;
 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: ($spacing-small / 2);
   list-style: none;
   margin: 0 0 ($spacing-small / 2) 0;
 
   @include respond-medium {
     margin-bottom: ($spacing-medium / 2);
+    grid-gap: ($spacing-medium / 2);
   }
 
   @include respond-large {
     margin-bottom: ($spacing-large / 2);
+    grid-gap: ($spacing-large / 2);
+    grid-template-columns: 1fr 1fr;
   }
 
-  &__item {
+  #{$component}__item--highlight {
 
-    ~ #{$component}__item {
+    grid-column: 1 / -1;
 
-      margin-top: ($spacing-small / 2);
+    #{$component}__title {
 
-      @include respond-medium {
-        margin-top: ($spacing-medium / 2);
-      }
+      font-size: 1.5em;
 
       @include respond-large {
-        margin-top: ($spacing-large / 2);
+        font-size: 2em;
       }
 
     }
 
   }
 
-  &__title {
+  #{$component}__title {
     font-family: $font-family-headlines, sans-serif;
     font-weight: $font-weight-headlines;
     text-transform: uppercase;
+    line-height: $line-height-titles;
   }
 
-  &__meta {
+  #{$component}__meta {
     margin-bottom: 0;
   }
 

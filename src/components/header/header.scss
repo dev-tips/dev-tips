@@ -1,5 +1,7 @@
 .header {
 
+  $component: &;
+
   padding: $spacing-small;
   background: url('../img/header-small.jpg') 50% 50% no-repeat;
   background-size: cover;
@@ -9,14 +11,15 @@
   }
 
   @include respond-large {
-    padding: $spacing-large;
+    padding: $spacing-large $spacing-large ($spacing-large * 3);
     background-image: url('../img/header.jpg');
   }
 
-  &__wrapper {
+  #{$component}__wrapper {
 
     max-width: $max-wrapper-width;
     margin: 0 auto;
+    font-size: 0;
 
     @include respond-medium {
       text-align: center;
@@ -28,7 +31,7 @@
 
   }
 
-  &__logo {
+  #{$component}__logo {
 
     display: block;
     margin-bottom: $spacing-small;

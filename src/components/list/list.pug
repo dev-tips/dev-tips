@@ -2,8 +2,8 @@ mixin list()
   ul.list
     block
 
-mixin listItem(url, title, meta)
-  li.list__item
+mixin listItem(url, title, meta, highlight = false)
+  li.list__item(class={ 'list__item--highlight': highlight })
     if (url && title)
       a.list__title(href=url) #{title}
     if (meta)
