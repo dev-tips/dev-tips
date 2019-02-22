@@ -11,7 +11,6 @@ const groupMediaQueries = require('gulp-group-css-media-queries');
 const uglify = require('gulp-uglify');
 const cleanCss = require('gulp-clean-css');
 const minifyHtml = require('gulp-htmlmin');
-const runSequence = require('run-sequence');
 const importOnce = require('node-sass-import-once');
 const moment = require('moment');
 const striptags = require('striptags');
@@ -23,7 +22,7 @@ const templates = path.resolve(src, 'templates');
 const output = path.resolve(__dirname, 'build');
 
 gulp.task('html', () => {
-  gulp.src(path.resolve(output, '**/*.html')).pipe(minifyHtml({
+  return gulp.src(path.resolve(output, '**/*.html')).pipe(minifyHtml({
     removeComments: true,
     collapseWhitespace: true,
     removeAttributeQuotes: true
@@ -31,7 +30,7 @@ gulp.task('html', () => {
 });
 
 gulp.task('css', () => {
-  gulp.src(path.resolve(src, 'scss', 'style.scss')).pipe(sass({
+  return gulp.src(path.resolve(src, 'scss', 'style.scss')).pipe(sass({
     importer: importOnce
   })).pipe(autoprefixer({
     browsers: [
@@ -41,7 +40,7 @@ gulp.task('css', () => {
 });
 
 gulp.task('js', () => {
-  gulp.src([
+  return gulp.src([
     path.resolve(vendor, 'vanilla-lazyload', 'dist', 'lazyload.js'),
     path.resolve(src, 'js', 'scripts.js')
   ]).pipe(babel()).pipe(uglify()).pipe(concat('scripts.js')).pipe(gulp.dest(path.resolve(output, 'js')));
@@ -91,33 +90,24 @@ gulp.task('cms', () => cms({
   }
 }).render());
 
-gulp.task('content', (done) => {
-  runSequence('cms', 'html', done);
-});
+gulp.task('content', gulp.series('cms', 'html'));
 
 gulp.task('assets', () => {
-  gulp.src(path.resolve(src, 'favicon.ico')).pipe(gulp.dest(output));
-  gulp.src(path.resolve(src, 'CNAME')).pipe(gulp.dest(output));
-  gulp.src(path.resolve(src, 'img', '**/*')).pipe(gulp.dest(path.resolve(output, 'img')));
+  return Promise.all([
+    gulp.src(path.resolve(src, 'favicon.ico')).pipe(gulp.dest(output)),
+    gulp.src(path.resolve(src, 'CNAME')).pipe(gulp.dest(output)),
+    gulp.src(path.resolve(src, 'img', '**', '*')).pipe(gulp.dest(path.resolve(output, 'img'))),
+  ]);
 });
 
-gulp.task('build', [
-  'content',
-  'css',
-  'js',
-  'assets'
-]);
+gulp.task('build', gulp.parallel('content', 'css', 'js', 'assets'));
 
-gulp.task('dev', [
-  'build'
-], () => {
+gulp.task('dev', gulp.series('build'), () => {
   gulp.watch([
     path.resolve(content, '**/*'),
     path.resolve(templates, '**/*'),
     path.resolve(src, 'scss', '**/*'),
     path.resolve(src, 'components', '**/*'),
     path.resolve(src, 'js', '**/*')
-  ], [
-    'build'
-  ]);
+  ], gulp.series('build'));
 });
