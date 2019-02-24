@@ -6,13 +6,17 @@
     "build": "gulp build",
     "dev": "gulp dev",
     "start": "caddy",
-    "test": "npm run build"
+    "lint": "eslint '*.js' 'src/**/*.js' && stylelint 'src/**/*.scss'",
+    "test": "npm run lint && npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
     "cms": "^1.6.0",
     "consolidate": "^0.15.1",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-babel": "^8.0.0",
@@ -32,7 +36,10 @@
     "node-sass": "^4.11.0",
     "node-sass-import-once": "^1.2.0",
     "pug": "^2.0.3",
-    "striptags": "^3.1.1"
+    "striptags": "^3.1.1",
+    "stylelint": "^9.10.1",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-scss": "^3.5.4"
   },
   "dependencies": {
     "vanilla-lazyload": "^10.20.1"
