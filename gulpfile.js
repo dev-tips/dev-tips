@@ -57,6 +57,13 @@ gulp.task('cms', () => cms({
   extensions: {
     templates: [
       'pug'
+    ],
+    images: [
+      'jpg',
+      'jpeg',
+      'gif',
+      'png',
+      'svg'
     ]
   },
   addons: {
@@ -84,6 +91,14 @@ gulp.task('cms', () => cms({
         `;
       } else {
         throw new Error(`Missing image: ${attrs.image}`);
+      }
+    },
+    reference: (attrs, page) => {
+      const reference = page.genesis.children.find((child) => child.visible && child.index && child.index === parseInt(attrs.reference, 10));
+      if (reference) {
+        return `<a href="${reference.url}">${attrs.text}</a>`;
+      } else {
+        throw new Error(`Missing reference: ${attrs.reference}`);
       }
     },
     math: (attrs) => `<span class="math">${attrs.math.replace(/\|LEFT_PARENTHESIS\|/g, '(').replace(/\|RIGHT_PARENTHESIS\|/g, ')')}</span>`,
