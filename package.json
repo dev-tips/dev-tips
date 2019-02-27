@@ -5,18 +5,21 @@
   "scripts": {
     "build": "gulp build",
     "dev": "gulp dev",
-    "start": "caddy",
+    "start": "http-server -p 1337 build",
+    "audit": "node audit",
     "lint": "eslint '*.js' 'src/**/*.js' && stylelint 'src/**/*.scss'",
-    "test": "npm run lint && npm run build"
+    "test": "npm run lint && npm run build && npm run audit"
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
+    "chrome-launcher": "^0.10.5",
     "cms": "^1.6.0",
     "consolidate": "^0.15.1",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
+    "find-free-port": "^2.0.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-babel": "^8.0.0",
@@ -28,6 +31,8 @@
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.1",
     "highlight.js": "^9.14.2",
+    "http-server": "^0.11.1",
+    "lighthouse": "^4.1.0",
     "markdown-it": "^8.4.2",
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-highlightjs": "^3.0.0",

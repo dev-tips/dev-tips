@@ -11,10 +11,10 @@
 3. `npm install` (or `yarn install`)
 4. `npm run build`
 
-If you want to run the site locally, that’s pretty easy, thanks to [Caddy](https://caddyserver.com/).
+If you want to run the site locally, that’s pretty easy.
 
 ```sh
-caddy
+npm start
 ```
 
 You’ll be able to access your local instance via [http://localhost:1337/](http://localhost:1337/).

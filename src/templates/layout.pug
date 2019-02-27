@@ -4,8 +4,8 @@ doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
-    - const metaDescription = stripTags(shortcodes(markdown(description || text || '')))
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    - const metaDescription = stripTags(shortcodes(markdown(description || text || answer || '')))
     meta(name='description', content=(metaDescription.length > 160 ? `${metaDescription.substr(0, 160).trim()}…` : metaDescription))
     block meta
     if (title)
@@ -16,7 +16,7 @@ html(lang='en')
     link(href=basepath('/css/style.css'), rel='stylesheet')
     link(rel='image_src', href=basepath('/img/share.jpg'))
     block head
-  body
+  body(class=`page page--${template}`)
     +header()
       +logo(genesis.url, title)
     block content

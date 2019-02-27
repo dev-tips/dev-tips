@@ -1,9 +1,0 @@
-:1337
-gzip
-root build
-
-errors {
-  * error/index.html
-}
-
-log / stdout "{combined}"
