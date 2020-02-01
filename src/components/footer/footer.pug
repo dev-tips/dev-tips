@@ -4,19 +4,11 @@ mixin footer()
       block
 
 mixin footerCopyright()
-  p.footer__copyright © #{(new Date().getFullYear())} #{site}
+  p.footer__copyright © #{(new Date().getFullYear())} Dev Tips
 
-mixin footerMasthead()
+mixin footerMasthead(links)
   .footer__masthead
     p.footer__license
-      | All articles are licensed under #[a(href='https://creativecommons.org/licenses/by-sa/3.0/') CC-BY-SA 3.0].
+      | All articles are licensed under #[a(href='https://creativecommons.org/licenses/by-sa/3.0/') CC-BY-SA 3.0]. Code snippets are licensed under #[a(href='https://opensource.org/licenses/MIT') MIT], unless otherwise noted. Thanks a ton to all #[a(href=links.authors) authors] for their awesome contributions.
     p.footer__github
-      | If you’d like to contribute to this site, simply head over to its #[a(href='https://github.com/rasshofer/frontend-development') GitHub repository], fork it, make your contributions, and send a pull request.
-
-mixin footerLinks()
-  ul.footer__links
-    block
-
-mixin footerLink(url, title)
-  li.footer__link
-    a(href=url) #{title}
+      | If you’d like to contribute to this site, simply head over to its #[a(href='https://github.com/dev-tips/dev-tips') GitHub repository], fork it, make your contributions, and send a pull request.

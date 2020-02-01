@@ -1,0 +1,8 @@
+extends layout.pug
+
+block content
+  +section()
+    - const posts = getPostsForAuthor(getAllPosts(genesis), url)
+    +list()
+      each page in posts
+        +listItem(page.url, page.title, formatDate(page.date, 'MMMM Do YYYY'), page.highlight, page.parent)

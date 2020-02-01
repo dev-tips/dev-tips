@@ -1,49 +1,61 @@
 .header {
-
   $component: &;
 
   padding: $spacing-small;
-  background: url('../img/header-small.jpg') 50% 50% no-repeat;
-  background-size: cover;
+  background: url('/assets/img/pattern.svg') 50% 100% repeat $color-header;
+  background-size: $pattern-size-small;
 
   @include respond-medium {
     padding: $spacing-medium;
+    background-size: $pattern-size-medium;
   }
 
   @include respond-large {
-    padding: $spacing-large $spacing-large ($spacing-large * 3);
-    background-image: url('../img/header.jpg');
+    padding: $spacing-large;
+    background-size: $pattern-size-large;
   }
 
   #{$component}__wrapper {
-
     max-width: $max-wrapper-width;
     margin: 0 auto;
-    font-size: 0;
-
-    @include respond-medium {
-      text-align: center;
-    }
 
     > *:last-child {
       margin-bottom: 0;
     }
-
   }
 
-  #{$component}__logo {
+  #{$component}__site {
+    margin-bottom: 1rem;
+    font-weight: $font-weight-headlines;
+    line-height: $line-height-headlines;
+    font-style: $font-style-headlines;
 
-    display: block;
-    margin-bottom: $spacing-small;
-    text-align: center;
-    font-size: 20px;
-
-    &,
-    &:hover {
-      text-decoration: none;
-      color: $color-text;
+    a {
+      &,
+      &:hover {
+        text-decoration: none;
+      }
     }
-
   }
 
+  #{$component}__dev {
+    font-family: $font-family-code;
+    font-size: 1.5rem;
+    text-transform: lowercase;
+  }
+
+  #{$component}__tips {
+    font-family: $font-family-headlines;
+    font-weight: $font-weight-headlines;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  #{$component}__title {
+    margin-bottom: 1rem;
+
+    h1 {
+      margin-bottom: 0;
+    }
+  }
 }

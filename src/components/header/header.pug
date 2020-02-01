@@ -2,3 +2,22 @@ mixin header()
   header.header
     .header__wrapper
       block
+
+mixin headerSite(url)
+  .header__site(itemprop='publisher', itemscope, itemtype='https://schema.org/Organization')
+    div(itemprop='logo', itemscope, itemtype='https://www.schema.org/ImageObject')
+      link(itemprop='url', href=basepath('/assets/img/logo.png'))
+      meta(itemprop='width', content='1000')
+      meta(itemprop='height', content='800')
+    a(href=url, itemprop='url')
+      span(itemprop='name')
+        span.header__dev Dev
+        = ' '
+        span.header__tips Tips
+
+mixin headerTitle(title)
+  .header__title&attributes(attributes)
+    h1 #{title}
+
+mixin headerDescription(description)
+  p.header__description&attributes(attributes) #{description}

@@ -18,12 +18,16 @@ const server = httpServer.createServer({
 
 const genesis = cms.get();
 
-const posts = genesis.children.filter(page => page.visible).reduce((acc, page) => [
-  ...acc,
-  page.url,
-], [
-  genesis.url,
-]);
+const posts = genesis.children
+  .filter(page => page.template === 'category')
+  .reduce(
+    (acc, category) => [
+      ...acc,
+      ...category.children.filter(page => page.visible),
+    ],
+    [],
+  )
+  .reduce((acc, page) => [...acc, page.url], [genesis.url]);
 
 try {
   (async () => {
@@ -50,16 +54,22 @@ try {
         console.log(`Checking "${post}"`); // eslint-disable-line no-console
 
         const result = await lighthouse(`${base}${post}`, flags, null);
-        const report = Object.entries(result.lhr.categories).reduce((acc, [categoryName, category]) => ({
-          ...acc,
-          [categoryName]: Math.round(category.score * 100),
-        }), {});
+        const report = Object.entries(result.lhr.categories).reduce(
+          (acc, [categoryName, category]) => ({
+            ...acc,
+            [categoryName]: Math.round(category.score * 100),
+          }),
+          {},
+        );
 
         Object.entries(TRESHOLDS).forEach(([prop, treshold]) => {
           if (report[prop] >= treshold) {
             console.log(`- "${prop}" is ${report[prop]} (>= ${treshold})`); // eslint-disable-line no-console
           } else {
-            console.error(`- "${prop}" is ${report[prop]} but should be >= ${treshold}`); // eslint-disable-line no-console
+            // eslint-disable-next-line no-console
+            console.error(
+              `- "${prop}" is ${report[prop]} but should be >= ${treshold}`,
+            );
             process.exit(1);
           }
         });

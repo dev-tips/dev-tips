@@ -1,39 +1,50 @@
-$breakpoint-medium: 500px;
-$breakpoint-large: 1000px;
+$breakpoint-medium: 450px;
+$breakpoint-large: 900px;
 
 $spacing-small: 20px;
 $spacing-medium: 40px;
 $spacing-large: 80px;
 
-$color-background: #282c34;
-$color-content: #fff;
-$color-text: #666;
+$color-background: #333;
 $color-primary: #000;
-$color-unremarkable: #aaa;
-$color-highlights: #f4f6b2;
+$color-unremarkable: #eee;
+$color-highlights: #f7df1e;
+$color-header: #fff;
+$color-content: #fff;
+$color-text: #000;
 $color-math: #eee;
 $color-code: #282c34;
 $color-code-text: #abb2bf;
-$color-lines: mix($color-unremarkable, $color-background, 25%);
 
 $font-size: 16px;
 $font-size-medium: 18px;
 $font-size-large: 20px;
 $font-size-quotes: 1.5em;
+$font-size-smaller: 0.85rem;
 
 $line-height: 1.5;
+$line-height-headlines: 1.3;
 $line-height-quotes: 1.25;
 $line-height-titles: 1.25;
 
-$font-family-copy: 'Roboto';
-$font-family-quotes: 'Old Standard TT';
-$font-family-headlines: 'Montserrat';
+$font-family-copy: 'Plex Sans', sans-serif;
+$font-family-quotes: 'Plex Serif', serif;
+$font-family-code: 'Plex Mono', monospace;
+$font-family-headlines: 'Poppins', sans-serif;
+$font-family-titles: 'Poppins', sans-serif;
 
 $font-weight-copy: 400;
-$font-weight-copy-bold: 700;
+$font-weight-copy-bold: 800;
 $font-weight-quotes: 400;
 $font-weight-headlines: 800;
+$font-weight-titles: 800;
 
 $font-style-quotes: italic;
+$font-style-headlines: italic;
+$font-style-titles: italic;
 
-$max-wrapper-width: 900px;
+$max-wrapper-width: 850px;
+
+$pattern-size-small: 300px;
+$pattern-size-medium: 600px;
+$pattern-size-large: 800px;

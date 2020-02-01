@@ -1,13 +1,11 @@
 sudo: false
 language: node_js
 node_js:
-  - "11"
+  - 13
 addons:
   chrome: stable
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  on:
-    branch: master
-  local_dir: build
+script:
+  - npm run build
+  - npm run test
+  - npm run audit
+  - npm run deploy

@@ -1,0 +1,13 @@
+extends layout.pug
+
+block link
+  link(rel='dns-prefetch', href='//avatars.githubusercontent.com')
+
+block content
+  +section()
+    - const posts = getAllPosts(genesis)
+    +list()
+      each author in children.map(author => Object.assign({}, author, { posts: getPostsForAuthor(posts, author.url) })).sort((a, b) => b.posts.length - a.posts.length || a.name.localeCompare(b.name))
+        +listItem
+          +author(author)
+            | #{author.posts.length} post#{author.posts.length === 1 ? '' : 's'}

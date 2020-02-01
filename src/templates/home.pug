@@ -2,7 +2,7 @@ extends layout.pug
 
 block content
   +section()
-    h1 #{title}
     +list()
-      each page in genesis.children.filter((page) => page.visible).reverse()
-        +listItem(page.url, page.title, formatDate(page.date, 'MMMM Do YYYY'), page.highlight)
+      - const posts = getAllPosts(genesis)
+      each page in posts
+        +listItem(page.url, page.title, formatDate(page.date, 'MMMM Do YYYY'), page.highlight, page.parent)

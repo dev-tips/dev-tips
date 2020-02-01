@@ -1,49 +1,44 @@
 .list {
-
   $component: &;
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: ($spacing-small / 2);
+  grid-gap: $spacing-small;
   list-style: none;
-  margin: 0 0 ($spacing-small / 2) 0;
+  margin: 0 0 1rem 0;
 
   @include respond-medium {
-    margin-bottom: ($spacing-medium / 2);
-    grid-gap: ($spacing-medium / 2);
+    grid-gap: $spacing-medium;
   }
 
   @include respond-large {
-    margin-bottom: ($spacing-large / 2);
-    grid-gap: ($spacing-large / 2);
     grid-template-columns: 1fr 1fr;
   }
 
   #{$component}__item--highlight {
-
     grid-column: 1 / -1;
-
-    #{$component}__title {
-
-      font-size: 1.5em;
-
-      @include respond-large {
-        font-size: 2em;
-      }
-
-    }
-
   }
 
   #{$component}__title {
-    font-family: $font-family-headlines, sans-serif;
-    font-weight: $font-weight-headlines;
-    text-transform: uppercase;
+    display: block;
+    font-family: $font-family-titles;
+    font-weight: $font-weight-titles;
     line-height: $line-height-titles;
+    font-style: $font-style-titles;
+    text-transform: uppercase;
+    text-decoration: none;
   }
 
   #{$component}__meta {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
     margin-bottom: 0;
+    font-size: $font-size-smaller;
   }
 
+  #{$component}__category {
+    flex: 0 0 auto;
+    margin-right: 1rem;
+  }
 }

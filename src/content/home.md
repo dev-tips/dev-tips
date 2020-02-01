@@ -1,5 +1,1 @@
-Title: Frontend Development
-
------
-
-Description: Tips, Tricks, and Techniques on Frontend Development.
+Title: Tips, tricks, techniques, tutorials, and tidbits for software developers

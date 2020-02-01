@@ -1,0 +1,27 @@
+.category {
+  $component: &;
+
+  display: inline-flex;
+  padding: 0.4em 0.5em;
+  background: $color-unremarkable;
+  border-radius: 0.2em;
+  line-height: 1;
+  text-decoration: none;
+  transition: background 200ms ease;
+
+  &:hover {
+    background: darken($color-content, 10%);
+    text-decoration: none;
+  }
+
+  #{$component}__icon {
+    flex: 0 0 auto;
+    margin-right: 0.5em;
+    width: 1em;
+    height: 1em;
+  }
+
+  #{$component}__label {
+    flex: 0 0 auto;
+  }
+}

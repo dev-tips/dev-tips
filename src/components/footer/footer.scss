@@ -1,17 +1,19 @@
 .footer {
-
   $component: &;
 
   padding: $spacing-small;
-  text-align: center;
+  background: url('/assets/img/pattern.svg') 50% 0 repeat transparent;
+  background-size: $pattern-size-small;
   color: $color-unremarkable;
 
   @include respond-medium {
     padding: $spacing-medium;
+    background-size: $pattern-size-medium;
   }
 
   @include respond-large {
     padding: $spacing-large;
+    background-size: $pattern-size-large;
   }
 
   a {
@@ -19,25 +21,25 @@
   }
 
   #{$component}__wrapper {
-
     max-width: $max-wrapper-width;
     margin: 0 auto;
 
     > *:last-child {
       margin-bottom: 0;
     }
-
   }
 
   #{$component}__copyright {
-    font-family: $font-family-headlines, sans-serif;
-    font-weight: $font-weight-headlines;
+    font-family: $font-family-titles;
+    font-weight: $font-weight-titles;
+    line-height: $line-height-titles;
+    font-style: $font-style-titles;
+    font-size: 1.25rem;
     text-transform: uppercase;
     color: $color-content;
   }
 
   #{$component}__links {
-
     font-size: 0;
     list-style: none;
     text-align: center;
@@ -50,7 +52,5 @@
       font-size: $font-size;
       text-transform: uppercase;
     }
-
   }
-
 }

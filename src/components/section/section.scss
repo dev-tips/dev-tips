@@ -1,5 +1,4 @@
 .section {
-
   $component: &;
 
   padding: $spacing-small;
@@ -10,20 +9,19 @@
   }
 
   @include respond-large {
-    max-width: ($max-wrapper-width + (2 * $spacing-large));
-    margin: (-2 * $spacing-large) auto 0;
     padding: $spacing-large;
   }
 
-  #{$component}__wrapper {
+  ~ #{$component} {
+    padding-top: 0 !important;
+  }
 
+  #{$component}__wrapper {
     max-width: $max-wrapper-width;
     margin: 0 auto;
 
     > *:last-child {
       margin-bottom: 0;
     }
-
   }
-
 }

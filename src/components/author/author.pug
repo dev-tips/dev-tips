@@ -1,0 +1,16 @@
+mixin author(data)
+  .author(itemscope, itemtype='http://schema.org/Person')&attributes(attributes)
+    if (data.website)
+      meta(itemprop='url', content=data.website)
+    a.author__avatar(href=data.url)
+      img(data-src=`https://avatars.githubusercontent.com/${data.gitHub}`, alt=data.name)
+    = ' '
+    a.author__name(href=data.url)
+      span(itemprop='name') #{data.name}
+    if (block)
+      = ' '
+      span.author__about
+        block
+
+mixin authorTwitter(username)
+  a.author__twitter(href=`https://twitter.com/${username}`) #{username}

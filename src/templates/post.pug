@@ -1,10 +1,16 @@
 extends layout.pug
 
 block content
-  +article()
-    +articleHeadline(title)
-    +articleMeta(formatDate(date))
-      +articleDate(date)
-      +articleContributors(contributors)
+  +article((template === 'question' ? 'question' : null))
     +articleContent()
-      | !{shortcodes(markdown(text))}
+      | !{shortcodes(markdown(text || answer))}
+    +articleMeta
+      +articleCategory(parent)
+      +articleDate(date, updated)
+    +articleAuthors
+      +list()
+        each author in authors.split(/\s*,\s*/).map(author => genesis.findPageByUrl(`/authors/${author}`))
+          +listItem
+            +author(author)(itemprop='author')
+              if (author.twitter)
+                +authorTwitter(author.twitter)

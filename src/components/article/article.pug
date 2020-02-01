@@ -1,24 +1,26 @@
 mixin article(variant)
-  article.article(class=(variant ? `article--${variant}` : ''), itemscope, itemtype='http://schema.org/BlogPosting')
+  article.article(class=(variant ? `article--${variant}` : ''))
     .article__wrapper
       block
-
-mixin articleHeadline(title)
-  h1.article__headline(itemprop='name') #{title}
 
 mixin articleMeta()
   .article__meta
     block
 
-mixin articleDate(timestamp)
-  .article__date(datetime=formatDate(timestamp), itemprop='datePublished') #{formatDate(timestamp, 'MMMM Do YYYY')}
+mixin articleAuthors()
+  .article__authors
+    block
 
-mixin articleContributors(contributors)
-  - const list = contributors.split(',').map((contributor) => contributor.trim())
-  ul.article__contributors
-    each contributor in list
-      li.article__contributor
-        +contributor(contributor)
+mixin articleDate(published, updated)
+  .article__date
+    time(datetime=formatDate(published), itemprop='datePublished') #{formatDate(published, 'MMMM Do YYYY')}
+    if (updated)
+     = ' (updated on '
+     time(datetime=formatDate(updated), itemprop='dateModified') #{formatDate(updated, 'MMMM Do YYYY')}
+     = ')'
+
+mixin articleCategory(category)
+  +category(category).article__category
 
 mixin articleContent()
   .article__content(itemprop='articleBody')

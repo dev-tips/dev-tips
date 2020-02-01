@@ -1,0 +1,6 @@
+mixin category(category)
+  a.category(href=category.url)&attributes(attributes)
+    - const icon = category.images.find(image => image.url.includes('icon'))
+    if (icon)
+      img.category__icon(src=icon.url, alt=category.title)
+    span.category__label #{category.title}

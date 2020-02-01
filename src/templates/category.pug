@@ -1,0 +1,11 @@
+extends layout.pug
+
+block content
+  +section()
+    - const posts = children.filter((page) => page.visible).sort((a, b) => b.date - a.date)
+    if (posts.length > 0)
+      +list()
+        each page in posts
+          +listItem(page.url, page.title, formatDate(page.date, 'MMMM Do YYYY'), page.highlight, page.parent)
+    else
+      p Unfortunately, there are no posts about #{title} yet. #{title} is near and dear to you? We’re always looking for content collaborators to write some awesome posts! To do so, head over to our #[a(href='https://github.com/dev-tips/dev-tips') GitHub repository] and fork it. Then make your contributions and send a pull request.

@@ -1,8 +1,8 @@
 @import 'vars';
-@import 'functions';
 @import 'mixins';
+@import 'fonts';
 @import 'base';
 
 @import 'components';
 
-@import '../../node_modules/highlight.js/styles/atom-one-dark.css';
+@import '../../node_modules/highlight.js/styles/atom-one-dark';

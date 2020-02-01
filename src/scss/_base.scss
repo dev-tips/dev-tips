@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=#{str-replace($font-family-copy, ' ', '+')}:#{$font-weight-copy},#{$font-weight-copy-bold}|#{str-replace($font-family-quotes, ' ', '+')}:#{$font-weight-quotes}#{$font-style-quotes}|#{str-replace($font-family-headlines, ' ', '+')}:#{$font-weight-headlines}');
-
 * {
-
   margin: 0;
   padding: 0;
   background: none;
@@ -13,24 +10,10 @@
   &:after {
     box-sizing: border-box;
   }
-
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-
-body {
-
-  background: $color-background;
-  color: $color-text;
-  font-family: $font-family-copy, sans-serif;
+html {
   font-size: $font-size;
-  font-weight: $font-weight-copy;
-  line-height: $line-height;
-  overflow-x: hidden;
 
   @include respond-medium {
     font-size: $font-size-medium;
@@ -39,47 +22,81 @@ body {
   @include respond-large {
     font-size: $font-size-large;
   }
+}
 
+body {
+  background: $color-background;
+  color: $color-text;
+  font-family: $font-family-copy;
+  font-weight: $font-weight-copy;
+  font-size: 1rem;
+  line-height: $line-height;
 }
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
-
-  margin-bottom: ($spacing-small / 2);
-  font-family: $font-family-headlines, sans-serif;
+h3 {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1rem;
+  font-family: $font-family-headlines;
   font-weight: $font-weight-headlines;
-  color: $color-primary;
-
-  @include respond-medium {
-    margin-bottom: ($spacing-medium / 2);
-  }
-
-  @include respond-large {
-    margin-bottom: ($spacing-large / 2);
-  }
-
+  line-height: $line-height-headlines;
+  font-style: $font-style-headlines;
+  text-transform: uppercase;
+  color: inherit;
 }
 
 h1 {
+  font-size: 2rem;
+}
 
-  font-size: 1.5em;
-
-  .page--home & {
-    display: none;
+h2,
+h3 {
+  * + & {
+    margin-top: 2rem;
   }
-
 }
 
 h2 {
-  font-size: 1.25em;
+  font-size: 1.25rem;
 }
 
 h3 {
-  font-size: 1em;
+  font-size: 1rem;
+}
+
+p,
+ul,
+ol {
+  margin-bottom: 1rem;
+}
+
+ul,
+ol {
+  margin-left: 1.3em;
+
+  @include respond-large {
+    margin-left: 0;
+  }
+}
+
+ul {
+  list-style: square;
+}
+
+ol {
+  list-style: decimal;
+}
+
+a {
+  text-decoration: underline;
+  color: inherit;
+  text-decoration-skip-ink: auto;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 code {
@@ -90,48 +107,36 @@ code {
   box-shadow: 0.15em 0 0 $color-code, -0.15em 0 0 $color-code;
   color: $color-code-text;
   border-radius: 0.2em;
+  font-family: $font-family-code;
+  font-size: $font-size-smaller;
   line-height: 1.5;
   box-decoration-break: clone;
 }
 
-p {
-
-  margin-bottom: $spacing-small;
-
-  @include respond-medium {
-    margin-bottom: $spacing-medium;
-  }
-
-  @include respond-large {
-    margin-bottom: ($spacing-large / 2);
-  }
-
-}
-
 pre {
-
   position: relative;
   background: $color-code;
   overflow: hidden;
-  margin: 0 (-1 * $spacing-small) $spacing-small (-1 * $spacing-small);
+  margin: 0 (-1 * $spacing-small) 1rem (-1 * $spacing-small);
 
   @include respond-medium {
-    margin: 0 (-1 * $spacing-medium) $spacing-medium (-1 * $spacing-medium);
+    margin-left: (-1 * $spacing-medium);
+    margin-right: (-1 * $spacing-medium);
   }
 
   @include respond-large {
-    margin: 0 (-1 * ($spacing-large / 2)) ($spacing-large / 2) (-1 * ($spacing-large / 2));
+    margin-left: (-1 * ($spacing-large / 2));
+    margin-right: (-1 * ($spacing-large / 2));
+    border-radius: 0.4em;
   }
 
   code {
-
     margin: 0;
     box-shadow: none;
     box-decoration-break: initial;
 
     &,
     &.hljs {
-
       padding: $spacing-small;
 
       @include respond-medium {
@@ -141,11 +146,9 @@ pre {
       @include respond-large {
         padding: ($spacing-large / 2);
       }
-
     }
 
     &:before {
-
       content: '';
       position: absolute;
       top: 0;
@@ -161,79 +164,35 @@ pre {
       @include respond-large {
         box-shadow: 0 0 ($spacing-large / 2) ($spacing-large / 2) $color-code;
       }
-
     }
-
   }
-
-}
-
-ul,
-ol {
-
-  margin-left: 1.3em;
-  margin-bottom: ($spacing-small / 2);
-
-  @include respond-medium {
-    margin-bottom: ($spacing-medium / 2);
-  }
-
-  @include respond-large {
-    margin-left: 0;
-    margin-bottom: ($spacing-large / 2);
-  }
-
-}
-
-ul {
-  list-style: square;
-}
-
-ol {
-  list-style: decimal;
 }
 
 blockquote {
+  margin-bottom: 1rem;
 
-  $quotation-mark-original-width: 15px;
-  $quotation-mark-original-height: 10px;
+  p {
+    display: inline;
+    padding: 0.2rem 0.4rem;
+    background: $color-highlights;
+    line-height: 1.75rem;
+    box-decoration-break: clone;
 
-  $quotation-mark-width: 1em;
-  $quotation-mark-height: ($quotation-mark-width / $quotation-mark-original-width * $quotation-mark-original-height);
+    &:before {
+      content: '»';
+    }
 
-  padding-left: calc(#{$quotation-mark-width} + #{($spacing-small / 2)});
-  background: url('../img/quote.svg') 0 (((1em * $line-height-quotes) - 1em) / 2) no-repeat;
-  background-size: $quotation-mark-width $quotation-mark-height;
-  font-family: $font-family-quotes, serif;
-  font-weight: $font-weight-quotes;
-  font-style: $font-style-quotes;
-  font-size: $font-size-quotes;
-  line-height: $line-height-quotes;
-  color: $color-unremarkable;
-
-  @include respond-medium {
-    padding-left: calc(#{$quotation-mark-width} + #{($spacing-medium / 2)});
-  }
-
-  @include respond-large {
-    padding-left: calc(#{$quotation-mark-width} + #{($spacing-large / 3)});
+    &:after {
+      content: '«';
+    }
   }
 
   a {
-    color: $color-unremarkable;
+    &,
+    &:hover {
+      text-decoration: none;
+    }
   }
-
-}
-
-a {
-
-  text-decoration: none;
-  color: $color-primary;
-
-  &:hover {
-    text-decoration: underline;
-  }
-
 }
 
 img {
@@ -251,9 +210,7 @@ img {
 }
 
 .footnote-item {
-
   p {
     margin-bottom: 0;
   }
-
 }

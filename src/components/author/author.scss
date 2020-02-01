@@ -1,0 +1,52 @@
+.author {
+  $component: &;
+  $avatar-size: 2.6rem;
+
+  display: block;
+
+  #{$component}__avatar {
+    float: left;
+    display: block;
+    margin-right: 0.75rem;
+
+    &,
+    &:hover {
+      text-decoration: none;
+    }
+
+    img {
+      width: $avatar-size;
+      height: $avatar-size;
+    }
+  }
+
+  #{$component}__name {
+    display: block;
+    font-family: $font-family-titles;
+    font-weight: $font-weight-titles;
+    line-height: $line-height-titles;
+    font-style: $font-style-titles;
+    text-transform: uppercase;
+
+    &,
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  #{$component}__about {
+    display: block;
+  }
+
+  #{$component}__twitter {
+    &,
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:before {
+      content: '@';
+      opacity: 0.5;
+    }
+  }
+}

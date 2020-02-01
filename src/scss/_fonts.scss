@@ -1,0 +1,14 @@
+@each $font in $fonts {
+  $family: map-get($font, 'family');
+  $file: map-get($font, 'file');
+  $weight: map-get($font, 'weight');
+  $style: map-get($font, 'style');
+
+  @font-face {
+    font-family: $family;
+    src: url('/assets/fonts/#{$file}.woff2') format('woff2'),
+      url('/assets/fonts/#{$file}.woff') format('woff');
+    font-weight: #{$weight};
+    font-style: #{$style};
+  }
+}
