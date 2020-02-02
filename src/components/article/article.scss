@@ -29,6 +29,10 @@
 
   #{$component}__authors {
     margin-top: 1.5rem;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
   }
 
   #{$component}__category {
