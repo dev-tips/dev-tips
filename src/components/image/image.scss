@@ -12,7 +12,7 @@
     margin: 0 (-1 * ($spacing-large / 2)) 1rem (-1 * ($spacing-large / 2));
   }
 
-  #{$component}--bordered {
+  &#{$component}--bordered {
     @include respond-large {
       border: 1px solid $color-unremarkable;
     }
