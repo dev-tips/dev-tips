@@ -6,9 +6,9 @@ const chromeLauncher = require('chrome-launcher');
 const cms = require('./cms');
 
 const TRESHOLDS = {
-  performance: 80,
-  accessibility: 75,
-  'best-practices': 75,
+  performance: 90,
+  accessibility: 90,
+  'best-practices': 90,
   seo: 90,
 };
 
