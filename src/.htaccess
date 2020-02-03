@@ -6,6 +6,33 @@ RewriteRule ^(.*)$ https://dev-tips.com/$1 [R=301,L]
 
 DirectorySlash Off
 
+# Redirects
+RewriteRule ^contributors/?$ authors [L,R=301]
+RewriteRule ^detect-touch-devices-using-javascript/?$ javascript/detect-touch-devices-using-javascript [L,R=301]
+RewriteRule ^prevent-links-in-standalone-web-apps-to-be-opened-in-mobile-safari-under-ios/?$ javascript/prevent-links-in-standalone-web-apps-to-be-opened-in-mobile-safari-under-ios [L,R=301]
+RewriteRule ^i-see-some-javascript-scripts-using-0-and-or-1-occasionally-what-does-that-mean-exactly/?$ javascript/i-see-some-javascript-scripts-using-0-and-or-1-occasionally-what-does-that-mean-exactly [L,R=301]
+RewriteRule ^jquery-load-callback-for-cached-images-in-internet-explorer/?$ javascript/jquery-load-callback-for-cached-images-in-internet-explorer [L,R=301]
+RewriteRule ^class-constructors-without-using-new-in-javascript/?$ javascript/class-constructors-without-using-new-in-javascript [L,R=301]
+RewriteRule ^default-arguments-parameters-in-javascript/?$ javascript/default-arguments-parameters-in-javascript [L,R=301]
+RewriteRule ^typeof-null-object/?$ javascript/typeof-null-object [L,R=301]
+RewriteRule ^multi-line-strings-in-javascript/?$ javascript/multi-line-strings-in-javascript [L,R=301]
+RewriteRule ^override-javascript-functions/?$ javascript/override-javascript-functions [L,R=301]
+RewriteRule ^dont-use-fat-arrows-in-coffeescript-just-because-of-this/?$ coffeescript/dont-use-fat-arrows-in-coffeescript-just-because-of-this [L,R=301]
+RewriteRule ^how-to-fix-eacces-errors-with-npm-on-mac-os-x/?$ nodejs/how-to-fix-eacces-errors-with-npm-on-mac-os-x [L,R=301]
+RewriteRule ^truthy-and-falsy-values-in-javascript/?$ javascript/truthy-and-falsy-values-in-javascript [L,R=301]
+RewriteRule ^prefixing-immediate-functions-with-a-semicolon-in-javascript/?$ javascript/prefixing-immediate-functions-with-a-semicolon-in-javascript [L,R=301]
+RewriteRule ^passing-arguments-to-another-function-in-javascript/?$ javascript/passing-arguments-to-another-function-in-javascript [L,R=301]
+RewriteRule ^complex-variable-object-keys-in-javascript/?$ javascript/complex-variable-object-keys-in-javascript [L,R=301]
+RewriteRule ^difference-between-apply-call-bind-in-javascript/?$ javascript/difference-between-apply-call-bind-in-javascript [L,R=301]
+RewriteRule ^consynchronous-assurency-how-to-achieve-quasi-concurrency-with-array-prototype-foreach/?$ javascript/consynchronous-assurency-how-to-achieve-quasi-concurrency-with-array-prototype-foreach [L,R=301]
+RewriteRule ^hello-world-again/?$ announcements/hello-world-again [L,R=301]
+RewriteRule ^how-to-log-client-side-javascript-errors-exceptions-bugs/?$ javascript/how-to-log-client-side-javascript-errors-exceptions-bugs [L,R=301]
+RewriteRule ^cssplexity-applying-complexity-metrics-to-a-non-programming-language/?$ css/cssplexity-applying-complexity-metrics-to-a-non-programming-language [L,R=301]
+RewriteRule ^using-the-publish-subscribe-pattern-and-a-shared-event-bus-to-decouple-frontends/?$ frontend/using-the-publish-subscribe-pattern-and-a-shared-event-bus-to-decouple-frontends [L,R=301]
+RewriteRule ^difference-between-throttling-and-debouncing-a-javascript-function/?$ javascript/difference-between-throttling-and-debouncing-a-javascript-function [L,R=301]
+RewriteRule ^micro-frontends-porting-the-micro-service-approach-into-the-frontend/?$ frontend/micro-frontends-porting-the-micro-service-approach-into-the-frontend [L,R=301]
+RewriteRule ^editorial(.*)$ announcements$1 [L,R=301]
+
 RewriteRule (.+)/$ $1 [L,R=301]
 # RewriteRule (.+)/index.html$ $1 [L,R=301]
 
@@ -64,29 +91,3 @@ AddType image/svg+xml .svg
     Header set Cache-Control "max-age=604800, private"
   </filesmatch>
 </IfModule>
-
-# Redirects
-RewriteRule ^contributors/?$ authors [L,R=301]
-RewriteRule ^detect-touch-devices-using-javascript/?$ javascript/detect-touch-devices-using-javascript [L,R=301]
-RewriteRule ^prevent-links-in-standalone-web-apps-to-be-opened-in-mobile-safari-under-ios/?$ javascript/prevent-links-in-standalone-web-apps-to-be-opened-in-mobile-safari-under-ios [L,R=301]
-RewriteRule ^i-see-some-javascript-scripts-using-0-and-or-1-occasionally-what-does-that-mean-exactly/?$ javascript/i-see-some-javascript-scripts-using-0-and-or-1-occasionally-what-does-that-mean-exactly [L,R=301]
-RewriteRule ^jquery-load-callback-for-cached-images-in-internet-explorer/?$ javascript/jquery-load-callback-for-cached-images-in-internet-explorer [L,R=301]
-RewriteRule ^class-constructors-without-using-new-in-javascript/?$ javascript/class-constructors-without-using-new-in-javascript [L,R=301]
-RewriteRule ^default-arguments-parameters-in-javascript/?$ javascript/default-arguments-parameters-in-javascript [L,R=301]
-RewriteRule ^typeof-null-object/?$ javascript/typeof-null-object [L,R=301]
-RewriteRule ^multi-line-strings-in-javascript/?$ javascript/multi-line-strings-in-javascript [L,R=301]
-RewriteRule ^override-javascript-functions/?$ javascript/override-javascript-functions [L,R=301]
-RewriteRule ^dont-use-fat-arrows-in-coffeescript-just-because-of-this/?$ coffeescript/dont-use-fat-arrows-in-coffeescript-just-because-of-this [L,R=301]
-RewriteRule ^how-to-fix-eacces-errors-with-npm-on-mac-os-x/?$ nodejs/how-to-fix-eacces-errors-with-npm-on-mac-os-x [L,R=301]
-RewriteRule ^truthy-and-falsy-values-in-javascript/?$ javascript/truthy-and-falsy-values-in-javascript [L,R=301]
-RewriteRule ^prefixing-immediate-functions-with-a-semicolon-in-javascript/?$ javascript/prefixing-immediate-functions-with-a-semicolon-in-javascript [L,R=301]
-RewriteRule ^passing-arguments-to-another-function-in-javascript/?$ javascript/passing-arguments-to-another-function-in-javascript [L,R=301]
-RewriteRule ^complex-variable-object-keys-in-javascript/?$ javascript/complex-variable-object-keys-in-javascript [L,R=301]
-RewriteRule ^difference-between-apply-call-bind-in-javascript/?$ javascript/difference-between-apply-call-bind-in-javascript [L,R=301]
-RewriteRule ^consynchronous-assurency-how-to-achieve-quasi-concurrency-with-array-prototype-foreach/?$ javascript/consynchronous-assurency-how-to-achieve-quasi-concurrency-with-array-prototype-foreach [L,R=301]
-RewriteRule ^hello-world-again/?$ editorial/hello-world-again [L,R=301]
-RewriteRule ^how-to-log-client-side-javascript-errors-exceptions-bugs/?$ javascript/how-to-log-client-side-javascript-errors-exceptions-bugs [L,R=301]
-RewriteRule ^cssplexity-applying-complexity-metrics-to-a-non-programming-language/?$ css/cssplexity-applying-complexity-metrics-to-a-non-programming-language [L,R=301]
-RewriteRule ^using-the-publish-subscribe-pattern-and-a-shared-event-bus-to-decouple-frontends/?$ frontend/using-the-publish-subscribe-pattern-and-a-shared-event-bus-to-decouple-frontends [L,R=301]
-RewriteRule ^difference-between-throttling-and-debouncing-a-javascript-function/?$ javascript/difference-between-throttling-and-debouncing-a-javascript-function [L,R=301]
-RewriteRule ^micro-frontends-porting-the-micro-service-approach-into-the-frontend/?$ frontend/micro-frontends-porting-the-micro-service-approach-into-the-frontend [L,R=301]

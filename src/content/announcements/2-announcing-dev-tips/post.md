@@ -16,7 +16,7 @@ Authors: rasshofer
 
 Text:
 
-Ever since its initial release, the intention of this site has been to support developers in building faster, more reliable, and more future-proof sites and applications. However, similar to our (reference: editorial/hello-world-again text: last relaunch), we’ve outgrown our name once again and planned to expand our niche from frontend-related development to software development in general in the near future.
+Ever since its initial release, the intention of this site has been to support developers in building faster, more reliable, and more future-proof sites and applications. However, similar to our (reference: announcements/hello-world-again text: last relaunch), we’ve outgrown our name once again and planned to expand our niche from frontend-related development to software development in general in the near future.
 
 For this, we primarily needed a new name. I’ve been on the hunt for a new name/domain for this site for quite some time but, of coure, all the good domain names are taken already. Even the new gTLDs like `.blog`, `.dev`, or `.tips` are kind of grazed when it comes to software development topics.
 
