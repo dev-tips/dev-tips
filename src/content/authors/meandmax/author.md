@@ -10,4 +10,4 @@ GitHub: meandmax
 
 -----
 
-Twitter: meandmax
+Twitter: _meandmax_
