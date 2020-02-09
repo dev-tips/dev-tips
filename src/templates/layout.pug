@@ -1,9 +1,10 @@
 include components.pug
 
 - const metaDescription = stripTags(shortcodes(markdown(description || text || answer || ''))).trim()
-- const trimmedMetaDescription = (metaDescription.length > 150 ? `${metaDescription.substr(0, 150).trim()}…` : metaDescription)
+- const trimmedMetaDescription = trimDescription(metaDescription)
 - const img = [...images, ...(parent ? parent.images : [])]
 - const share = img.find(image => image.url.endsWith('/share.png'))
+- const feed = findPageByUrl('/feed')
 
 doctype html
 html(lang='en', itemscope, itemtype=`http://schema.org/${getSchemaForTemplate(template)}`)
@@ -45,6 +46,7 @@ html(lang='en', itemscope, itemtype=`http://schema.org/${getSchemaForTemplate(te
     each font in fonts
       link(rel='preload', href=basepath(`/assets/fonts/${font.file}.woff2`), as='font', type='font/woff2', crossorigin)
     link(rel='stylesheet', href=basepath('/assets/css/style.css'))
+    link(rel='alternate', href=feed.url, title='RSS Feed')
     block link
   body(class=`page page--${template}`)
     +header

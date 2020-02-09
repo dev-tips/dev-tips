@@ -23,6 +23,7 @@ function html() {
     .src([
       path.resolve(output, '**', '*.html'),
       `!${path.resolve(output, 'ifttt', '**', '*.html')}`,
+      `!${path.resolve(output, 'feed', '**', '*.html')}`,
     ])
     .pipe(
       minifyHtml({

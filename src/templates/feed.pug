@@ -6,15 +6,17 @@ rss(version='2.0', xmlns:atom='http://www.w3.org/2005/Atom')
   channel
     title Dev Tips
     link #{hostname}#{genesis.url}
-    description IFTTT Feed
+    description #{genesis.title}
     atom:link(href=`${hostname}${url}`, rel='self', type='application/rss+xml')
     language en-US
     lastBuildDate #{formatDate(Date.now() / 1000, dateFormat)}
     copyright © Dev Tips #{new Date().getFullYear()}
     each post in posts
+      - const description = stripTags(shortcodes(markdown(post.description || post.text || post.answer || ''), post)).trim()
+      - const trimmedDescription = trimDescription(description, 300)
       item
         title #{post.title}
         link #{hostname}#{post.url}
         guid #{hostname}#{post.url}
-        description #{post.title} #{generateHashtags(post)}
+        description #{trimmedDescription}
         pubDate #{formatDate(post.date, dateFormat)}

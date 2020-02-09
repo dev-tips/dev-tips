@@ -85,6 +85,13 @@ const instance = cms({
           return 'website';
       }
     },
+    trimDescription: (input, max = 150) => {
+      const description = input.replace(/\s+/g, ' ');
+      return (description.length > max
+        ? `${description.substr(0, max).trim()}…`
+        : description
+      ).trim();
+    },
   },
   globals: {
     fonts,
@@ -157,7 +164,7 @@ const posts = genesis.children
 const ifttt = genesis.addVirtualPage({
   identifier: 'ifttt',
   template: 'ifttt',
-  posts,
+  posts: posts.slice(0, 20),
 });
 
 authors.children.forEach(author => {
@@ -165,9 +172,26 @@ authors.children.forEach(author => {
   ifttt.addVirtualPage({
     identifier: `ifttt/${authorId}`,
     template: 'ifttt',
-    posts: posts.filter(post =>
-      post.authors.split(/\s*,\s*/).includes(authorId),
-    ),
+    posts: posts
+      .filter(post => post.authors.split(/\s*,\s*/).includes(authorId))
+      .slice(0, 20),
+  });
+});
+
+const feed = genesis.addVirtualPage({
+  identifier: 'feed',
+  template: 'feed',
+  posts: posts.slice(0, 20),
+});
+
+authors.children.forEach(author => {
+  const authorId = path.basename(author.url);
+  feed.addVirtualPage({
+    identifier: `feed/${authorId}`,
+    template: 'feed',
+    posts: posts
+      .filter(post => post.authors.split(/\s*,\s*/).includes(authorId))
+      .slice(0, 20),
   });
 });
 
