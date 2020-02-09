@@ -1,0 +1,7 @@
+mixin gallery(url, title)
+  span.gallery
+    block
+
+mixin galleryItem(url, title)
+  span.gallery__item
+    img(data-src=url, alt=(title || ''), title=title)

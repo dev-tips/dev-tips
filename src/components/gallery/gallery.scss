@@ -1,0 +1,23 @@
+.gallery {
+  $component: &;
+
+  display: flex;
+  margin-bottom: 1rem;
+
+  @include respond-large {
+    margin: 0 (-1 * ($spacing-large / 2)) 1rem (-1 * ($spacing-large / 2));
+  }
+
+  #{$component}__item {
+    flex: 1 1 auto;
+    width: 100%;
+
+    ~ #{$component}__item {
+      margin-left: 1rem;
+    }
+  }
+
+  img {
+    margin: 0 auto;
+  }
+}

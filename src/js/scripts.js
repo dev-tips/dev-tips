@@ -11,5 +11,5 @@ for (let i = 0; i < obfuscated.length; i += 1) {
 }
 
 /* Lazy Loading */
-const observer = lozad('.image img, .author img');
+const observer = lozad('.image img, .gallery img, .author img');
 observer.observe();

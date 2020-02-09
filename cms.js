@@ -111,36 +111,63 @@ const instance = cms({
       const image = page.images.find(item =>
         item.url.endsWith(`/${attrs.image}`),
       );
-      if (image) {
-        const width = attrs.width || image.width;
-        const height = attrs.height || image.height;
-        const modifiers = [];
-        if (attrs.bordered) {
-          modifiers.push('bordered');
-        }
-        return `
-          <span class="image${
-            modifiers.length
-              ? ` ${modifiers.map(modifier => `image--${modifier}`).join(' ')}`
-              : ''
-          }">
-            <img data-src="${image.url}" alt="${attrs.title ||
-          image.title ||
-          image.alt ||
-          ''}"${width ? ` width="${width || ''}"` : ''}${
-          height ? ` height="${height || ''}"` : ''
-        }${attrs.title ? ` title="${attrs.title || ''}"` : ''}>
-          </span>
-        `;
+      if (!image) {
+        throw new Error(`Missing image: ${attrs.image}`);
       }
-      throw new Error(`Missing image: ${attrs.image}`);
+      const width = attrs.width || image.width;
+      const height = attrs.height || image.height;
+      const modifiers = [];
+      if (attrs.bordered) {
+        modifiers.push('bordered');
+      }
+
+      return `
+        <span class="image${
+          modifiers.length
+            ? ` ${modifiers.map(modifier => `image--${modifier}`).join(' ')}`
+            : ''
+        }">
+          <img data-src="${image.url}" alt="${attrs.title ||
+        image.title ||
+        image.alt ||
+        ''}"${width ? ` width="${width}"` : ''}${
+        height ? ` height="${height}"` : ''
+      }${attrs.title ? ` title="${attrs.title}"` : ''}>
+        </span>
+      `;
+    },
+    gallery: (attrs, page) => {
+      const items = attrs.gallery.split(/\s+/);
+      return `
+        <span class="gallery">
+          ${items
+            .map(itemName => {
+              const image = page.images.find(item =>
+                item.url.endsWith(`/${itemName}`),
+              );
+              if (!image) {
+                throw new Error(`Missing image: ${itemName}`);
+              }
+              return `
+              <span class="gallery__item">
+                <img data-src="${image.url}" alt="${image.title ||
+                image.alt ||
+                ''}"${image.width ? ` width="${image.width}"` : ''}${
+                image.height ? ` height="${image.height}"` : ''
+              }">
+              </span>
+            `;
+            })
+            .join(' ')}
+        </span>
+      `;
     },
     reference: (attrs, page) => {
       const reference = page.genesis.findPageByUrl(`/${attrs.reference}`);
-      if (reference) {
-        return `<a href="${reference.url}">${attrs.text}</a>`;
+      if (!reference) {
+        throw new Error(`Missing reference: ${attrs.reference}`);
       }
-      throw new Error(`Missing reference: ${attrs.reference}`);
+      return `<a href="${reference.url}">${attrs.text}</a>`;
     },
     math: attrs =>
       `<span class="math">${attrs.math
