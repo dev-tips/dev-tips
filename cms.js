@@ -5,6 +5,7 @@ const consolidate = require('consolidate');
 const markdown = require('markdown-it')()
   .use(require('markdown-it-footnote'))
   .use(require('markdown-it-highlightjs'))
+  .use(require('markdown-it-sup'))
   .use(require('markdown-it-sub'));
 const moment = require('moment');
 const striptags = require('striptags');
