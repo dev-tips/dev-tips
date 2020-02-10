@@ -22,7 +22,7 @@ The information and tools provided in this post and the appropriate repository a
 
 ## Installation / Usage / TL;DR
 
-The provided `Dockerfile` within [this repository](https://github.com/rasshofer/android-reverse-engineering) contains everything you need. Just build the image and run your commands within containers based on that image.
+The provided `Dockerfile` within the repository (github: rasshofer/android-reverse-engineering) contains everything you need. Just build the image and run your commands within containers based on that image.
 
 ### Build
 

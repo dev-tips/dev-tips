@@ -12,7 +12,7 @@ Authors: rasshofer
 
 Text:
 
-A buddy of mine just blundered into this trap/pitfall while including jQuery into a project. Both [jQuery](https://www.npmjs.com/package/jQuery) and [jquery](https://www.npmjs.com/package/jquery) do exist in npm’s registry. While the latter is the one he was looking for, he snapped the former (due to »jQuery« being the official notation). This caused a lot of (reasonable) confusion.
+A buddy of mine just blundered into this trap/pitfall while including jQuery into a project. Both (npm: jQuery) and (npm: jquery) do exist in npm’s registry. While the latter is the one he was looking for, he snapped the former (due to »jQuery« being the official notation). This caused a lot of (reasonable) confusion.
 
 In its earliest days, npm allowed packages to include any URL-safe character in their names, including upper and lower case. Since 2013, it’s not possible to create new packages with upper-case letters in the name anymore, but packages with upper-case letters in their names are still in the registry and still in use (due to backward compatibility reasons).
 

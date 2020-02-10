@@ -28,4 +28,4 @@ Long story short, 13 bids later I won the auction for 326 USD. (A bargain compar
 
 But: this announcement is not about bragging. It’s simply about giving some insights on how such a rebranding can work out and that you should never give up looking for and observing taken domain names you like. And, of course, we’re hoping to give back to the developer community with this site without ruining it through ads and sponsorships.
 
-I’m very much looking forward to the future of Dev Tips—we’re having huge plans. If you’d like to be a part of it, simply head over to our [GitHub repository](https://github.com/dev-tips/dev-tips), fork it, make your contributions, and send a pull request. Let’s see where this goes.
+I’m very much looking forward to the future of Dev Tips—we’re having huge plans. If you’d like to be a part of it, simply head over to our GitHub repository (github: dev-tips/dev-tips), fork it, make your contributions, and send a pull request. Let’s see where this goes.

@@ -1,0 +1,27 @@
+.link {
+  $component: &;
+
+  $link-icon-size: 1em;
+  $link-icon-spacing: 0.3em;
+
+  &#{$component}--twitter {
+    background: url('/assets/img/twitter.svg') 0 50% no-repeat transparent;
+    background-size: $link-icon-size $link-icon-size;
+    padding-left: ($link-icon-size + $link-icon-spacing);
+    color: #1da1f2;
+  }
+
+  &#{$component}--github {
+    background: url('/assets/img/github.svg') 0 50% no-repeat transparent;
+    background-size: $link-icon-size $link-icon-size;
+    padding-left: ($link-icon-size + $link-icon-spacing);
+    color: #000;
+  }
+
+  &#{$component}--npm {
+    background: url('/assets/img/npm.svg') 0 50% no-repeat transparent;
+    background-size: $link-icon-size $link-icon-size;
+    padding-left: ($link-icon-size + $link-icon-spacing);
+    color: #c12127;
+  }
+}

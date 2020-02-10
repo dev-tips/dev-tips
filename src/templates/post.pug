@@ -4,6 +4,11 @@ block content
   +article((template === 'question' ? 'question' : null))
     +articleContent()
       | !{shortcodes(markdown(text || answer))}
+    +articleActions
+      +articleAction
+        +link(getTwitterLink(url), 'Discuss on Twitter', 'twitter')(target='_blank', rel='noopener noreferrer')
+      +articleAction
+        +link(getGitHubLink(file), 'Edit on GitHub', 'github')(target='_blank', rel='noopener noreferrer')
     +articleMeta
       +articleCategory(parent)
       +articleDate(date, updated)

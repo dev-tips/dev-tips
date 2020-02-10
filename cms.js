@@ -16,6 +16,8 @@ const templates = path.resolve(src, 'templates');
 const output = path.resolve(__dirname, 'build');
 const fonts = require('./src/fonts');
 
+const hostname = 'https://dev-tips.com';
+
 const instance = cms({
   template: consolidate.pug,
   paths: {
@@ -93,9 +95,21 @@ const instance = cms({
         : description
       ).trim();
     },
+    getTwitterLink: url => {
+      return `https://mobile.twitter.com/search?q=${encodeURIComponent(
+        `${hostname}${url}`,
+      )}`;
+    },
+    getGitHubLink: file => {
+      return `https://github.com/dev-tips/dev-tips/blob/master/${path.relative(
+        __dirname,
+        file,
+      )}`;
+    },
   },
   globals: {
     fonts,
+    hostname,
   },
   shortcodes: {
     email: attrs => {
@@ -173,6 +187,12 @@ const instance = cms({
       `<span class="math">${attrs.math
         .replace(/\|LEFT_PARENTHESIS\|/g, '(')
         .replace(/\|RIGHT_PARENTHESIS\|/g, ')')}</span>`,
+    twitter: attrs =>
+      `<a href="https://twitter.com/${attrs.twitter}" class="link link--twitter" target="_blank" rel="noopener noreferrer">${attrs.twitter}</a>`,
+    github: attrs =>
+      `<a href="https://github.com/${attrs.github}" class="link link--github" target="_blank" rel="noopener noreferrer">${attrs.github}</a>`,
+    npm: attrs =>
+      `<a href="https://www.npmjs.com/package/${attrs.npm}" class="link link--npm" target="_blank" rel="noopener noreferrer">${attrs.npm}</a>`,
   },
 });
 

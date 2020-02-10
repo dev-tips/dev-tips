@@ -27,6 +27,30 @@
     margin-top: 1.5rem;
   }
 
+  #{$component}__actions {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0 0 0;
+    list-style: none;
+
+    @include respond-medium {
+      flex-direction: row;
+    }
+  }
+
+  #{$component}__action {
+    flex: 0 0 auto;
+
+    ~ #{$component}__action {
+      margin-top: 1rem;
+
+      @include respond-medium {
+        margin-top: 0;
+        margin-left: 1rem;
+      }
+    }
+  }
+
   #{$component}__authors {
     margin-top: 1.5rem;
 

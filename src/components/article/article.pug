@@ -25,3 +25,11 @@ mixin articleCategory(category)
 mixin articleContent()
   .article__content(itemprop='articleBody')
     block
+
+mixin articleActions()
+  ul.article__actions
+    block
+
+mixin articleAction()
+  li.article__action
+    block

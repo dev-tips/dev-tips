@@ -33,7 +33,7 @@ html(lang='en', itemscope, itemtype=`http://schema.org/${getSchemaForTemplate(te
       - const authorData = findPageByUrl(`/authors/${author}`)
       if (authorData && authorData.twitter)
         meta(name='twitter:creator', content=`@${authorData.twitter}`)
-    meta(property='og:url', content=`https://dev-tips.com${url}`)
+    meta(property='og:url', content=`${hostname}${url}`)
     meta(property='og:type', content=getOpenGraphTypeForTemplate(template))
     meta(property='og:site_name', content='Dev Tips')
     block meta
