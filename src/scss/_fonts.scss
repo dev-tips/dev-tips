@@ -10,5 +10,6 @@
       url('/assets/fonts/#{$file}.woff') format('woff');
     font-weight: #{$weight};
     font-style: #{$style};
+    font-display: swap;
   }
 }
