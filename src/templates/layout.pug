@@ -28,7 +28,13 @@ html(lang='en', itemscope, itemtype=`http://schema.org/${getSchemaForTemplate(te
       meta(itemprop='image', content=`${hostname}${share.url}`)
     else
       meta(itemprop='image', content=`${hostname}${basepath('/assets/img/logo.png')}`)
-    meta(name='twitter:card', content='summary')
+    meta(name='twitter:card', content='summary_large_image')
+    meta(name='twitter:title', content=title)
+    meta(name='twitter:description', content=trimmedMetaDescription)
+    if (share)
+      meta(name='twitter:image', content=`${hostname}${share.url}`)
+    else
+      meta(name='twitter:image', content=`${hostname}${basepath('/assets/img/logo.png')}`)
     if (template === 'post' && author)
       - const authorData = findPageByUrl(`/authors/${author}`)
       if (authorData && authorData.twitter)
