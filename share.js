@@ -67,8 +67,6 @@ try {
       await page.screenshot({
         path: path.resolve(path.dirname(post.file), 'share.png'),
       });
-
-      console.log(); // eslint-disable-line no-console
     }
 
     await browser.close();

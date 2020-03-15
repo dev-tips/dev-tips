@@ -33,8 +33,10 @@ html(lang='en', itemscope, itemtype=`http://schema.org/${getSchemaForTemplate(te
     meta(name='twitter:description', content=trimmedMetaDescription)
     if (share)
       meta(name='twitter:image', content=`${hostname}${share.url}`)
+      meta(name='twitter:image:alt', content=title)
     else
       meta(name='twitter:image', content=`${hostname}${basepath('/assets/img/logo.png')}`)
+      meta(name='twitter:image:alt', content='Dev Tips')
     if (template === 'post' && author)
       - const authorData = findPageByUrl(`/authors/${author}`)
       if (authorData && authorData.twitter)
