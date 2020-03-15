@@ -7,6 +7,7 @@
     "dev": "gulp dev",
     "start": "http-server -p 1337 build",
     "audit": "node audit",
+    "share": "node share",
     "deploy": "dotenv sftploy",
     "lint": "eslint '*.js' 'src/**/*.js' && stylelint 'src/**/*.scss'",
     "test": "npm run lint"
@@ -16,6 +17,7 @@
     "@babel/preset-env": "^7.7.7",
     "alex": "^8.1.0",
     "autoprefixer": "^9.7.4",
+    "axios": "^0.19.2",
     "chrome-launcher": "^0.12.0",
     "cms": "^1.8.1",
     "consolidate": "^0.15.1",
@@ -48,6 +50,7 @@
     "node-sass": "^4.13.0",
     "prettier": "^1.19.1",
     "pug": "^2.0.4",
+    "puppeteer-core": "^2.1.1",
     "rimraf": "^3.0.1",
     "sftploy": "0.0.3",
     "striptags": "^3.1.1",

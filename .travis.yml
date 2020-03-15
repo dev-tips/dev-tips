@@ -5,6 +5,7 @@ node_js:
 addons:
   chrome: stable
 script:
+  - npm run share
   - npm run build
   - npm run test
   - npm run audit
