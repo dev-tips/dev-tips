@@ -243,4 +243,10 @@ authors.children.forEach(author => {
   });
 });
 
+genesis.addVirtualPage({
+  identifier: 'sitemap.xml',
+  template: 'sitemap',
+  posts,
+});
+
 module.exports = instance;

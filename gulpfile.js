@@ -22,6 +22,7 @@ function html() {
   return gulp
     .src([
       path.resolve(output, '**', '*.html'),
+      `!${path.resolve(output, 'sitemap.xml', '*.html')}`,
       `!${path.resolve(output, 'ifttt', '**', '*.html')}`,
       `!${path.resolve(output, 'feed', '**', '*.html')}`,
     ])

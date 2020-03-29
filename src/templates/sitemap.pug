@@ -1,0 +1,13 @@
+doctype xml
+urlset(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
+  url
+    loc #{hostname}
+    priority 1.000
+  each category in genesis.children.filter(page => page.template === 'category')
+    url
+      loc #{hostname}#{category.url}
+      priority 0.500
+  each post in posts
+    url
+      loc #{hostname}#{post.url}
+      priority 0.500
