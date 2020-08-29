@@ -78,7 +78,7 @@ Using `BREAKING CHANGE:` (potentially in addition) is recommended, though, as it
 - First letter is lowercased
 - Skip the full stop (`.`)
 
-Always think about this sentence following the prelude »use/apply this commit to _{subject}_«, e.g. »apply this commit to _fix overlapping flyout in main navigation_«.
+Always think about this sentence following the prelude »use/apply this commit to {SUBJECT}«, e.g. »apply this commit to _fix overlapping flyout in main navigation_«.
 
 ### `<body>` (optional)
 
