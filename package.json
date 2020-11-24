@@ -59,7 +59,7 @@
     "stylelint-scss": "^3.13.0"
   },
   "dependencies": {
-    "highlight.js": "^9.17.1",
+    "highlight.js": "^10.1.2",
     "instant.page": "^3.0.0",
     "lozad": "^1.14.0"
   }
