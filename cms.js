@@ -150,6 +150,38 @@ const instance = cms({
         </span>
       `;
     },
+    video: (attrs, page) => {
+      const video = page.videos.find(item =>
+        item.url.endsWith(`/${attrs.video}`),
+      );
+      if (!video) {
+        throw new Error(`Missing video: ${attrs.video}`);
+      }
+      const type = `video/${attrs.video
+        .split('.')
+        .slice(-1)
+        .join('')}`;
+      const modifiers = [];
+      if (attrs.bordered) {
+        modifiers.push('bordered');
+      }
+
+      return `
+        <span class="video${
+          modifiers.length
+            ? ` ${modifiers.map(modifier => `video--${modifier}`).join(' ')}`
+            : ''
+        }">
+          <video ${attrs.width ? ` width="${attrs.width}"` : ''}${
+        attrs.height ? ` height="${attrs.height}"` : ''
+      }${attrs.controls ? ` controls` : ''}${
+        attrs.autoplay ? ` autoplay` : ''
+      }${attrs.muted ? ` muted` : ''} playsinline>
+            <source src="${video.url}" type="${type}">
+          </video>
+        </span>
+      `;
+    },
     gallery: (attrs, page) => {
       const items = attrs.gallery.split(/\s+/);
       return `

@@ -1,0 +1,24 @@
+.video {
+  $component: &;
+
+  display: block;
+  margin: 0 (-1 * $spacing-small) 1rem (-1 * $spacing-small);
+
+  @include respond-medium {
+    margin: 0 (-1 * $spacing-medium) 1rem (-1 * $spacing-medium);
+  }
+
+  @include respond-large {
+    margin: 0 (-1 * ($spacing-large / 2)) 1rem (-1 * ($spacing-large / 2));
+  }
+
+  &#{$component}--bordered {
+    @include respond-large {
+      border: 1px solid $color-unremarkable;
+    }
+  }
+
+  img {
+    margin: 0 auto;
+  }
+}
