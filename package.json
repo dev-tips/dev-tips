@@ -49,7 +49,7 @@
     "moment": "^2.24.0",
     "node-sass": "^4.13.0",
     "prettier": "^1.19.1",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "puppeteer-core": "^2.1.1",
     "rimraf": "^3.0.1",
     "sftploy": "0.0.3",
