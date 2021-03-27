@@ -2,4 +2,4 @@ Title: Announcements
 
 -----
 
-Color: #000
+Color: #333

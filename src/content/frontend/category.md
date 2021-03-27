@@ -2,4 +2,4 @@ Title: Frontend
 
 -----
 
-Color: #000
+Color: #333
