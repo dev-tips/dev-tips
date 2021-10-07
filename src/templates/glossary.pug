@@ -1,0 +1,12 @@
+extends layout.pug
+
+block content
+  +section()
+    - const posts = children.sort((a, b) => a.title.localeCompare(b.title))
+    - const clusters = Array.from(new Set(posts.map(children => children.title.substr(0, 1).toUpperCase())))
+    each cluster in clusters
+      - const matches = posts.filter(children => children.title.toUpperCase().startsWith(cluster))
+      h2 #{cluster}
+      +index()
+        each page in matches
+          +indexItem(page.url, page.alias ? `${page.title} (${page.alias})` : page.title)

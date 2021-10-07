@@ -1,0 +1,17 @@
+mixin index()
+  ul.index
+    block
+
+mixin indexItem(url, title, meta, icon)
+  li.index__item
+    if (url && title)
+      a.index__title(href=url)
+        if (icon)
+          img.index__icon(src=icon, alt='')
+          = ' '
+        | #{title}
+    if (meta)
+      = ' '
+      span.index__meta
+        | #{meta}
+    block

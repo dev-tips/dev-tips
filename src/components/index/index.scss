@@ -1,0 +1,37 @@
+.index {
+  $component: &;
+
+  margin: 0 0 1rem 0;
+  list-style: none;
+
+  #{$component}__item {
+    ~ #{$component}__item {
+      margin-top: 0.2rem;
+    }
+  }
+
+  #{$component}__title {
+    text-decoration: none;
+  }
+
+  #{$component}__icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    margin-top: -0.2em;
+    margin-right: 0.2em;
+  }
+
+  #{$component}__meta {
+    font-size: $font-size-smaller;
+
+    &:before {
+      content: '(';
+    }
+
+    &:after {
+      content: ')';
+    }
+  }
+}

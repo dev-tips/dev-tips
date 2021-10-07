@@ -1,0 +1,12 @@
+extends layout.pug
+
+block content
+  +article()
+    +articleContent()
+      | !{shortcodes(markdown(text))}
+    +articleMeta
+      +articleActions
+        +articleAction
+          +link(getTwitterLink(url), 'Discuss on Twitter', 'twitter')(target='_blank', rel='noopener noreferrer')
+        +articleAction
+          +link(getGitHubLink(file), 'Edit on GitHub', 'github')(target='_blank', rel='noopener noreferrer')
