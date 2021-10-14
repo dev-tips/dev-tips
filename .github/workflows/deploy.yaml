@@ -1,0 +1,48 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install
+        run: npm ci
+
+      - name: Share
+        run: npm run share
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm run test
+
+      - name: Audit
+        run: npm run audit
+
+      - name: Deploy
+        env:
+          SFTPLOY_HOST: ${{ secrets.SFTPLOY_HOST }}
+          SFTPLOY_PORT: ${{ secrets.SFTPLOY_PORT }}
+          SFTPLOY_USERNAME: ${{ secrets.SFTPLOY_USERNAME }}
+          SFTPLOY_PASSWORD: ${{ secrets.SFTPLOY_PASSWORD }}
+        run: npm run deploy
