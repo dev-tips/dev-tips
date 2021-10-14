@@ -23,7 +23,7 @@ You’ll be able to access your local instance via <http://localhost:1337/>.
 
 Besides the `npm run build` task, there is `npm run dev` as well, which does exactly the same but additionally starts watching the file system for changes and rebuilds every time a change occurs.
 
-The `master` branch gets deployed automatically via Travis CI. You can find the deployed version of this site at <https://dev-tips.com/>.
+The `master` branch gets deployed automatically via GitHub Actions. You can find the deployed version of this site at <https://dev-tips.com/>.
 
 ## License
 
