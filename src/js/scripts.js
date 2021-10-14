@@ -9,7 +9,3 @@ for (let i = 0; i < obfuscated.length; i += 1) {
     .toLowerCase();
   node.innerHTML = `<a href="mailto:${address}">${address}</a>`;
 }
-
-/* Lazy Loading */
-const observer = lozad('img[data-src]');
-observer.observe();

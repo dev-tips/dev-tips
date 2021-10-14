@@ -63,7 +63,6 @@
   },
   "dependencies": {
     "highlight.js": "^11.2.0",
-    "instant.page": "^5.1.0",
-    "lozad": "^1.16.0"
+    "instant.page": "^5.1.0"
   }
 }

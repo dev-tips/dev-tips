@@ -6,8 +6,6 @@ env:
 extends:
   - airbnb-base
   - plugin:prettier/recommended
-globals:
-  lozad: true
 rules:
   max-len: 0
   import/no-extraneous-dependencies: 0

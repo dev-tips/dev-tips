@@ -152,11 +152,11 @@ const instance = cms({
             ? ` ${modifiers.map((modifier) => `image--${modifier}`).join(' ')}`
             : ''
         }">
-          <img data-src="${image.url}" alt="${
+          <img src="${image.url}" alt="${
         attrs.title || image.title || image.alt || ''
       }"${width ? ` width="${width}"` : ''}${
         height ? ` height="${height}"` : ''
-      }${attrs.title ? ` title="${attrs.title}"` : ''}>
+      }${attrs.title ? ` title="${attrs.title}"` : ''} loading="lazy">
         </span>
       `;
     },
@@ -211,11 +211,11 @@ const instance = cms({
               }
               return `
                 <span class="gallery__item">
-                  <img data-src="${image.url}" alt="${
+                  <img src="${image.url}" alt="${
                 image.title || image.alt || ''
               }"${image.width ? ` width="${image.width}"` : ''}${
                 image.height ? ` height="${image.height}"` : ''
-              }">
+              }" loading="lazy">
                 </span>
               `;
             })

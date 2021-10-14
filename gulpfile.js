@@ -55,7 +55,6 @@ function css() {
 function js() {
   return gulp
     .src([
-      path.resolve(vendor, 'lozad', 'dist', 'lozad.min.js'),
       path.resolve(vendor, 'instant.page', 'instantpage.js'),
       path.resolve(src, 'js', 'scripts.js'),
     ])

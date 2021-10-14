@@ -35,7 +35,7 @@ mixin headerAuthor(data)
     if (data.website)
       meta(itemprop='url', content=data.website)
     a.header__link(href=data.url)
-      img.header__avatar(data-src=`https://avatars.githubusercontent.com/${data.gitHub}`, alt=data.name)
+      img.header__avatar(src=`https://avatars.githubusercontent.com/${data.gitHub}`, alt=data.name, loading='lazy')
       = ' '
       span #{data.name}
 
@@ -43,6 +43,6 @@ mixin headerDate(published, updated)
   .header__date
     time(datetime=formatDate(published), itemprop='datePublished') #{formatDate(published, 'MMMM Do YYYY')}
     if (updated)
-     = ' (updated on '
-     time(datetime=formatDate(updated), itemprop='dateModified') #{formatDate(updated, 'MMMM Do YYYY')}
-     = ')'
+      = ' (updated on '
+      time(datetime=formatDate(updated), itemprop='dateModified') #{formatDate(updated, 'MMMM Do YYYY')}
+      = ')'

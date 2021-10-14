@@ -3,7 +3,7 @@ mixin author(data)
     if (data.website)
       meta(itemprop='url', content=data.website)
     a.author__avatar(href=data.url)
-      img(data-src=`https://avatars.githubusercontent.com/${data.gitHub}`, alt=data.name)
+      img(src=`https://avatars.githubusercontent.com/${data.gitHub}`, alt=data.name, loading='lazy')
     = ' '
     a.author__name(href=data.url)
       span(itemprop='name') #{data.name}

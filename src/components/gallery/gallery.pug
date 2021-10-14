@@ -4,4 +4,4 @@ mixin gallery(url, variant = 'default')
 
 mixin galleryItem(url, title)
   span.gallery__item
-    img(data-src=url, alt=(title || ''), title=title)
+    img(src=url, alt=(title || ''), title=title, loading='lazy')
