@@ -2,22 +2,75 @@
   $component: &;
 
   display: flex;
-  margin-bottom: 1rem;
+  margin: 0 (-1 * $spacing-small) 1rem (-1 * $spacing-small);
+
+  @include respond-medium {
+    margin-left: (-1 * $spacing-medium);
+    margin-right: (-1 * $spacing-medium);
+  }
 
   @include respond-large {
-    margin: 0 (-1 * ($spacing-large / 2)) 1rem (-1 * ($spacing-large / 2));
+    margin-left: ($spacing-large / -4);
+    margin-right: ($spacing-large / -4);
   }
 
   #{$component}__item {
     flex: 1 1 auto;
     width: 100%;
+  }
 
-    ~ #{$component}__item {
-      margin-left: 1rem;
+  &#{$component}--responsive {
+    flex-direction: column;
+
+    @include respond-large {
+      flex-direction: row;
+    }
+
+    #{$component}__item {
+      ~ #{$component}__item {
+        margin-top: 1rem;
+
+        @include respond-large {
+          margin-top: 0;
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
+
+  &#{$component}--horizontal {
+    flex-direction: row;
+
+    #{$component}__item {
+      ~ #{$component}__item {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  &#{$component}--vertical {
+    flex-direction: column;
+
+    #{$component}__item {
+      ~ #{$component}__item {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  &#{$component}--bordered {
+    img {
+      @include respond-large {
+        border: 1px solid $color-unremarkable;
+      }
     }
   }
 
   img {
     margin: 0 auto;
+
+    @include respond-large {
+      border-radius: 0.3em;
+    }
   }
 }

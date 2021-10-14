@@ -1,5 +1,5 @@
-$breakpoint-medium: 450px;
-$breakpoint-large: 900px;
+$breakpoint-medium: 500px;
+$breakpoint-large: 1000px;
 
 $spacing-small: 20px;
 $spacing-medium: 40px;
@@ -48,3 +48,6 @@ $max-wrapper-width: 850px;
 $pattern-size-small: 300px;
 $pattern-size-medium: 600px;
 $pattern-size-large: 800px;
+
+$header-offset-large: 3 * $spacing-large;
+$footer-offset-large: 2 * $spacing-large;

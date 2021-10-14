@@ -4,18 +4,13 @@ block content
   +article((template === 'question' ? 'question' : null))
     +articleContent()
       | !{shortcodes(markdown(text || answer))}
-    +articleActions
-      +articleAction
-        +link(getTwitterLink(url), 'Discuss on Twitter', 'twitter')(target='_blank', rel='noopener noreferrer')
-      +articleAction
-        +link(getGitHubLink(file), 'Edit on GitHub', 'github')(target='_blank', rel='noopener noreferrer')
+      if (authors)
+        each author in authors.split(/\s*,\s*/).filter(author => author.hire).map(author => genesis.findPageByUrl(`/authors/${author}`))
+          | !{shortcodes(markdown(author.hire))}
     +articleMeta
       +articleCategory(parent)
-      +articleDate(date, updated)
-    +articleAuthors
-      +list()
-        each author in authors.split(/\s*,\s*/).map(author => genesis.findPageByUrl(`/authors/${author}`))
-          +listItem
-            +author(author)(itemprop='author')
-              if (author.twitter)
-                +authorTwitter(author.twitter)
+      +articleActions
+        +articleAction
+          +link(getTwitterLink(url), 'Discuss on Twitter', 'twitter')(target='_blank', rel='noopener noreferrer')
+        +articleAction
+          +link(getGitHubLink(file), 'Edit on GitHub', 'github')(target='_blank', rel='noopener noreferrer')

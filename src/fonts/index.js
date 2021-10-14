@@ -137,12 +137,12 @@ module.exports = [
     weight: '400',
     style: 'normal',
   },
-  // {
-  //   family: 'Plex Sans',
-  //   file: 'plex-sans-italic',
-  //   weight: '400',
-  //   style: 'italic',
-  // },
+  {
+    family: 'Plex Sans',
+    file: 'plex-sans-italic',
+    weight: '400',
+    style: 'italic',
+  },
   // {
   //   family: 'Plex Sans',
   //   file: 'plex-sans-text',

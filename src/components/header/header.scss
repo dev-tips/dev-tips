@@ -2,8 +2,10 @@
   $component: &;
 
   padding: $spacing-small;
-  background: url('/assets/img/pattern.svg') 50% 100% repeat $color-header;
+  background: url('/assets/img/pattern.svg') 50% 0 repeat
+    var(--color, $color-header);
   background-size: $pattern-size-small;
+  color: var(--content, $color-text);
 
   @include respond-medium {
     padding: $spacing-medium;
@@ -11,7 +13,8 @@
   }
 
   @include respond-large {
-    padding: $spacing-large;
+    padding: $spacing-large $spacing-large
+      ($header-offset-large + $spacing-large) $spacing-large;
     background-size: $pattern-size-large;
   }
 
@@ -56,6 +59,65 @@
 
     h1 {
       margin-bottom: 0;
+    }
+  }
+
+  #{$component}__meta {
+    display: flex;
+    flex-direction: column;
+
+    @include respond-large {
+      flex-direction: row;
+    }
+  }
+
+  #{$component}__authors {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+
+    @include respond-medium {
+      flex-direction: row;
+    }
+  }
+
+  #{$component}__author {
+    flex: 0 0 auto;
+
+    ~ #{$component}__author {
+      margin-top: 1rem;
+
+      @include respond-medium {
+        margin-top: 0;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  #{$component}__link {
+    display: flex;
+    text-decoration: none;
+  }
+
+  #{$component}__avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    border-radius: 1.5rem;
+  }
+
+  #{$component}__date {
+    margin-top: 1rem;
+
+    @include respond-large {
+      margin-top: 0;
+      margin-left: 0.5rem;
+
+      &:before {
+        content: '\00b7';
+        margin-right: 0.5rem;
+      }
     }
   }
 }

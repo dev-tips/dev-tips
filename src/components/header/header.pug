@@ -1,5 +1,5 @@
-mixin header()
-  header.header
+mixin header(color)
+  header.header(style=color ? { '--color': color, '--content': getContentColor(color) } : undefined, class=(color ? 'header--colored' : undefined))
     .header__wrapper
       block
 
@@ -21,3 +21,28 @@ mixin headerTitle(title)
 
 mixin headerDescription(description)
   p.header__description&attributes(attributes) #{description}
+
+mixin headerMeta()
+  .header__meta&attributes(attributes)
+    block
+
+mixin headerAuthors()
+  ul.header__authors&attributes(attributes)
+    block
+
+mixin headerAuthor(data)
+  li.header__author(itemscope, itemtype='http://schema.org/Person')&attributes(attributes)
+    if (data.website)
+      meta(itemprop='url', content=data.website)
+    a.header__link(href=data.url)
+      img.header__avatar(data-src=`https://avatars.githubusercontent.com/${data.gitHub}`, alt=data.name)
+      = ' '
+      span #{data.name}
+
+mixin headerDate(published, updated)
+  .header__date
+    time(datetime=formatDate(published), itemprop='datePublished') #{formatDate(published, 'MMMM Do YYYY')}
+    if (updated)
+     = ' (updated on '
+     time(datetime=formatDate(updated), itemprop='dateModified') #{formatDate(updated, 'MMMM Do YYYY')}
+     = ')'

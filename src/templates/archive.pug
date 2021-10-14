@@ -1,0 +1,13 @@
+extends layout.pug
+
+block content
+  +section()
+    - const posts = getAllPosts(genesis)
+    - const years = Array.from(new Set(posts.map(children => formatDate(children.date, 'YYYY'))))
+    each year in years
+      - const matches = posts.filter(children => formatDate(children.date, 'YYYY') === year)
+      h2 #{year}
+      +index()
+        each page in matches
+          - const icon = page.parent.images.find(image => image.url.endsWith('icon.svg'))
+          +indexItem(page.url, page.title, formatDate(page.date, 'MMMM Do'), icon.url)

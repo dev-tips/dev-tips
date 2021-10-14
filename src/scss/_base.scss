@@ -25,7 +25,7 @@ html {
 }
 
 body {
-  background: $color-background;
+  background: $color-content;
   color: $color-text;
   font-family: $font-family-copy;
   font-weight: $font-weight-copy;
@@ -72,20 +72,13 @@ ol {
   margin-bottom: 1rem;
 }
 
-ul,
-ol {
-  margin-left: 1.3em;
-
-  @include respond-large {
-    margin-left: 0;
-  }
-}
-
 ul {
+  margin-left: 1em;
   list-style: square;
 }
 
 ol {
+  margin-left: 1.1em;
   list-style: decimal;
 }
 
@@ -125,9 +118,9 @@ pre {
   }
 
   @include respond-large {
-    margin-left: (-1 * ($spacing-large / 2));
-    margin-right: (-1 * ($spacing-large / 2));
-    border-radius: 0.4em;
+    margin-left: ($spacing-large / -4);
+    margin-right: ($spacing-large / -4);
+    border-radius: 0.3em;
   }
 
   code {
@@ -144,7 +137,7 @@ pre {
       }
 
       @include respond-large {
-        padding: ($spacing-large / 2);
+        padding: ($spacing-large / 4);
       }
     }
 
@@ -162,7 +155,7 @@ pre {
       }
 
       @include respond-large {
-        box-shadow: 0 0 ($spacing-large / 2) ($spacing-large / 2) $color-code;
+        box-shadow: 0 0 ($spacing-large / 4) ($spacing-large / 4) $color-code;
       }
     }
   }
@@ -193,6 +186,25 @@ blockquote {
       text-decoration: none;
     }
   }
+}
+
+mark {
+  margin: 0 -0.4em;
+  padding: 0 0.4em;
+  border-radius: 0.8em 0.3em;
+  background: transparent;
+  background-image: linear-gradient(
+    to right,
+    rgba($color-highlights, 0.1),
+    rgba($color-highlights, 0.7) 5%,
+    rgba($color-highlights, 0.3)
+  );
+  box-decoration-break: clone;
+}
+
+sup,
+sub {
+  margin-left: 0.125em;
 }
 
 img,

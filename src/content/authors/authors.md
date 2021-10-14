@@ -1,4 +1,4 @@
-Title: Authors
+Title: Authors & Collaborators
 
 -----
 

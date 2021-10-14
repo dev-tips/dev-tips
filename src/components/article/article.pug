@@ -11,14 +11,6 @@ mixin articleAuthors()
   .article__authors
     block
 
-mixin articleDate(published, updated)
-  .article__date
-    time(datetime=formatDate(published), itemprop='datePublished') #{formatDate(published, 'MMMM Do YYYY')}
-    if (updated)
-     = ' (updated on '
-     time(datetime=formatDate(updated), itemprop='dateModified') #{formatDate(updated, 'MMMM Do YYYY')}
-     = ')'
-
 mixin articleCategory(category)
   +category(category).article__category
 

@@ -27,7 +27,7 @@ The `master` branch gets deployed automatically via Travis CI. You can find the 
 
 ## License
 
-Copyright (c) 2020 [Thomas Rasshofer](https://thomasrasshofer.com/)  
+Copyright (c) 2021 [Thomas Rasshofer](https://thomasrasshofer.com/)  
 Licensed under the MIT license.
 
 See LICENSE for more info.

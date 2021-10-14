@@ -4,6 +4,7 @@ const puppeteer = require('puppeteer-core');
 const chromeLauncher = require('chrome-launcher');
 const axios = require('axios');
 const pug = require('pug');
+const contrast = require('contrast');
 
 const cms = require('./cms');
 
@@ -11,11 +12,11 @@ const genesis = cms.get();
 const template = path.resolve(__dirname, 'src', 'share.pug');
 
 const posts = genesis.children
-  .filter(page => page.template === 'category')
+  .filter((page) => page.template === 'category')
   .reduce(
     (acc, category) => [
       ...acc,
-      ...category.children.filter(page => page.visible),
+      ...category.children.filter((page) => page.visible),
     ],
     [],
   );
@@ -52,9 +53,11 @@ try {
       await page.setContent(
         pug.renderFile(template, {
           title: post.title,
+          background: post.parent.color,
+          color: contrast(post.parent.color) === 'dark' ? '#fff' : '#000',
           category: `data:image/svg+xml;base64,${fs
             .readFileSync(
-              post.parent.images.find(image => image.url.endsWith('icon.svg'))
+              post.parent.images.find((image) => image.url.endsWith('icon.svg'))
                 .file,
             )
             .toString('base64')}`,

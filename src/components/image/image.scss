@@ -5,11 +5,15 @@
   margin: 0 (-1 * $spacing-small) 1rem (-1 * $spacing-small);
 
   @include respond-medium {
-    margin: 0 (-1 * $spacing-medium) 1rem (-1 * $spacing-medium);
+    margin-left: (-1 * $spacing-medium);
+    margin-right: (-1 * $spacing-medium);
   }
 
   @include respond-large {
-    margin: 0 (-1 * ($spacing-large / 2)) 1rem (-1 * ($spacing-large / 2));
+    margin-left: ($spacing-large / -4);
+    margin-right: ($spacing-large / -4);
+    border-radius: 0.3em;
+    overflow: hidden;
   }
 
   &#{$component}--bordered {

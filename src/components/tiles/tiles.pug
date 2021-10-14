@@ -1,0 +1,12 @@
+mixin tiles()
+  ul.tiles
+    block
+
+mixin tilesItem(url, title, icon, color)
+  li.tiles__item(style=color ? { '--color': color, '--content': getContentColor(color) } : undefined)
+    a.tiles__link(href=url)
+      .tiles__icon
+        img(src=icon.url, alt=title)
+      .tiles__content
+        .tiles__title(href=url) #{title}
+        block

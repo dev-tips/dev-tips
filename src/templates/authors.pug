@@ -6,8 +6,9 @@ block link
 block content
   +section()
     - const posts = getAllPosts(genesis)
+    - const terms = genesis.findPageByUrl('/glossary').children;
     +list()
-      each author in children.map(author => Object.assign({}, author, { posts: getPostsForAuthor(posts, author.url) })).sort((a, b) => b.posts.length - a.posts.length || a.name.localeCompare(b.name))
-        +listItem
+      each author in children.map(author => Object.assign({}, author, { posts: getPostsForAuthor(posts, author.url), terms: getPostsForAuthor(terms, author.url) })).sort((a, b) => b.posts.length - a.posts.length || a.name.localeCompare(b.name))
+        +listItem(null, null, null, (author.posts.length + author.terms.length) >= 10)
           +author(author)
-            | #{author.posts.length} post#{author.posts.length === 1 ? '' : 's'}
+            | #{[author.posts.length ? `${author.posts.length} tip${author.posts.length === 1 ? '' : 's'}` : null, author.terms.length ? `${author.terms.length} glossary term${author.terms.length === 1 ? '' : 's'}` : null].filter(Boolean).join(' and ')}

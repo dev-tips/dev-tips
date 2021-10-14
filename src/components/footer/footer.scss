@@ -2,7 +2,7 @@
   $component: &;
 
   padding: $spacing-small;
-  background: url('/assets/img/pattern.svg') 50% 0 repeat transparent;
+  background: url('/assets/img/pattern.svg') 50% 100% repeat $color-background;
   background-size: $pattern-size-small;
   color: $color-unremarkable;
 
@@ -12,7 +12,8 @@
   }
 
   @include respond-large {
-    padding: $spacing-large;
+    padding: ($footer-offset-large + $spacing-large) $spacing-large
+      $spacing-large $spacing-large;
     background-size: $pattern-size-large;
   }
 
@@ -21,22 +22,14 @@
   }
 
   #{$component}__wrapper {
+    position: relative;
+    z-index: 1;
     max-width: $max-wrapper-width;
     margin: 0 auto;
 
     > *:last-child {
       margin-bottom: 0;
     }
-  }
-
-  #{$component}__copyright {
-    font-family: $font-family-titles;
-    font-weight: $font-weight-titles;
-    line-height: $line-height-titles;
-    font-style: $font-style-titles;
-    font-size: 1.25rem;
-    text-transform: uppercase;
-    color: $color-content;
   }
 
   #{$component}__links {

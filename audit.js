@@ -19,11 +19,11 @@ const server = httpServer.createServer({
 const genesis = cms.get();
 
 const posts = genesis.children
-  .filter(page => page.template === 'category')
+  .filter((page) => page.template === 'category')
   .reduce(
     (acc, category) => [
       ...acc,
-      ...category.children.filter(page => page.visible),
+      ...category.children.filter((page) => page.visible),
     ],
     [],
   )

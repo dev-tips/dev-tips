@@ -2,7 +2,9 @@ extends layout.pug
 
 block content
   +section()
-    +list()
-      - const posts = getAllPosts(genesis)
-      each page in posts
-        +listItem(page.url, page.title, formatDate(page.date, 'MMMM Do YYYY'), page.highlight, page.parent)
+    +tiles()
+      - const categories = genesis.children.filter(category => category.template === 'category' && category.children.length > 0).sort((a, b) => b.children.length - a.children.length || a.title.localeCompare(b.title))
+      each category in categories
+        - const icon = category.images.find(image => image.url.endsWith('icon.svg'))
+        +tilesItem(category.url, category.title, icon, category.color)
+          | #{category.children.length} tip#{category.children.length === 1 ? '' : 's'}

@@ -1,5 +1,5 @@
-mixin gallery(url, title)
-  span.gallery
+mixin gallery(url, variant = 'default')
+  span.gallery(class=`gallery--${variant}`)
     block
 
 mixin galleryItem(url, title)

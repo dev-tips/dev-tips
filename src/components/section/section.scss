@@ -9,7 +9,36 @@
   }
 
   @include respond-large {
+    position: relative;
+    margin-top: (-1 * $header-offset-large);
+    margin-bottom: (-1 * $footer-offset-large);
     padding: $spacing-large;
+    background: none;
+    overflow: hidden;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      width: 100%;
+      background: $color-content;
+      pointer-events: none;
+    }
+
+    &:before {
+      top: 0;
+      left: 50%;
+      height: ($header-offset-large + $spacing-large);
+      transform: translateX(#{($max-wrapper-width / -2) - $spacing-large});
+    }
+
+    &:after {
+      bottom: 0;
+      right: 50%;
+      height: ($footer-offset-large + $spacing-large);
+      transform: translateX(#{($max-wrapper-width / 2) + $spacing-large});
+    }
   }
 
   ~ #{$component} {
@@ -17,6 +46,8 @@
   }
 
   #{$component}__wrapper {
+    position: relative;
+    z-index: 1;
     max-width: $max-wrapper-width;
     margin: 0 auto;
 

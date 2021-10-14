@@ -68,15 +68,25 @@ html(lang='en', itemscope, itemtype=`http://schema.org/${getSchemaForTemplate(te
     link(rel='alternate', href=feed.url, title='RSS Feed')
     block link
   body(class=`page page--${template}`)
-    +header
+    +header(color || (parent ? parent.color : undefined))
       +headerSite(genesis.url)
-      +headerTitle(title || name)
+      +headerTitle(`${title || name}${alias ? ` (${alias})` : ''}`)
       if (description)
         +headerDescription(description)(itemprop='abstract')
+      if (authors || date || updated)
+        +headerMeta
+          if (authors)
+            +headerAuthors
+                each author in authors.split(/\s*,\s*/).map(author => genesis.findPageByUrl(`/authors/${author}`))
+                  +headerAuthor(author)(itemprop='author')
+          if (date || updated)
+            +headerDate(date, updated)
     block content
     +footer()
-      +footerCopyright()
-      +footerMasthead({
-        authors: findPageByUrl('/authors').url
-      })
+      h2 About Dev Tips
+      | !{shortcodes(markdown(genesis.text))}
+      p Our #[a(href=genesis.findPageByUrl('/glossary').url) glossary] attempts to explain terms and buzzwords often used in software development in a few simple words with the purpose of having explanations than can be easily referenced.
+      p All articles are licensed under #[a(href='https://creativecommons.org/licenses/by-sa/4.0/') CC-BY-SA 4.0]. Code snippets are licensed under #[a(href='https://opensource.org/licenses/MIT') MIT], unless otherwise noted. Thanks a ton to all #[a(href=findPageByUrl('/authors').url) authors] for their awesome contributions.
+      p You can find a list of all articles in our #[a(href=genesis.findPageByUrl('/archive').url) archive]. If you’d like to contribute to this site, simply head over to its #[a(href='https://github.com/dev-tips/dev-tips') GitHub repository], fork it, make your contributions, and send a pull request.
+      p © #{(new Date().getFullYear())} Dev Tips
     script(src=basepath('/assets/js/scripts.js'), async)

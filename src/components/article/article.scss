@@ -9,7 +9,36 @@
   }
 
   @include respond-large {
+    position: relative;
+    margin-top: (-1 * $header-offset-large);
+    margin-bottom: (-1 * $footer-offset-large);
     padding: $spacing-large;
+    background: none;
+    overflow: hidden;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      width: 100%;
+      background: $color-content;
+      pointer-events: none;
+    }
+
+    &:before {
+      top: 0;
+      left: 50%;
+      height: ($header-offset-large + $spacing-large);
+      transform: translateX(#{($max-wrapper-width / -2) - $spacing-large});
+    }
+
+    &:after {
+      bottom: 0;
+      right: 50%;
+      height: ($footer-offset-large + $spacing-large);
+      transform: translateX(#{($max-wrapper-width / 2) + $spacing-large});
+    }
   }
 
   ~ .section {
@@ -17,20 +46,32 @@
   }
 
   #{$component}__wrapper {
+    position: relative;
+    z-index: 1;
     max-width: $max-wrapper-width;
     margin: 0 auto;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
   }
 
   #{$component}__meta {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     margin-top: 1.5rem;
+
+    @include respond-large {
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   #{$component}__actions {
     display: flex;
     flex-direction: column;
-    margin: 1.5rem 0 0 0;
+    margin: 0;
     list-style: none;
 
     @include respond-medium {
@@ -61,7 +102,15 @@
 
   #{$component}__category {
     flex: 0 0 auto;
-    margin-right: 1rem;
+
+    + #{$component}__actions {
+      margin: 1rem 0 0 0;
+
+      @include respond-large {
+        margin-top: 0;
+        margin-left: 1rem;
+      }
+    }
   }
 
   #{$component}__date {
