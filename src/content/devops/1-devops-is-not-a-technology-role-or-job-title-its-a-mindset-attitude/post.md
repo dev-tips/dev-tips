@@ -34,6 +34,6 @@ Key aspects, indicators, and metrics of a lived DevOps approach in teams are as 
 - Lead time for changes: how long does it take from code commit until the change is running on production?
 - Mean time to recover: how long does it take to get a service back once an error occurs?
 - Change failure rate: how high is the percentage of changes that affect the quality of a service/application?
-- Downtime: how long must a system be »disconnected« in order to to run updates?
+- Downtime: how long must a system be »disconnected« in order to run updates?
 
 DevOps is based on the harmonization of development with IT operations and the automatization of the development/deployment processes. Mutual respect and interest is the most urgent improvement in the interaction and the prerequisite for trust, good cooperation, and smooth collaboration.

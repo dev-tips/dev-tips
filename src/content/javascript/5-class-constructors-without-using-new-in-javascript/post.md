@@ -21,7 +21,7 @@ function Person(name, age) {
 }
 ```
 
-While var `jack = new Person('Jack', 32)` would work, `var jim = Person('Jim', 34)` doesn’t—so far. Actually `jim` would be simply `undefined` after the call. But even worse: if someone calls the constructor without using new, the global scope will be poluted by the two variables `name` and `age` as calling a function without specifying its context forces the browser to pass it in the global object (which is `window`). By checking whether the requested object is already an instance of the class, you can return a new instance if it isn’t or execute the actual constructor if it is.
+While `var jack = new Person('Jack', 32)` would work, `var jim = Person('Jim', 34)` doesn’t—so far. Actually `jim` would be simply `undefined` after the call. But even worse: if someone calls the constructor without using new, the global scope will be poluted by the two variables `name` and `age` as calling a function without specifying its context forces the browser to pass it in the global object (which is `window`). By checking whether the requested object is already an instance of the class, you can return a new instance if it isn’t or execute the actual constructor if it is.
 
 ```javascript
 function Person(name, age) {
@@ -34,7 +34,7 @@ function Person(name, age) {
 }
 ```
 
-Both var `jack = new Person('Jack', 32)` and `var jim = Person('Jim', 34)` would work now. The following way does exactly the same but is a bit shorter and handier.
+Both `var jack = new Person('Jack', 32)` and `var jim = Person('Jim', 34)` would work now. The following way does exactly the same but is a bit shorter and handier.
 
 ```javascript
 function Person(name, age) {
