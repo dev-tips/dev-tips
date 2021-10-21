@@ -11,3 +11,7 @@ urlset(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     url
       loc #{hostname}#{post.url}
       priority 0.500
+  each term in genesis.findPageByUrl('/glossary').children
+    url
+      loc #{hostname}#{term.url}
+      priority 0.500
