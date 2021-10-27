@@ -54,7 +54,7 @@ After rebasing completed successfully, you can check the log again (by using afo
 
 (image: git-log-after.png)
 
-It’s also possible to change the author/commiter for a subset of commits by specifying the last respective commit hash to be excluded (instead of `--root`). The following command rebases all commits down to commit `59232d7` (excluding) and applies the amendment.
+It’s also possible to change the author/committer for a subset of commits by specifying the last respective commit hash to be excluded (instead of `--root`). The following command rebases all commits down to commit `59232d7` (excluding) and applies the amendment.
 
 ```sh
 export GIT_COMMITTER_NAME="Jane Doe"
