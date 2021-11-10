@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .video {
   $component: &;
 
@@ -10,8 +12,8 @@
   }
 
   @include respond-large {
-    margin-left: ($spacing-large / -4);
-    margin-right: ($spacing-large / -4);
+    margin-left: math.div($spacing-large, -4);
+    margin-right: math.div($spacing-large, -4);
   }
 
   &#{$component}--bordered {

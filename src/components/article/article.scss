@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .article {
   $component: &;
 
@@ -30,14 +32,18 @@
       top: 0;
       left: 50%;
       height: ($header-offset-large + $spacing-large);
-      transform: translateX(#{($max-wrapper-width / -2) - $spacing-large});
+      transform: translateX(
+        #{math.div($max-wrapper-width, -2) - $spacing-large}
+      );
     }
 
     &:after {
       bottom: 0;
       right: 50%;
       height: ($footer-offset-large + $spacing-large);
-      transform: translateX(#{($max-wrapper-width / 2) + $spacing-large});
+      transform: translateX(
+        #{math.div($max-wrapper-width, 2) + $spacing-large}
+      );
     }
   }
 

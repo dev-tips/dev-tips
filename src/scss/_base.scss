@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 * {
   margin: 0;
   padding: 0;
@@ -118,8 +120,8 @@ pre {
   }
 
   @include respond-large {
-    margin-left: ($spacing-large / -4);
-    margin-right: ($spacing-large / -4);
+    margin-left: math.div($spacing-large, -4);
+    margin-right: math.div($spacing-large, -4);
     border-radius: 0.3em;
   }
 
@@ -137,7 +139,7 @@ pre {
       }
 
       @include respond-large {
-        padding: ($spacing-large / 4);
+        padding: math.div($spacing-large, 4);
       }
     }
 
@@ -148,14 +150,17 @@ pre {
       right: 0;
       width: 0;
       height: 100%;
-      box-shadow: 0 0 ($spacing-small / 2) ($spacing-small / 2) $color-code;
+      box-shadow: 0 0 math.div($spacing-small, 2) math.div($spacing-small, 2)
+        $color-code;
 
       @include respond-medium {
-        box-shadow: 0 0 ($spacing-medium / 2) ($spacing-medium / 2) $color-code;
+        box-shadow: 0 0 math.div($spacing-medium, 2)
+          math.div($spacing-medium, 2) $color-code;
       }
 
       @include respond-large {
-        box-shadow: 0 0 ($spacing-large / 4) ($spacing-large / 4) $color-code;
+        box-shadow: 0 0 math.div($spacing-large, 4) math.div($spacing-large, 4)
+          $color-code;
       }
     }
   }

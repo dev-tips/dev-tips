@@ -1,8 +1,10 @@
+@use 'sass:map';
+
 @each $font in $fonts {
-  $family: map-get($font, 'family');
-  $file: map-get($font, 'file');
-  $weight: map-get($font, 'weight');
-  $style: map-get($font, 'style');
+  $family: map.get($font, 'family');
+  $file: map.get($font, 'file');
+  $weight: map.get($font, 'weight');
+  $style: map.get($font, 'style');
 
   @font-face {
     font-family: $family;

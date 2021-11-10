@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 .category {
   $component: &;
 
@@ -10,7 +12,7 @@
   transition: background 200ms ease;
 
   &:hover {
-    background: darken($color-content, 10%);
+    background: color.adjust($color-content, $lightness: -10%);
     text-decoration: none;
   }
 
