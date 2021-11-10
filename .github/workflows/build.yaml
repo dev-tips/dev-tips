@@ -39,8 +39,3 @@ jobs:
 
       - name: Audit
         run: npm run audit
-
-      - name: Test
-        env:
-          SOME_SECRET: ${{ secrets.SOME_SECRET }}
-        run: echo $SOME_SECRET
