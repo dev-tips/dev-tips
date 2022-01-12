@@ -42,7 +42,7 @@
     "gulp-uglify": "^3.0.2",
     "http-server": "^14.0.0",
     "lighthouse": "^8.6.0",
-    "markdown-it": "^12.2.0",
+    "markdown-it": "^12.3.2",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-highlightjs": "^3.5.0",
     "markdown-it-mark": "^3.0.1",
