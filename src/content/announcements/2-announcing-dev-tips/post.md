@@ -18,9 +18,9 @@ Text:
 
 Ever since its initial release, the intention of this site has been to support developers in building faster, more reliable, and more future-proof sites and applications. However, similar to our (reference: announcements/hello-world-again text: last relaunch), we’ve outgrown our name once again and planned to expand our niche from frontend-related development to software development in general in the near future.
 
-For this, we primarily needed a new name. I’ve been on the hunt for a new name/domain for this site for quite some time but, of coure, all the good domain names are taken already. Even the new gTLDs like `.blog`, `.dev`, or `.tips` are kind of grazed when it comes to software development topics.
+For this, we primarily needed a new name. I’ve been on the hunt for a new name/domain for this site for quite some time but, of course, all the good domain names are taken already. Even the new gTLDs like `.blog`, `.dev`, or `.tips` are kind of grazed when it comes to software development topics.
 
-By pure coincidence I became aware that the domain `dev-tips.com` (which I assessed several times in the past) finally expired and was up for auction. It kind of perfectly described what this site shall be about and thus decided to chip in.
+By pure coincidence I became aware that the domain `dev-tips.com` (which I assessed several times in the past) finally expired and was up for auction. It kind of perfectly described what this site shall be about and thus I decided to chip in.
 
 Long story short, 13 bids later I won the auction for 326 USD. (A bargain compared to what others charged for aforementioned domains I inquired.)
 

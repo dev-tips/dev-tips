@@ -164,7 +164,7 @@ something.init({
 
 ```ts
 (async () => {
-  await window.polyfillLoaded();
+  await window.polyfillLoaded.promise;
   // Polyfills are ready, now do something
 })();
 ```
