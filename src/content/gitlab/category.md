@@ -2,4 +2,4 @@ Title: GitLab
 
 -----
 
-Color: #e65328
+Color: #fc6d26
