@@ -31,7 +31,7 @@ const circuitBreaker = async <T>(
     new Promise<void>((resolve) => {
       timer = window.setTimeout(() => resolve(), timeout);
     }),
-  ]).finally(() => clearTimeout(timer));
+  ]).finally(() => window.clearTimeout(timer));
 };
 ```
 

@@ -37,7 +37,6 @@ export const ConfigContext = createContext<Config | undefined>(undefined);
 
 export const useConfig = (): Config =>
   useContext(ConfigContext) ?? defaultConfig;
-
 ```
 
 Based on the React context defined above and the default configuration, the rendering part is moved out of the `connectedCallback` lifecycle callback method into the standalone helper method `renderReact` so it can be triggered initially and whenever HTML attributes are changed, appended, removed, or replaced. `connectedCallback` now only generates and injects the mount point and triggers the `renderReact` method initially.

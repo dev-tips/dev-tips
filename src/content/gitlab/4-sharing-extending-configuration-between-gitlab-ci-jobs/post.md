@@ -75,7 +75,7 @@ build-production:
 
 ## GitLab CI’s built-in extending
 
-GitLab CI also offers an `extending` configuration property that allows to reuse configuration sections as an alternative to the YAML-native anchors/extending.
+GitLab CI also offers an `extends` configuration property that allows to reuse configuration sections as an alternative to the YAML-native anchors/extending.
 
 ```yaml
 .build:
@@ -89,7 +89,7 @@ GitLab CI also offers an `extending` configuration property that allows to reuse
     expire_in: 1 hour
 
 build-production:
-  extending: .build
+  extends: .build
   variables:
     REACT_APP_API_ENDPOINT: https://api.example.com
 ```
