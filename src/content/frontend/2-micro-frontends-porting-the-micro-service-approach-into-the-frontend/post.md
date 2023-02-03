@@ -169,7 +169,7 @@ However, these templates are quite static. Coming back to the aforementioned onl
 
 [Skipper](https://github.com/zalando/skipper) takes over this routing to the static Tailor templates and is part of Project Mosaic as well. It’s an extendable reverse proxy with the ability to select routes based on properties (e.g. path, method, host, headers, cookies) and to modify the HTTP requests and responses with filters that are independently configured for each route. The routing configuration may be passed as static files or RESTful APIs (via [Innkeeper](https://github.com/zalando/innkeeper); also a part of Project Mosaic).
 
-```plain
+```text
 api_cart:
   PathRegexp("/api/cart.*")
   -> setResponseHeader("Access-Control-Allow-Credentials", "true")
