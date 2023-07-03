@@ -1,7 +1,9 @@
 const httpServer = require('http-server');
 const fp = require('find-free-port');
-const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
+
+const lighthouse = (...args) =>
+  import('lighthouse').then(({ default: lh }) => lh(...args));
 
 const cms = require('./cms');
 
